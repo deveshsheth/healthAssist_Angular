@@ -1,0 +1,48 @@
+<!-- <div class="header">
+  <div class="row">
+  <h2>Health Assist</h2>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+    <a class="nav-link waves-light" mdbWavesEffect ><h3>Make Appointment</h3></a>
+    </li>
+  </ul>
+</div>
+</div> -->
+
+<div class="text">
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark py-4" [containerInside]="false">
+  
+  <mdb-navbar-brand><a class="navbar-brand" href="#"><h5>Health Assist</h5></a></mdb-navbar-brand>
+  
+  <links>
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect><h5>Doctor</h5></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect><h5>Pathology</h5></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect><h5>Pharmacy</h5></a>
+      </li>
+    </ul>
+
+ 
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['./login']"><h5>Sign in</h5></a>
+        
+      </li>
+        &nbsp;
+      <h5><li class="nav-item active">
+        <a class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['./signup']">Sign up</a>
+      </li></h5>
+      
+    </ul>
+
+  </links>
+
+</mdb-navbar>
+</div>
+
