@@ -10,13 +10,34 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab    
+import {ToastModule} from 'primeng/toast';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MessageService } from 'primeng/api';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordotpComponent } from './resetpasswordotp/resetpasswordotp.component';
+import { NewpasswordComponent } from './newpassword/newpassword.component';
+import {ButtonModule} from 'primeng/button';
+import { AdminModule } from './admin/admin.module';
+import { DoctorModule } from './doctor/doctor.module';
+import { PathologyModule } from './pathology/pathology.module';
+import { PharmacyModule } from './pharmacy/pharmacy.module';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ForgotpasswordComponent,
+    ResetpasswordotpComponent,
+    NewpasswordComponent,
+    AboutusComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -24,11 +45,21 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AccordionModule,
+    ToastModule,
+    BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ButtonModule,
+    AdminModule,
+    DoctorModule,
+    PathologyModule,
+    PharmacyModule,
+    SignupLoginModule
+  
     
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

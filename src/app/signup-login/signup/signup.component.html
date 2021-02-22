@@ -1,51 +1,232 @@
+<!-- Header -->
+<div class="text">
+  <mdb-navbar SideClass="navbar navbar-expand-lg  navbar-dark " [containerInside]="false">
+
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/images/Home/HealthAssistLogo.png" alt=""
+          class="img1" /></a></mdb-navbar-brand>
+
+    <links>
+
+      <ul class="navbar-nav mr-auto">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../home']">
+            <h4>Home</h4>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../aboutus']">
+            <h4>About Us</h4>
+          </a>
+        </li>
+
+
+      </ul>
+
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']">
+            <h4>Sign in</h4>
+          </a>
+
+        </li>
+        &nbsp;
+        <h4>
+          <li class="nav-item active">
+            <a class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']">Sign up</a>
+          </li>
+        </h4>
+
+      </ul>
+
+    </links>
+
+  </mdb-navbar>
+</div>
+
+<!-- Signup Form -->
 
 <div class="container">
-<!-- Default form register -->
-<form class="text-center border border-light p-5" style="margin-top: 5%;" [formGroup]="signupForm" (ngSubmit)="submit()">
 
-  <p class="h4 mb-4"><b>Sign up</b></p>
+  <!-- Default form register -->
+  <form class="text-center border border-light p-5" style="margin-top: 5%;" [formGroup]="signupForm"
+    (ngSubmit)="submit()">
 
-  <div class="form-row mb-4">
-    <div class="col">
-      <!-- First name -->
-      <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" formControlName="firstname">
+    <p class="h4 mb-4"><b>Sign up</b></p>
+
+    <div class="form-row mb-4">
+      <div class="col">
+        <!-- First name -->
+        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name"
+          formControlName="firstName">
+      </div>
+      <div class="col">
+        <!-- Last name -->
+        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name"
+          formControlName="lastName">
+      </div>
     </div>
-    <div class="col">
-      <!-- Last name -->
-      <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" formControlName="lastname">
+
+    <!-- E-mail -->
+    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail"
+      formControlName="email">
+
+    <!-- Password -->
+    <input pPassword type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+      aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password">
+    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      At least 8 characters and 1 digit
+    </small>
+
+    <!-- Default unchecked -->
+    <div class="row mt-2 ml-4">
+      
+      <div class="custom-control custom-radio custom-control-inline">
+        <input type="radio" class="custom-control-input" id="defaultInline1" formControlName="gender" value="male"
+          name="gender" mdbInput>
+        <label class="custom-control-label" for="defaultInline1">Male</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline ml-5">
+        <input type="radio" class="custom-control-input" id="defaultInline2" formControlName="gender" value="female"
+          name="gender" mdbInput>
+        <label class="custom-control-label" for="defaultInline2">Female</label>
+      </div>
     </div>
+    <br>
+    <!-- Phone number -->
+
+
+
+    <!-- Sign up button -->
+    <button mdbBtn color="primary" block="true" class="my-4" type="submit">Sign up</button>
+
+    <!-- Social register -->
+    <p><b> Have a Account? </b> <a href="./login">Sign in</a></p>
+
+
+    <hr>
+
+    <!-- Terms of service -->
+    <p>By clicking
+      <em>Sign up</em> you agree to our
+      terms of service
+    </p>
+
+  </form>
+  <!-- Default form register -->
+</div>
+
+<!-- Footer -->
+<br><br>
+<footer class="page-footer font-small bg-primary pt-4">
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Health Assist</h5>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; border-top:2px solid #fff;">
+        <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating
+          doctors, pathologies and pharmacy
+          details.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul> -->
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact us</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; border-top:2px solid #fff;">
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
+        </p>
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="envelope"></mdb-icon>&nbsp;&nbsp;&nbsp; healthassist21@gmail.com
+        </p>
+        <!-- <p>
+          <mdb-icon fas icon="phone" class="mr-3"></mdb-icon> + 01 234 567 88
+        </p>
+        <p>
+          <mdb-icon fas icon="print" class="mr-3"></mdb-icon> + 01 234 567 88
+        </p> -->
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
   </div>
-
-  <!-- E-mail -->
-  <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" formControlName="email">
-
-  <!-- Password -->
-  <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password">
-  <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-    At least 8 characters and 1 digit
-  </small>
-
-  <!-- Phone number -->
-  <select formControlName="contactFormSubjects" class="browser-default custom-select mb-4" formControlName="role">
-    <option value="" disabled>Choose Role</option>
-    <option *ngFor="let r of list" value="{{r.roleid}}">{{r.roleName}}</option>
-  </select>
-
- 
-  <!-- Sign up button -->
-  <button mdbBtn color="primary" block="true" class="my-4" type="submit">Sign up</button>
-
-  <!-- Social register -->
-  <p><b> Have a Account? </b> <a href="./login">Sign in</a></p>
-
+  <!-- Footer Links -->
 
   <hr>
 
-  <!-- Terms of service -->
-  <p>By clicking
-    <em>Sign up</em> you agree to our
-  terms of service</p>
+  <!-- Call to action -->
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Register for free</h5>
+    </li>
+    <li class="list-inline-item active">
+      <a href="./signup" mdbBtn color="primary" rounded="true" mdbWavesEffect>Sign up!</a>
+    </li>
+  </ul>
+  <!-- Call to action -->
 
-</form>
-<!-- Default form register -->
-</div>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="http://healthassist.live/"> HealthAssist.live</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>

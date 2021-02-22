@@ -6,6 +6,12 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {PasswordModule} from 'primeng/password';
+
+
+
+
+
 
 @NgModule({
   declarations: [SignupComponent, LoginComponent],
@@ -13,8 +19,9 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    PasswordModule,
     MDBBootstrapModule.forRoot(),
-    SignupLoginRoutingModule
+    SignupLoginRoutingModule,
     
   ]
 })

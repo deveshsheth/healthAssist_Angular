@@ -1,14 +1,54 @@
+<!-- Header -->
+<div class="text">
+  <mdb-navbar SideClass="navbar navbar-expand-lg  navbar-dark " [containerInside]="false">
+    
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/images/Home/HealthAssistLogo.png"  alt="" class="img1"/></a></mdb-navbar-brand>
+    
+    <links>
+  
+      <ul class="navbar-nav mr-auto">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect href="home"><h4>Home</h4></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../aboutus']"><h4>About Us</h4></a>
+        </li>
+         
+      </ul>
+  
+   
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']"><h4>Sign in</h4></a>
+          
+        </li>
+          &nbsp;
+        <h4><li class="nav-item active">
+          <a class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']">Sign up</a>
+        </li></h4>
+        
+      </ul>
+  
+    </links>
+  
+  </mdb-navbar>
+  </div>  
+  
+<!-- Login Form -->
+
 <div class="container">
 <!-- Default form login -->
-<form class="text-center border border-light p-5" style="margin-top: 5%;">
+<form class="text-center border border-light p-5" style="margin-top: 5%;" [formGroup]="signinForm" (ngSubmit)="submit()">
 
   <p class="h4 mb-4"><b>Sign in</b></p>
 
   <!-- Email -->
-  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" formControlName="email">
 
   <!-- Password -->
-  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" formControlName="password">
 
   <div class="d-flex justify-content-around">
     <div>
@@ -17,12 +57,12 @@
     </div>
     <div>
       <!-- Forgot password -->
-      <a href="">Forgot password?</a>
+      <a href="/forgotpassword">Forgot password?</a>
     </div>
   </div>
 
   <!-- Sign in button -->
-  <button mdbBtn color="primary" block="true" class="my-4" type="submit">Sign in</button>
+ <button mdbBtn color="primary" block="true" class="my-4" type="submit">Sign in</button>
 
   <!-- Register -->
   <p>Not a member?
@@ -32,3 +72,114 @@
 </form>
 <!-- Default form login -->
 </div>
+<br><br>
+<!-- Footer -->
+<footer class="page-footer font-small bg-primary pt-4" >
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-4 mx-auto">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Health Assist</h5>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+        <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating doctors, pathologies and pharmacy
+details.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+    
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mx-auto">
+
+        <!-- Links -->
+        <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul> -->
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- <hr class="clearfix w-100 d-md-none"> -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact us</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
+        </p>
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="envelope"></mdb-icon>&nbsp;&nbsp;&nbsp; healthassist21@gmail.com
+        </p>
+        <!-- <p>
+          <mdb-icon fas icon="phone" class="mr-3"></mdb-icon> + 01 234 567 88
+        </p>
+        <p>
+          <mdb-icon fas icon="print" class="mr-3"></mdb-icon> + 01 234 567 88
+        </p> -->
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <hr>
+
+  <!-- Call to action -->
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Register for free</h5>
+    </li>
+    <li class="list-inline-item active">
+      <a href="./signup" mdbBtn color="primary" rounded="true" mdbWavesEffect>Sign up!</a>
+    </li>
+  </ul>
+  <!-- Call to action -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="http://healthassist.live/"> HealthAssist.live</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
+
