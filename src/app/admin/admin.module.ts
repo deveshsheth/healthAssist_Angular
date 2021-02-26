@@ -20,6 +20,14 @@ import { EditpathologyComponent } from './pathology/editpathology/editpathology.
 import { AddpharmacyComponent } from './pharmacy/addpharmacy/addpharmacy.component';
 import { EditpharmacyComponent } from './pharmacy/editpharmacy/editpharmacy.component';
 
+
+import {ButtonModule} from 'primeng/button';
+import { DataTablesModule } from 'angular-datatables';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {ProgressBarModule} from 'primeng/progressbar';
+
 @NgModule({
   declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, PathologyComponent, DietComponent, CalendarComponent, AdddoctorComponent, EditdoctorComponent, AddpathologyComponent, EditpathologyComponent, AddpharmacyComponent, EditpharmacyComponent],
   imports: [
@@ -29,7 +37,13 @@ import { EditpharmacyComponent } from './pharmacy/editpharmacy/editpharmacy.comp
     PasswordModule,
     ReactiveFormsModule,
     FormsModule,
-    FullCalendarModule
-  ]
+    FullCalendarModule,
+    ButtonModule,
+    DataTablesModule,
+    ConfirmDialogModule,
+    ProgressSpinnerModule,
+    ProgressBarModule
+  ],
+  providers: [MessageService,ConfirmationService],
 })
 export class AdminModule { }

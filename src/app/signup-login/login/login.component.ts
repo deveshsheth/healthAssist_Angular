@@ -12,7 +12,7 @@ import { UserserviceService } from '../userservice.service';
 })
 export class LoginComponent implements OnInit {
   signinForm:FormGroup;
-
+  
   constructor(private signinservice : LoginService,private rut:Router,private messageService: MessageService,private userservice : UserserviceService) { }
 
   ngOnInit(): void {
@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
     console.log(this.signinForm.value);
     this.signinservice.login(this.signinForm.value).subscribe(res => {
       if(res.status == 200){
-        
-        if(res.data.roleId ==1){
+        this.userservice.user = res.data;
+        if(res.data.roleId == 1){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Admin Successfully...!!!'});
           console.log("Admin");
-          this.rut.navigateByUrl('');
+          this.rut.navigateByUrl('dashboard');
         }
         else if(res.data.roleId ==2){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Patient Successfully...!!!'});

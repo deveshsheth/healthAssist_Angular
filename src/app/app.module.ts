@@ -15,7 +15,6 @@ import {ToastModule} from 'primeng/toast';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MessageService } from 'primeng/api';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { ResetpasswordotpComponent } from './resetpasswordotp/resetpasswordotp.component';
 import { NewpasswordComponent } from './newpassword/newpassword.component';
 import {ButtonModule} from 'primeng/button';
 import { AdminModule } from './admin/admin.module';
@@ -24,8 +23,10 @@ import { PathologyModule } from './pathology/pathology.module';
 import { PharmacyModule } from './pharmacy/pharmacy.module';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-
-
+import {TableModule} from 'primeng/table';
+import { DataTablesModule } from "angular-datatables";
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HeaderComponent,
     FooterComponent,
     ForgotpasswordComponent,
-    ResetpasswordotpComponent,
+
     NewpasswordComponent,
     AboutusComponent,
     PagenotfoundComponent
@@ -55,11 +56,14 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     DoctorModule,
     PathologyModule,
     PharmacyModule,
-    SignupLoginModule
+    SignupLoginModule,
+    TableModule,
+    DataTablesModule,
+    ConfirmDialogModule
   
     
   ],
   providers: [MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,ConfirmationService]
 })
 export class AppModule { }

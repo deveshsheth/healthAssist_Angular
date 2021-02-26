@@ -40,38 +40,52 @@
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
-                <ul >
+                <ul>
                     <li class="menu-title">Main</li>
                     <li>
-                        <a href="/dashboard"><mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span></a>
+                        <a href="/dashboard">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
                     </li>
                     <li class="active">
-                        <a href="/doctor"><mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span></a>
+                        <a href="/doctor">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/patient"><mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span></a>
+                        <a href="/patient">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
                     </li>
-                    
-                    <li>
-                        <a href="/pharmacy"><mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/pathology"><mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/diet"><mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span></a>
-                    </li>
-                    
 
-                    
-                    
-                    <li >
-                        <a href="/calendar"><mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span></a>
+                    <li>
+                        <a href="/pharmacy">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
                     </li>
-                    
-                    
+
+                    <li>
+                        <a href="/pathology">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/diet">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+
+
+
+
+                    <li>
+                        <a href="/calendar">
+                            <mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span>
+                        </a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -98,7 +112,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>First Name <span class="text-danger">*</span></label>
+                                <label>First Name</label>
                                 <input class="form-control" type="text">
                             </div>
                         </div>
@@ -110,14 +124,14 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Email <span class="text-danger">*</span></label>
+                                <label>Email</label>
                                 <input class="form-control" type="text">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label>Password <span class="text-danger">*</span></label>
-                                <input  class="form-control" type="password" pPassword>
+                                <label>Password</label>
+                                <input class="form-control" type="password" pPassword>
                             </div>
                         </div>
 
@@ -132,13 +146,13 @@
                             <div class="row mt-2 ml-1">
                                 <p>Gender : </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" id="defaultInline1"
-                                         value="male" name="gender" mdbInput>
+                                    <input type="radio" class="custom-control-input" id="defaultInline1" value="male"
+                                        name="gender" mdbInput>
                                     <label class="custom-control-label" for="defaultInline1">Male</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline ml-3">
-                                    <input type="radio" class="custom-control-input" id="defaultInline2"
-                                         value="female" name="gender" mdbInput>
+                                    <input type="radio" class="custom-control-input" id="defaultInline2" value="female"
+                                        name="gender" mdbInput>
                                     <label class="custom-control-label" for="defaultInline2">Female</label>
                                 </div>
                             </div>
@@ -165,26 +179,10 @@
                                     </div>
                                 </div>
 
+
+
                                 <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class="form-group">
-                                        <label>City</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    <div class="form-group">
-                                        <label>State</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-3">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -192,11 +190,11 @@
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="browser-default custom-select mb-4">
-                                  <option value="" selected>Choose status</option>
-                                  <option value="1">Active</option>
-                                  <option value="2">Pending</option>
-                                  <option value="3">Disable</option>
-                                  <option value="4">Pause</option>
+                                    <option value="" selected>Choose status</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Pending</option>
+                                    <option value="3">Disable</option>
+                                    <option value="4">Pause</option>
                                 </select>
                             </div>
                         </div>

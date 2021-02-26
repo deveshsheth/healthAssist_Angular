@@ -1,40 +1,51 @@
 <!-- Header -->
 <div class="text">
-  <mdb-navbar SideClass="navbar navbar-expand-lg  navbar-dark " [containerInside]="false">
+
+
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary py-3" [containerInside]="false">
+  
     
-    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="/assets/images/Home/HealthAssistLogo.png"  alt="" class="img1"/></a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+  
     
     <links>
   
+      
       <ul class="navbar-nav mr-auto">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../aboutus']">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['']">Contact Us</a>
+        </li>
   
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect href="home"><h4>Home</h4></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../aboutus']"><h4>About Us</h4></a>
-        </li>
-         
       </ul>
   
-   
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']"><h4>Sign in</h4></a>
+        <a  class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']" routerLinkActive="router-link-active">Sign in</a>
           
         </li>
           &nbsp;
-        <h4><li class="nav-item active">
-          <a class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']">Sign up</a>
-        </li></h4>
-        
+        <li class="nav-item active">
+          <a  class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']" routerLinkActive="router-link-active">Sign up</a>
+          <!-- <a *ngIf="isLoggedIn"class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
+          
+        </li>
       </ul>
   
     </links>
   
+  
   </mdb-navbar>
-  </div>  
+  
+  
+  
+  </div>
+  
   
 <!-- Login Form -->
 
@@ -52,8 +63,8 @@
 
   <div class="d-flex justify-content-around">
     <div>
-      <!-- Remember me -->
-      <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+     
+      <!-- <mdb-checkbox [default]="true">Remember me</mdb-checkbox> -->
     </div>
     <div>
       <!-- Forgot password -->

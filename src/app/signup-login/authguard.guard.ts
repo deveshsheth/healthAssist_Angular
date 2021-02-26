@@ -14,12 +14,17 @@ export class AuthguardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-
-      if(this.userdataservice.user.email== undefined && this.userdataservice.user.password==undefined){
+      console.log("canactivate---authguard")
+      console.log(this.userdataservice.user.email);
+      
+      if(this.userdataservice.user.email.length == undefined && this.userdataservice.user.password.length == undefined ){
         this.rut.navigate(['./login']);
+        console.log("if");
+        
       return false;
       }else{
+        console.log("else");
+        
         return true;
       }
     

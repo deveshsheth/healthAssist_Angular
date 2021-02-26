@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { PathologyService } from '../pathology.service';
 
 @Component({
   selector: 'app-addpathology',
@@ -6,10 +10,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addpathology.component.css']
 })
 export class AddpathologyComponent implements OnInit {
+  listcities:{}
+  pathologyForm : FormGroup;
+  constructor(private service : PathologyService,private messageService: MessageService,private rut : Router) { }
 
-  constructor() { }
+  ngOnInit(){
 
-  ngOnInit(): void {
+    this.pathologyForm = new FormGroup({
+      pathologyname : new FormControl('',Validators.required),
+      timing : new FormControl('',Validators.required),
+      phoneno : new FormControl('',Validators.required),
+      rating : new FormControl('',Validators.required),
+      address : new FormControl('',Validators.required),
+      about : new FormControl('',Validators.required),
+      cityid : new FormControl('',Validators.required),
+      pincode : new FormControl('',Validators.required)
+    })
+
+    this.service.listcities().then(res => {
+      this.listcities = res.data;
+    })
+  }
+
+  submit(){
+    this.service.addpathology(this.pathologyForm.value).subscribe(res => {
+      this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+      console.log(res.data);
+      this.rut.navigateByUrl('pathology')
+    })
   }
 
 }

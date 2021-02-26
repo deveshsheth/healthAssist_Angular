@@ -19,7 +19,9 @@ export class LoginService {
   }
 
   isLoggedIn() {
-    if (this.userdataservice.user.email == undefined && this.userdataservice.user.password == undefined) {
+    if (this.userdataservice.user.email.length == 0 && this.userdataservice.user.password.length == 0) {
+      console.log(this.userdataservice.user.email);
+      
       this.rut.navigate(['./login']);
       return false;
     } else {

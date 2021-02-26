@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { SignupService } from '../signup.service';
 
@@ -11,7 +12,7 @@ import { SignupService } from '../signup.service';
 export class SignupComponent implements OnInit {
 signupForm: FormGroup;
 
-  constructor(private signupService: SignupService, private messageService: MessageService) { }
+  constructor(private signupService: SignupService, private messageService: MessageService,private rut : Router) { }
 
   ngOnInit(): void {
 
@@ -30,9 +31,14 @@ signupForm: FormGroup;
   // tslint:disable-next-line:typedef
   submit(){
 
-    this.messageService.add({severity: 'success', summary: 'Success', detail: 'Signup Successfully...!!!'});
+  
     this.signupService.addsignup(this.signupForm.value).subscribe(res => {
-
+      if(res.status == 200){
+        this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+      }
+      else{
+        this.messageService.add({severity: 'warn', summary: 'warn', detail: res.msg});
+      }
       console.log(res.data);
 
     });

@@ -7,7 +7,7 @@
     <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
     <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
     <ul class="nav user-menu float-right">
-        
+
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                 <span class="user-img">
@@ -25,7 +25,8 @@
         </li>
     </ul>
     <div class="dropdown mobile-user-menu float-right">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                class="fa fa-ellipsis-v"></i></a>
         <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="profile.html">My Profile</a>
             <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
@@ -39,38 +40,49 @@
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
-                <ul >
+                <ul>
                     <li class="menu-title">Main</li>
                     <li>
-                        <a href="/dashboard"><mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span></a>
+                        <a href="/dashboard">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/doctor"><mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span></a>
+                        <a href="/doctor">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
                     </li>
                     <li class="active">
-                        <a href="/patient"><mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span></a>
+                        <a href="/patient">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
                     </li>
-                    
-                    <li>
-                        <a href="/pharmacy"><mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/pathology"><mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/diet"><mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span></a>
-                    </li>
-                    
 
-                    
-                    
-                    <li >
-                        <a href="/calendar"><mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span></a>
+                    <li>
+                        <a href="/pharmacy">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
                     </li>
-                    
-                    
+
+                    <li>
+                        <a href="/pathology">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/diet">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/calendar">
+                            <mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span>
+                        </a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -83,9 +95,55 @@
     </div>
 </div>
 
-<div class="page-wrapper">
+<div class="page-wrapper" style="min-height: 430px;">
     <div class="content">
-        <p>patient works!</p>
+
+        
+
+        <p style="font-weight: bold;font-size: 20px;">Patient List</p>
+        <br>
+        <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar>
+        <table *ngIf="patientlist" [dtOptions]="dtOptions" datatable class="row-border hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Profile Pic</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Phone No</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Pincode</th>
+                 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of patientlist">
+                    <th scope="row">{{p.patientid}}</th>
+                    <td>{{p.profilepic}}</td>
+                    <td>{{p.patientname}}</td>
+                    <td>{{p.gender}}</td>
+                    <td>{{p.phoneno}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.age}}</td>
+                    <td>{{p.cityname}}</td>
+                    <td>{{p.pincode}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <p-progressSpinner></p-progressSpinner> -->
+        <!-- <p-progressSpinner 
+        [value]="value1" 
+        *ngIf="value1!=100" 
+        [style]="{width: '50px', height: '50px'}" 
+        styleClass="custom-spinner" 
+        strokeWidth="8"  
+        animationDuration=".5s"
+        
+        ></p-progressSpinner> -->
+
+
+        
     </div>
 </div>
-
