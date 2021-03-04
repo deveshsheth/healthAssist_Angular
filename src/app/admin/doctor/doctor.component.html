@@ -20,7 +20,7 @@
                 <a class="dropdown-item" href="profile.html">My Profile</a>
                 <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                 <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </li>
     </ul>
@@ -62,13 +62,10 @@
                     <li>
                         <a href="/diet"><mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span></a>
                     </li>
-                    
-
-                    
-                    
-                    <li >
-                        <a href="/calendar"><mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span></a>
+                    <li>
+                        <a href="/clinic"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
                     </li>
+                    
                     
                     
                 </ul>
@@ -100,30 +97,31 @@
         <table *ngIf="listdoctor" [dtOptions]="dtOptions" datatable class="row-border hover">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Profile Pic</th>
+                    <th>Register No</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Gender</th>
                     <th>Email</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let d of listdoctor">
-                    <th scope="row">{{d.userId}}</th>
-                    <td>{{d.profilepic}}</td>
-                    <td>{{d.firstName}}</td>
-                    <td>{{d.lastName}}</td>
+                    <th scope="row">{{d.registrationNo}}</th>
+                    <td>{{d.firstname}}</td>
+                    <td>{{d.lastname}}</td>
                     <td>{{d.gender}}</td>
                     <td>{{d.email}}</td>
+                    <td *ngIf="d.status" class="{{doctorStatusService.doctorStatus[d.status]}}" >{{doctorStatusService.doctorStatus[d.status]}} </td>
+                   
                     <td class="text-right">
                         <div class="dropdown dropdown-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="edit-patient.html"><mdb-icon far icon="edit"></mdb-icon> &nbsp; Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><mdb-icon far icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><mdb-icon far icon="file-alt"></mdb-icon> &nbsp; Get Details</a>
+                                <a class="dropdown-item" [routerLink]="['../editdoctor',d.userId]"><mdb-icon far icon="edit"></mdb-icon> &nbsp; Edit</a>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#delete_patient" (click)="delete(d.userId)"><mdb-icon far icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
+                                <a class="dropdown-item" [routerLink]="['../profile',d.userId]" ><mdb-icon far icon="file-alt"></mdb-icon> &nbsp; Get Details</a>
                             </div>
                         </div>
                     </td>
@@ -134,7 +132,8 @@
     </div>
     
 </div>
-<!-- <router-outlet></router-outlet> -->
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+
 
 
 

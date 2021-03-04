@@ -20,7 +20,7 @@
                 <a class="dropdown-item" href="profile.html">My Profile</a>
                 <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                 <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </li>
     </ul>
@@ -75,16 +75,9 @@
                             <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
                         </a>
                     </li>
-
-
-
-
                     <li>
-                        <a href="/calendar">
-                            <mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span>
-                        </a>
+                        <a href="/clinic"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
                     </li>
-
 
                 </ul>
             </div>
@@ -140,8 +133,8 @@
                         <div class="dropdown dropdown-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="./editpharmacy"><mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit</a>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
+                                <a class="dropdown-item" [routerLink]="['../editpharmacy',p.pharmacyid]"><mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" data-target="#delete_patient" (click)="delete(p.pharmacyid)"><mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
                             </div>
                         </div>
                     </td>
@@ -152,3 +145,4 @@
 
     </div>
 </div>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

@@ -16,15 +16,12 @@ signupForm: FormGroup;
 
   ngOnInit(): void {
 
-
-
-
     this.signupForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      roleId: new FormControl(2, Validators.required),
+      roleid: new FormControl(2, Validators.required),
       gender: new FormControl('', Validators.required)
     });
   }

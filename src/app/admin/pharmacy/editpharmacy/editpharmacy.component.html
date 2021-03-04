@@ -20,7 +20,7 @@
                 <a class="dropdown-item" href="profile.html">My Profile</a>
                 <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                 <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" (click)="logout()">Logout</a>
             </div>
         </li>
     </ul>
@@ -40,38 +40,46 @@
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
-                <ul >
+                <ul>
                     <li class="menu-title">Main</li>
                     <li>
-                        <a href="/dashboard"><mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span></a>
+                        <a href="/dashboard">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/doctor"><mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span></a>
+                        <a href="/doctor">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/patient"><mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span></a>
+                        <a href="/patient">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
                     </li>
-                    
-                    <li class="active">
-                        <a href="/pharmacy"><mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/pathology"><mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span></a>
-                    </li>
-                    
-                    <li>
-                        <a href="/diet"><mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span></a>
-                    </li>
-                    
 
-                    
-                    
-                    <li >
-                        <a href="/calendar"><mdb-icon fas icon="calendar-alt"></mdb-icon> <span>Calendar</span></a>
+                    <li class="active">
+                        <a href="/pharmacy">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
                     </li>
-                    
-                    
+
+                    <li>
+                        <a href="/pathology">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/diet">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/clinic"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -89,82 +97,86 @@
     <div class="content">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <h4 class="page-title"><b>Add Pharmacy</b></h4>
+                <h4 class="page-title"><b>Edit Pharmacy</b></h4>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-                <form>
+                <form [formGroup]="pharmacyForm" (ngSubmit)="submit()">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Pharmacy Name</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" formControlName="pharmacyname">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Pharmacy Timings</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" formControlName="timing">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Phone No</label>
-                                <input class="form-control" type="text">
+                                <input class="form-control" type="text" formControlName="phoneno">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Rating</label>
-                                <input  class="form-control" type="text">
+                                <input class="form-control" type="text" formControlName="rating">
                             </div>
                         </div>
 
-                        
-                       
+
+
                         <br><br>
                         <div class="col-sm-12">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" formControlName="address">
                                     </div>
 
 
                                     <div class="form-group">
                                         <label>About</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" formControlName="about">
                                     </div>
 
 
-                                   
+
                                 </div>
 
-                                
+
                                 <div class="col-sm-6 col-md-6 col-lg-3">
                                     <div class="form-group">
                                         <label>City</label>
-                                        <input type="text" class="form-control">
+                                        <select class="browser-default custom-select mb-4" formControlName="cityid">
+                                            <option value="" selected>Choose City</option>
+                                            <option *ngFor="let c of listcities" value="{{c.cityid}}">{{c.cityname}}
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-3">
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" formControlName="pincode">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-3">
-                                    
+
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="m-t-20 text-center">
-                        <button class="btn btn-primary submit-btn">Create Pharmacy</button>
+                        <button type="submit" class="btn btn-primary submit-btn">Update Pharmacy</button>
                     </div>
                 </form>
             </div>

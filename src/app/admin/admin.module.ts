@@ -6,17 +6,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { PatientComponent } from './patient/patient.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
-import { PathologyComponent } from './pathology/pathology.component';
+
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DietComponent } from './diet/diet.component';
-import { CalendarComponent } from './calendar/calendar.component';
+
 import { AdddoctorComponent } from './doctor/adddoctor/adddoctor.component';
 import { EditdoctorComponent } from './doctor/editdoctor/editdoctor.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {PasswordModule} from 'primeng/password';
 import {FullCalendarModule} from 'primeng/fullcalendar';
-import { AddpathologyComponent } from './pathology/addpathology/addpathology.component';
-import { EditpathologyComponent } from './pathology/editpathology/editpathology.component';
 import { AddpharmacyComponent } from './pharmacy/addpharmacy/addpharmacy.component';
 import { EditpharmacyComponent } from './pharmacy/editpharmacy/editpharmacy.component';
 
@@ -27,9 +25,17 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {ProgressBarModule} from 'primeng/progressbar';
+import { ProfileComponent } from './doctor/profile/profile.component';
+import { PathologyComponent } from './pathology/pathology.component';
+import { AddpathologyComponent } from './pathology/addpathology/addpathology.component';
+import { EditpathologyComponent } from './pathology/editpathology/editpathology.component';
+import { ClinicComponent } from './clinic/clinic.component';
+import { AddclinicComponent } from './clinic/addclinic/addclinic.component';
+import { EditclinicComponent } from './clinic/editclinic/editclinic.component';
+
 
 @NgModule({
-  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, PathologyComponent, DietComponent, CalendarComponent, AdddoctorComponent, EditdoctorComponent, AddpathologyComponent, EditpathologyComponent, AddpharmacyComponent, EditpharmacyComponent],
+  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, DietComponent, AdddoctorComponent, EditdoctorComponent, AddpharmacyComponent, EditpharmacyComponent, ProfileComponent, PathologyComponent, AddpathologyComponent, EditpathologyComponent, ClinicComponent, AddclinicComponent, EditclinicComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

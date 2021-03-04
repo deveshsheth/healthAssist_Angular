@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { PatientService } from './patient.service';
 
 @Component({
@@ -11,9 +13,18 @@ export class PatientComponent implements OnInit {
   patientlist: {};
   dtOptions: DataTables.Settings = {};
   value1: number = 0
-  constructor(private patientservice: PatientService, private messageService: MessageService) { }
+  isLog: boolean = false
+  constructor(private rut : Router,private userdataservice: UserserviceService,private patientservice: PatientService, private messageService: MessageService) { }
 
   ngOnInit() {
+
+    if (this.userdataservice.user.email.length != 0) {
+
+      this.isLog = true;
+
+    } else {
+      this.isLog = false;
+    }
 
     let interval = setInterval(() => {
       this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
@@ -34,6 +45,14 @@ export class PatientComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
+  }
+  logout(){
+    this.userdataservice.user = null
+    console.log("logout successfully...!!");
+
+      this.isLog = false;
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Logout Successfully...!!"});
+    this.rut.navigateByUrl('');
   }
 
 }

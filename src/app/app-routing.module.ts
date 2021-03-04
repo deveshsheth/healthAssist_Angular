@@ -8,7 +8,7 @@ import { AuthguardGuard } from './signup-login/authguard.guard';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path:'aboutus',component:AboutusComponent,canActivate:[AuthguardGuard]},
+  {path:'aboutus',component:AboutusComponent},
  
 
   

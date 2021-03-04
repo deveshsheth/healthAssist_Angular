@@ -1,0 +1,24 @@
+.KYC_DOCTOR{
+    color:crimson;
+    font-weight: bold;
+}
+.PAUSE{
+    color:blue;
+    font-weight: bold;
+}
+.DISABLE{
+    color:darkred;
+    font-weight: bold;
+}
+.PENDING{
+
+    color:goldenrod;
+    font-weight: bold;
+
+}
+.ACTIVE{
+
+    color:darkgreen;
+    font-weight: bold;
+
+}

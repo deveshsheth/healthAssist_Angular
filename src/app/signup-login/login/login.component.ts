@@ -29,27 +29,27 @@ export class LoginComponent implements OnInit {
     this.signinservice.login(this.signinForm.value).subscribe(res => {
       if(res.status == 200){
         this.userservice.user = res.data;
-        if(res.data.roleId == 1){
+        if(res.data.roleid == 1){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Admin Successfully...!!!'});
           console.log("Admin");
           this.rut.navigateByUrl('dashboard');
         }
-        else if(res.data.roleId ==2){
+        else if(res.data.roleid ==2){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Patient Successfully...!!!'});
           console.log("Patient");
           this.rut.navigateByUrl('');
         }
-        else if(res.data.roleId ==3){
+        else if(res.data.roleid ==3){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Doctor Successfully...!!!'});
           console.log("Doctor");
           this.rut.navigateByUrl('');
         }
-        else if(res.data.roleId ==4){
+        else if(res.data.roleid ==4){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Pharmacy Successfully...!!!'});
           console.log("Pharmacy");
           this.rut.navigateByUrl('');
         }
-        else if(res.data.roleId ==5){
+        else if(res.data.roleid ==5){
           this.messageService.add({severity:'success', summary: 'Success', detail: 'Pathology Successfully...!!!'});
           console.log("Pathology");
           this.rut.navigateByUrl('/home');

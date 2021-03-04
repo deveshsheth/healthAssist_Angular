@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { PharmacyService } from '../pharmacy.service';
 
 @Component({
@@ -12,9 +13,18 @@ import { PharmacyService } from '../pharmacy.service';
 export class AddpharmacyComponent implements OnInit {
 listcities:{}
 pharmacyForm : FormGroup;
-  constructor(private service : PharmacyService,private messageService: MessageService,private rut : Router) { }
+isLog: boolean = false
+  constructor(private userdataservice: UserserviceService,private service : PharmacyService,private messageService: MessageService,private rut : Router) { }
 
   ngOnInit() {
+
+    if (this.userdataservice.user.email.length != 0) {
+
+      this.isLog = true;
+
+    } else {
+      this.isLog = false;
+    }
 
     this.pharmacyForm = new FormGroup({
       pharmacyname : new FormControl('',Validators.required),
@@ -40,9 +50,15 @@ pharmacyForm : FormGroup;
       this.rut.navigateByUrl('pharmacy')
 
     });
+  }
 
-    
+  logout(){
+    this.userdataservice.user = null
+    console.log("logout successfully...!!");
 
+      this.isLog = false;
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Logout Successfully...!!"});
+    this.rut.navigateByUrl('');
   }
 
 }

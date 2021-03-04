@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.userdataservice.user.email);
-    if(this.userdataservice.user.email.length != 0){
+    if(this.userdataservice.user != null && this.userdataservice.user.email.length != 0){
      
       this.isLog = true;
       

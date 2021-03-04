@@ -10,7 +10,8 @@ export class PathologyService {
 
   constructor(private http : HttpClient) { }
 
-  listpathology():Promise<any> {
+  
+  listpathology():Promise <any> {
     return this.http.get(`${environment.Base_Url}listPathology`).toPromise();
   }
 
@@ -22,4 +23,15 @@ export class PathologyService {
     return this.http.post(`${environment.Base_Url}addPathology`,model);
   }
 
+  getpathologyByid(pathologyId :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getpathology/${pathologyId}`).toPromise();
+  }
+
+  updatepathology(model : any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updatePathology`,model);
+  }
+
+  deletepathology(pathologyId : any):Observable<any> {
+    return this.http.delete(`${environment.Base_Url}addPathology/${pathologyId}`);
+  }
 }
