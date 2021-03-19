@@ -17,7 +17,7 @@ export class EditpathologyComponent implements OnInit {
   pathologydata:Pathology;
   id=0;
   isLog: boolean = false
-  constructor(private userdataservice: UserserviceService,private route : ActivatedRoute,private service: PathologyService, private messageService: MessageService, private rut: Router) { }
+  constructor(public userdataservice: UserserviceService,private route : ActivatedRoute,private service: PathologyService, private messageService: MessageService, private rut: Router) { }
 
   ngOnInit() {
 

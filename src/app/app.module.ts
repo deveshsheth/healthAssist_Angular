@@ -20,13 +20,17 @@ import {ButtonModule} from 'primeng/button';
 import { AdminModule } from './admin/admin.module';
 import { DoctorModule } from './doctor/doctor.module';
 import { PathologyModule } from './pathology/pathology.module';
-import { PharmacyModule } from './pharmacy/pharmacy.module';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {TableModule} from 'primeng/table';
 import { DataTablesModule } from "angular-datatables";
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import { TagModule } from 'primeng/tag';
+import { PatientModule } from './patient/patient.module';
+
+import { DatePipe } from '@angular/common';
+import { PharmacyModule } from './pharmacy/pharmacy.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ import {ConfirmationService} from 'primeng/api';
 
     NewpasswordComponent,
     AboutusComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -55,15 +60,17 @@ import {ConfirmationService} from 'primeng/api';
     AdminModule,
     DoctorModule,
     PathologyModule,
-    PharmacyModule,
     SignupLoginModule,
     TableModule,
     DataTablesModule,
-    ConfirmDialogModule
-  
+    ConfirmDialogModule,
+    TagModule,
+    PatientModule,
+    PharmacyModule
+
     
   ],
-  providers: [MessageService],
+  providers: [MessageService,DatePipe],
   bootstrap: [AppComponent,ConfirmationService]
 })
 export class AppModule { }

@@ -38,10 +38,16 @@ export class DoctorService {
     return this.http.post(`${environment.Base_Url}addDoctClinic`,model);
   } 
 
-  listDoctClinic():Promise <any> {
-    return this.http.get(`${environment.Base_Url}listDoctClinic`).toPromise();
+  listDoctClinic(userid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listDoctClinic/${userid}`).toPromise();
   }
   deletedoctclinic(doctclinicid : any):Observable<any> {
     return this.http.delete(`${environment.Base_Url}addDoctClinic/${doctclinicid}`);
+  }
+  getdoctorclinicByid(doctclinicid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getdoctclinic/${doctclinicid}`).toPromise();
+  }
+  updatedoctorclinic(model : any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updateDoctClinic`,model);
   }
 }

@@ -14,7 +14,7 @@ export class AddclinicComponent implements OnInit {
   isLog:boolean = false
   listcities:{}
   clinicForm: FormGroup;
-  constructor(private service: ClinicService,private userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
+  constructor(private service: ClinicService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
 

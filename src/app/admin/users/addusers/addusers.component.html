@@ -1,0 +1,190 @@
+<div class="header">
+    <div class="header-left">
+        <a href="index-2.html" class="logo">
+            <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Health Assist</span>
+        </a>
+    </div>
+    <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+    <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+    <ul class="nav user-menu float-right">
+        
+        <li class="nav-item dropdown has-arrow">
+            <a href="#">
+                <span class="user-img">
+                    <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                    <span class="status online"></span>
+                </span>
+                <span>{{userdataservice.user.firstname}}</span>
+            </a>
+           
+        </li>
+    </ul>
+    
+</div>
+
+<div class="sidebar" id="sidebar">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
+        <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
+            <div id="sidebar-menu" class="sidebar-menu">
+                <ul>
+                    <li class="menu-title">Main</li>
+                    <li>
+                        <a [routerLink]="['/dashboard']">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/doctor']">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/patient']">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/pharmacy']">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/pathology']">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/diet']">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                    </li>
+                    <li class="active">
+                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
+                    </li>
+                    <li>
+                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="slimScrollBar"
+            style="background: rgb(204, 204, 204); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 1315.8px;">
+        </div>
+        <div class="slimScrollRail"
+            style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+        </div>
+    </div>
+</div>
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-4 col-3">
+                <p class="page-title" style="font-weight: bold;font-size: 20px;">User</p>
+            </div>
+            <div class="col-sm-8 col-9 text-right m-b-20">
+                <a [routerLink]="['../addusers']" class="btn btn-primary btn-rounded float-right"><i
+                        class="fa fa-plus"></i> Add User</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form [formGroup]="userForm" (ngSubmit)="submit()">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input class="form-control" type="text" formControlName="firstname">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input class="form-control" type="text" formControlName="lastname">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="text" formControlName="email">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="text" formControlName="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="row mt-2 ml-1">
+                                <p>Gender : </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="defaultInline1" value="male"
+                                        name="gender"  formControlName="gender" mdbInput>
+                                    <label class="custom-control-label" for="defaultInline1">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline ml-3">
+                                    <input type="radio" class="custom-control-input" id="defaultInline2" value="female"
+                                        name="gender" formControlName="gender" mdbInput>
+                                    <label class="custom-control-label" for="defaultInline2">Female</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Choose Role</label>
+                                <select class="browser-default custom-select mb-4" formControlName="roleid">
+                                    <option  value="" selected>Choose Role</option>
+                                    <option *ngFor="let r of listRole" value="{{r.roleId}}">{{r.roleName}}</option>
+                                    <!--  -->
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="browser-default custom-select mb-4" formControlName="status">
+                                    <option  value="-1" >Choose Status</option>
+                                    <option value="1">{{doctorStatusService.doctorStatus[1]}}</option>
+                                    <option value=2>{{doctorStatusService.doctorStatus[2]}}</option>
+                                    <option value=3>{{doctorStatusService.doctorStatus[3]}}</option>
+                                    <option value=4>{{doctorStatusService.doctorStatus[4]}}</option>
+                                    <option value=5>{{doctorStatusService.doctorStatus[5]}}</option>
+                                </select>
+                            </div>
+                        </div> -->
+                       
+                    </div>
+
+                    <div class="m-t-20 text-center">
+                        <button type="submit" class="btn btn-primary submit-btn">Create User</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

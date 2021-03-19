@@ -17,7 +17,7 @@ export class EditpharmacyComponent implements OnInit {
   pharmacydata:Pharmacy;
   id=0;
   isLog: boolean = false
-  constructor(private userdataservice: UserserviceService,private route : ActivatedRoute,private service : PharmacyService,private messageService: MessageService,private rut : Router) { }
+  constructor(public userdataservice: UserserviceService,private route : ActivatedRoute,private service : PharmacyService,private messageService: MessageService,private rut : Router) { }
 
   ngOnInit() {
 

@@ -14,7 +14,7 @@ export class PathologyComponent implements OnInit {
   pathologylist:{}
   value1 : number=0
   isLog: boolean = false
-  constructor(private confirmationService: ConfirmationService,private userdataservice: UserserviceService,private service : PathologyService,private rut : Router,private messageService : MessageService) { }
+  constructor(private confirmationService: ConfirmationService,public userdataservice: UserserviceService,private service : PathologyService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
 
@@ -36,7 +36,7 @@ export class PathologyComponent implements OnInit {
         })
         clearInterval(interval);
       }
-    }, 200);
+    }, 20);
 
     this.dtOptions = {
       pagingType: 'full_numbers'

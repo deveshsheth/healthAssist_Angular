@@ -17,7 +17,7 @@ export class EditdoctorComponent implements OnInit {
   doctordata: Doctor;
   id = 0;
   isLog:boolean = false
-  constructor(public doctorStatusService:DoctorStatusService,private userdataservice : UserserviceService,private route: ActivatedRoute, private service: DoctorService, private messageService: MessageService, private rut: Router) { }
+  constructor(public doctorStatusService:DoctorStatusService,public userdataservice : UserserviceService,private route: ActivatedRoute, private service: DoctorService, private messageService: MessageService, private rut: Router) { }
 
   ngOnInit() {
 
@@ -36,6 +36,9 @@ export class EditdoctorComponent implements OnInit {
     this.service.getdoctorByid(this.id).then(res => {
 
       this.doctordata = res.data;
+      console.log(res.data);
+      console.log(this.doctordata.status);
+      
 
 
       this.doctorForm = new FormGroup({
@@ -53,6 +56,8 @@ export class EditdoctorComponent implements OnInit {
         registrationNo: new FormControl(this.doctordata.registrationNo, Validators.required),
       })
     })
+
+    
   }
   
   logout(){
@@ -64,11 +69,19 @@ export class EditdoctorComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit() {
+
+    this.doctordata = this.doctorForm.value;
     if(this.id){
       console.log(this.id);
-
+    
+ 
+      console.log(this.doctordata);
+      
+      
+      console.log(this.doctorForm.value);
       this.service.updatedoctor(this.doctorForm.value).subscribe(res => {
         console.log(res);
+        
         this.rut.navigateByUrl('doctor')
         this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});
         

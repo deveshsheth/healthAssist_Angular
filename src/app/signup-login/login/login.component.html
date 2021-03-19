@@ -1,18 +1,19 @@
-<!-- Header -->
+
 <div class="text">
 
 
   <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary py-3" [containerInside]="false">
   
     
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="./assets/images/Home/HealthAssistLogo.png" width="35"
+      height="35" alt="">&nbsp;&nbsp; Health Assist</a></mdb-navbar-brand>
   
     
     <links>
   
       
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['']">Home</a>
         </li>
         <li class="nav-item">
@@ -20,7 +21,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['']">Contact Us</a>
-        </li>
+        </li> -->
   
       </ul>
   
@@ -47,58 +48,62 @@
   </div>
   
   
-<!-- Login Form -->
+
 
 <div class="container">
-<!-- Default form login -->
+
 <form class="text-center border border-light p-5" style="margin-top: 5%;" [formGroup]="signinForm" (ngSubmit)="submit()">
 
   <p class="h4 mb-4"><b>Sign in</b></p>
 
-  <!-- Email -->
+
   <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" formControlName="email">
 
-  <!-- Password -->
+
   <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" formControlName="password">
 
   <div class="d-flex justify-content-around">
     <div>
      
-      <!-- <mdb-checkbox [default]="true">Remember me</mdb-checkbox> -->
+   
     </div>
     <div>
-      <!-- Forgot password -->
+     
       <a href="/forgotpassword">Forgot password?</a>
     </div>
   </div>
 
-  <!-- Sign in button -->
+ 
  <button mdbBtn color="primary" block="true" class="my-4" type="submit">Sign in</button>
 
-  <!-- Register -->
+
   <p>Not a member?
     <a href="./signup">Register</a>
   </p>
 
 </form>
-<!-- Default form login -->
+
 </div>
 <br><br>
-<!-- Footer -->
+
+
+
 <footer class="page-footer font-small bg-primary pt-4" >
 
-  <!-- Footer Links -->
+ 
   <div class="container text-center text-md-left">
 
-    <!-- Grid row -->
+
     <div class="row">
 
-      <!-- Grid column -->
+      
       <div class="col-md-4 mx-auto">
 
-        <!-- Content -->
-        <h5 class="text-uppercase font-weight-bold">Health Assist</h5>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+ 
+        
+        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40" height="40" alt="" > &nbsp; Health Assist</h5>
+    
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
         <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating doctors, pathologies and pharmacy
 details.</p>
 

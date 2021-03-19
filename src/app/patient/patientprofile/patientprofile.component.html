@@ -1,0 +1,355 @@
+<div class="text">
+
+
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary py-3" [containerInside]="false">
+
+
+        <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="./assets/images/Home/HealthAssistLogo.png"
+                    width="35" height="35" alt="">&nbsp;&nbsp; Health Assist</a></mdb-navbar-brand>
+
+
+
+
+        <links>
+            <ul class="navbar-nav mr-auto">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li *ngIf="isLog" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon>
+                        </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
+
+                        <li><a class="dropdown-item" [routerLink]="['/patientappointment']">Appoinment</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="isLog" class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpharmacy']">Pharmacy</a>
+                </li>
+                <li *ngIf="isLog" class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpathology']">Pathology</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a *ngIf="!isLog" class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']"
+                        routerLinkActive="router-link-active">Sign in</a>
+
+                </li>
+                &nbsp;
+                <li class="nav-item active">
+
+                    <a *ngIf="!isLog" class="nav-link waves-light" outline="true" mdbWavesEffect
+                        [routerLink]="['../signup']" routerLinkActive="router-link-active">Sign up</a>
+                    <!-- <a  *ngIf="isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
+                    <ul *ngIf="isLog" class="nav user-menu float-right" style="margin-left: -40px;">
+
+                        <li class="nav-item dropdown has-arrow">
+                            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                                <span class="user-img">
+                                    <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                                    <span class="status online"></span>
+                                </span> &nbsp;
+                                <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon>
+                                    </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" [routerLink]="['/patientprofile']">
+                                    <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
+                                </a>
+                                <a class="dropdown-item" href="edit-profile.html">
+                                    <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
+                                </a>
+                                <a class="dropdown-item" href="edit-profile.html">
+                                    <mdb-icon fas icon="eye"></mdb-icon>&nbsp;View Appointment
+                                  </a>
+                                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+                                <a class="dropdown-item" href="./" (click)="logout()">
+                                    <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </links>
+
+
+
+
+    </mdb-navbar>
+
+
+
+</div>
+
+
+<div class="content"><br><br>
+    <div class="row">
+        <div class="col-sm-7 col-6">
+            <h4 class="page-title" style="font-size: 30px;"><b>My Profile</b></h4>
+        </div>
+
+        <div class="col-sm-5 col-6 text-right m-b-30">
+            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+        </div>
+    </div>
+    <div class="card-box profile-header">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-view">
+                    <div class="profile-img-wrap">
+                        <div class="profile-img">
+                            <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="profile-basic">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="profile-info-left"><br>
+                                    <h3 class="user-name m-t-0 mb-0">
+                                        {{userdataservice.user.firstname}}&nbsp;{{userdataservice.user.lastname}}</h3>
+                                    <!-- <small class="text-muted">specialization</small> --> <br>
+                                    <div class="staff-id"> <b> Email :
+                                        </b>{{userdataservice.user.email}}</div>
+                                    <!-- <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Get Details</a></div> -->
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <ul class="personal-info">
+                                    <li>
+                                        <span class="title">Phone No :</span>
+                                        <span class="text"><a href="#">{{getpatientUserId.phoneno}}</a></span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Age:</span>
+                                        <span class="text"><a href="#">{{getpatientUserId.age}}</a></span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Gender:</span>
+                                        <span class="text">{{userdataservice.user.gender}}</span>
+                                    </li>
+                                    <li>
+                                        <!-- <span class="title">Registration No :</span>
+                                        <span class="text">abcdf4</span> -->
+                                    </li>
+                                    <li>
+                                        <span class="title">City:</span>
+                                        <span class="text">{{getpatientUserId.cityid}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-tabs">
+
+        <div class="tab-content">
+            <div class="tab-pane show active" id="about-cont">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="card-box mb-0">
+                            <div class="row">
+                                <div class="col-sm-4 col-3">
+                                    <h4 class="page-title"><b>List Patient</b></h4>
+                                </div>
+
+                                <div class="col-sm-8 col-9 text-right m-b-20">
+                                    <button type="button" class="btn btn-primary btn-rounded float-right"
+                                        data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Add
+                                        Patient</button>
+                                </div>
+
+                                <form [formGroup]="patientForm" (ngSubmit)="submit()">
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                    <h4 class="modal-title"><b>Patient Form</b></h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        
+                                                            <div class="form-group">
+                                                                <label>Patient Name</label>
+                                                                <input class="form-control" type="text"
+                                                                    formControlName="patientname">
+                                                            </div>
+                                                        
+                                                    
+                                                  
+                                                            <div class="row mt-2 ml-1">
+                                                                <p>Gender : </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <div
+                                                                    class="custom-control custom-radio custom-control-inline">
+                                                                    <input type="radio" class="custom-control-input"
+                                                                        id="defaultInline1" value="male" name="gender"
+                                                                        formControlName="gender" mdbInput>
+                                                                    <label class="custom-control-label"
+                                                                        for="defaultInline1">Male</label>
+                                                                </div>
+                                                                <div
+                                                                    class="custom-control custom-radio custom-control-inline ml-3">
+                                                                    <input type="radio" class="custom-control-input"
+                                                                        id="defaultInline2" value="female" name="gender"
+                                                                        formControlName="gender" mdbInput>
+                                                                    <label class="custom-control-label"
+                                                                        for="defaultInline2">Female</label>
+                                                                </div>
+                                                            </div>
+                                                       
+                                                            <div class="form-group">
+                                                                <label>Phone no</label>
+                                                                <input class="form-control" type="text"
+                                                                    formControlName="phoneno">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email</label>
+                                                                <input class="form-control" type="text"
+                                                                    formControlName="email">
+                                                            </div>
+                                                       
+                                                        
+                                                            <div class="form-group">
+                                                                <label>Age</label>
+                                                                <input class="form-control" type="text"
+                                                                    formControlName="age">
+                                                            </div>
+                                                     
+                                                       
+
+                                                    </div>
+
+
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-dismiss="modal" data-target="#myModal">Close</button>
+                                                    <button type="submit" value="submit" class="btn btn-primary"
+                                                        data-toggle="modal" data-target="#myModal">Save</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </form>
+
+
+                            </div>
+                            <div class="experience-box">
+                                <table *ngIf="listuserPatint" datatable [dtOptions]="dtOptions" class="row-border hover">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Patient name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let up of listuserPatint">
+                                            <td>{{up.patientname}}</td>
+                                            <td>{{up.age}}</td>
+                                            <td>{{up.gender}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="page-footer font-small bg-primary pt-4">
+
+
+        <div class="container text-center text-md-left">
+
+
+            <div class="row">
+
+
+                <div class="col-md-4 mx-auto">
+
+
+
+                    <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png"
+                            width="40" height="40" alt=""> &nbsp; Health Assist</h5>
+
+                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; border-top:2px solid #fff;">
+                    <p>HealthAssist will help to search different categories of doctors on one click.It provides good
+                        rating
+                        doctors, pathologies and pharmacy
+                        details.</p>
+
+                </div>
+
+                <div class="col-md-2 mx-auto">
+
+
+
+
+                </div>
+
+                <div class="col-md-2 mx-auto">
+
+
+
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
+
+
+                    <h6 class="text-uppercase font-weight-bold">Contact us</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; border-top:2px solid #fff;">
+                    <p style="font-size: medium;">
+                        <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
+                    </p>
+                    <p style="font-size: medium;">
+                        <mdb-icon fas icon="envelope"></mdb-icon>&nbsp;&nbsp;&nbsp; healthassist21@gmail.com
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <hr>
+
+        <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <h5 class="mb-1">Register for free</h5>
+            </li>
+            <li class="list-inline-item active">
+                <a href="./signup" mdbBtn color="primary" rounded="true" mdbWavesEffect>Sign up!</a>
+            </li>
+        </ul>
+
+        <div class="footer-copyright text-center py-3">© 2021 Copyright:
+            <a href="http://healthassist.live/"> HealthAssist.live</a>
+        </div>
+
+
+    </footer>

@@ -14,7 +14,7 @@ export class AddpathologyComponent implements OnInit {
   listcities: {}
   pathologyForm: FormGroup;
   isLog: boolean = false
-  constructor(private userdataservice: UserserviceService,private service: PathologyService, private messageService: MessageService, private rut: Router) { }
+  constructor(public userdataservice: UserserviceService,private service: PathologyService, private messageService: MessageService, private rut: Router) { }
 
   ngOnInit() {
 

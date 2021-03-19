@@ -13,7 +13,7 @@ import { DoctorService } from '../doctor.service';
 export class AdddoctorComponent implements OnInit {
   doctorForm:FormGroup;
   isLog:boolean = false
-  constructor(private userdataservice : UserserviceService,private service : DoctorService, private messageService: MessageService, private rut: Router) { }
+  constructor(public userdataservice : UserserviceService,private service : DoctorService, private messageService: MessageService, private rut: Router) { }
 
   ngOnInit() {
 

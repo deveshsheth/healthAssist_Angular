@@ -17,7 +17,7 @@ export class EditclinicComponent implements OnInit {
   clinicdata:Clinic;
   id=0;
   listcities:{}
-  constructor(private route : ActivatedRoute,private service: ClinicService,private userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
+  constructor(private route : ActivatedRoute,private service: ClinicService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
 

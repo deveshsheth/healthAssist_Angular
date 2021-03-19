@@ -32,10 +32,24 @@ import { EditpathologyComponent } from './pathology/editpathology/editpathology.
 import { ClinicComponent } from './clinic/clinic.component';
 import { AddclinicComponent } from './clinic/addclinic/addclinic.component';
 import { EditclinicComponent } from './clinic/editclinic/editclinic.component';
+import { AdddietComponent } from './diet/adddiet/adddiet.component';
+import { EditdietComponent } from './diet/editdiet/editdiet.component';
+import { TagModule } from 'primeng/tag';
+import { UsersComponent } from './users/users.component';
+import { AddusersComponent } from './users/addusers/addusers.component';
+import { EditusersComponent } from './users/editusers/editusers.component';
+import { MedicineComponent } from './medicine/medicine.component';
+
+import { DiseaseComponent } from './disease/disease.component';
+
+import { AddpatientComponent } from './patient/addpatient/addpatient.component';
+import { CityComponent } from './city/city.component';
+import { StateComponent } from './state/state.component';
+
 
 
 @NgModule({
-  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, DietComponent, AdddoctorComponent, EditdoctorComponent, AddpharmacyComponent, EditpharmacyComponent, ProfileComponent, PathologyComponent, AddpathologyComponent, EditpathologyComponent, ClinicComponent, AddclinicComponent, EditclinicComponent],
+  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, DietComponent, AdddoctorComponent, EditdoctorComponent, AddpharmacyComponent, EditpharmacyComponent, ProfileComponent, PathologyComponent, AddpathologyComponent, EditpathologyComponent, ClinicComponent, AddclinicComponent, EditclinicComponent, AdddietComponent, EditdietComponent, UsersComponent, AddusersComponent, EditusersComponent, MedicineComponent, DiseaseComponent, AddpatientComponent, CityComponent, StateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
@@ -48,7 +62,8 @@ import { EditclinicComponent } from './clinic/editclinic/editclinic.component';
     DataTablesModule,
     ConfirmDialogModule,
     ProgressSpinnerModule,
-    ProgressBarModule
+    ProgressBarModule,
+    TagModule
   ],
   providers: [MessageService,ConfirmationService],
 })

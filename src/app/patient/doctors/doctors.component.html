@@ -1,0 +1,246 @@
+<div class="text">
+
+
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary py-3" [containerInside]="false">
+
+
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="./assets/images/Home/HealthAssistLogo.png" width="35"
+          height="35" alt="">&nbsp;&nbsp; Health Assist</a></mdb-navbar-brand>
+
+
+
+
+    <links>
+      <ul class="navbar-nav mr-auto">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li *ngIf="isLog" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown03">
+            <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
+
+            <li><a class="dropdown-item" [routerLink]="['/patientappointment']">Appoinment</a></li>
+          </ul>
+        </li>
+        <li *ngIf="isLog" class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpharmacy']">Pharmacy</a>
+        </li>
+        <li  *ngIf="isLog" class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpathology']">Pathology</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a *ngIf="!isLog" class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']"
+            routerLinkActive="router-link-active">Sign in</a>
+
+        </li>
+        &nbsp;
+        <li class="nav-item active">
+
+          <a *ngIf="!isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']"
+            routerLinkActive="router-link-active">Sign up</a>
+          <!-- <a  *ngIf="isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
+          <ul *ngIf="isLog" class="nav user-menu float-right" style="margin-left: -40px;">
+
+            <li class="nav-item dropdown has-arrow">
+              <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                <span class="user-img">
+                  <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                  <span class="status online"></span>
+                </span> &nbsp;
+                <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon></span>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" [routerLink]="['/patientprofile']">
+                  <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
+                </a>
+                <a class="dropdown-item" href="edit-profile.html">
+                  <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
+                </a>
+                <a class="dropdown-item" href="edit-profile.html">
+                  <mdb-icon fas icon="eye"></mdb-icon>&nbsp;View Appointment
+                </a>
+                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+                <a class="dropdown-item" href="./" (click)="logout()">
+                  <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </links>
+
+
+
+
+  </mdb-navbar>
+
+
+
+</div>
+
+<section class="page-title bg-1">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="block text-center">
+          <span class="text-white"
+            style="font-size: 20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">All
+            Doctors</span>
+          <h1 class="text-capitalize mb-5 text-lg"
+            style="font-weight: 500;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+            Specalized doctors</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <p
+    style="color: #107eed; text-align: center; padding-top: 20px;font-weight: 700;font-size: 45px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+    Doctors</p>
+  <hr style="width:5%; border-top:2px solid #107eed; border-bottom:none; text-align: center;">
+
+
+  <div class="right" style="text-align: center;">
+    <p>The best doctor gives the least medicines.Sometimes, doctors risk their lives just save others.
+      A good doctor treats the disease, but the great doctor treats the patient who has the disease.
+    </p>
+  </div>
+
+  <div class="search">
+    <input type="text" class="searchTerm" placeholder="Search Doctor...">
+    <button type="submit" class="searchButton">
+      <i class="fa fa-search"></i>
+   </button>
+ </div><br>
+</div>
+
+
+
+<br><br>
+<div class="container">
+  <div class="row">
+      <div class=" col-lg-3" *ngFor="let ud of userdoctor">
+         
+          <div class="card" style="width:100%">
+
+        
+              <img src="./assets/images/Home/doctor.jpg" alt="Avatar" style="width:100%">
+
+            
+              <div class="card-body">
+
+              
+                  <p style="font-size: 25px;font-weight: 400;">{{ud.firstname}}&nbsp;{{ud.lastname}}</p>
+                  <p style="font-size: medium;">{{ud.specialization}}</p>
+                  <!-- <p>{{ud.qualification}}</p> -->
+                  
+                  <a  [routerLink]="['../singledoctor',ud.userId]"><button type="button" mdbBtn color="primary" style="float: right;"  mdbWavesEffect>Read More</button></a>
+
+              </div>
+
+          </div>
+        
+      </div>
+  </div>
+</div>
+
+<section class="section cta-page" id="hero" class="d-flex flex-column justify-content-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-7">
+				<div class="cta-content">
+					<div class="divider mb-4"></div><br>
+          <hr style="width:8%; border-top:8px solid #107eed; border-bottom:none;margin-left: -3px;">
+					<h2 class="mb-5 text-lg" style="margin-top: 20px;font-weight: 600;">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
+					<a [routerLink]="['/patientappointment']"><button ml-2 mdbBtn type="button" color="primary" rounded="true" mdbWavesEffect>Make Appointment<i class="icofont-simple-right ml-3"></i>></button></a>
+				
+        </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<footer class="page-footer font-small bg-primary pt-4" >
+
+    
+  <div class="container text-center text-md-left">
+
+
+    <div class="row">
+
+
+      <div class="col-md-4 mx-auto">
+
+     
+        
+        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40" height="40" alt="" > &nbsp; Health Assist</h5>
+    
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+        <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating doctors, pathologies and pharmacy
+details.</p>
+
+      </div>
+     
+      <div class="col-md-2 mx-auto">
+
+
+    
+
+      </div>
+ 
+      <div class="col-md-2 mx-auto">
+
+       
+
+      </div>
+    
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
+
+
+        <h6 class="text-uppercase font-weight-bold">Contact us</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
+        </p>
+        <p style="font-size: medium;">
+          <mdb-icon fas icon="envelope"></mdb-icon>&nbsp;&nbsp;&nbsp; healthassist21@gmail.com
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+  <hr>
+
+  <ul class="list-unstyled list-inline text-center py-2">
+    <li class="list-inline-item">
+      <h5 class="mb-1">Register for free</h5>
+    </li>
+    <li class="list-inline-item active">
+      <a href="./signup" mdbBtn color="primary" rounded="true" mdbWavesEffect>Sign up!</a>
+    </li>
+  </ul>
+
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="http://healthassist.live/"> HealthAssist.live</a>
+  </div>
+
+
+</footer>
+
+

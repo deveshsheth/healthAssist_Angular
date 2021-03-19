@@ -11,5 +11,7 @@ export interface Doctor {
     about : String;
     registrationNo : String;
     status : number;
+    statusReason:String;
+    docProfileId:number;
   
 }

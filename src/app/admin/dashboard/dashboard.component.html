@@ -1,7 +1,5 @@
 <div class="header">
     <div class="header-left">
-        
-    
     
     <a href="index-2.html" class="logo">
         <img src="assets/img/logo.png" width="35" height="35" alt=""><span>Health Assist</span>
@@ -13,64 +11,80 @@
     <ul class="nav user-menu float-right">
         
         <li class="nav-item dropdown has-arrow">
-            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+            <a>
                 <span class="user-img">
                     <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
                     <span class="status online"></span>
-                </span>
-                <span>Admin</span>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                <a class="dropdown-item" (click)="logout()">Logout</a>
-            </div>
+                </span>&nbsp;
+                <span>{{userdataservice.user.firstname}}</span>
+            </a> 
         </li>
     </ul>
-    <div class="dropdown mobile-user-menu float-right">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html">My Profile</a>
-            <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-            <a class="dropdown-item" href="settings.html">Settings</a>
-            <a class="dropdown-item" (click)="logout()">Logout</a>
-        </div>
-    </div>
 </div>
 
 <div class="sidebar" id="sidebar">
     <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
-                <ul >
+                <ul>
                     <li class="menu-title">Main</li>
                     <li class="active">
-                        <a href="/dashboard"><mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span></a>
+                        <a [routerLink]="['/dashboard']">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/doctor"><mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span></a>
+                        <a [routerLink]="['/doctor']">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/patient"><mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span></a>
+                        <a [routerLink]="['/patient']">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
                     </li>
-                    
+
                     <li>
-                        <a href="/pharmacy"><mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span></a>
+                        <a [routerLink]="['/pharmacy']">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
                     </li>
-                    
+
                     <li>
-                        <a href="/pathology"><mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span></a>
+                        <a [routerLink]="['/pathology']">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
                     </li>
-                    
+
                     <li>
-                        <a href="/diet"><mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span></a>
+                        <a [routerLink]="['/diet']">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="/clinic"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
                     </li>
-                    
-                    
-                    
+                    <li>
+                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
+                    </li>
+                    <li>
+                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
+                    </li>
+
+
+
                 </ul>
             </div>
         </div>

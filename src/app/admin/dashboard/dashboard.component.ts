@@ -22,10 +22,10 @@ export class DashboardComponent implements OnInit {
   pharmacyCount:number = 0
   patientCount:number = 0
   clinicCount:number = 0
-  constructor(private clinicService : ClinicService,private patientService : PatientService,private pharmacyService : PharmacyService,private pathologyService : PathologyService,private doctorService : DoctorService,private userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
+  constructor(private clinicService : ClinicService,private patientService : PatientService,private pharmacyService : PharmacyService,private pathologyService : PathologyService,private doctorService : DoctorService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit(){
-
+    
     this.doctorService.listdoctor().then(res => {
       this.doctorCount = res.data.length; 
     })

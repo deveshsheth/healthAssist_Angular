@@ -17,13 +17,14 @@ export class AuthguardGuard implements CanActivate {
       console.log("canactivate---authguard")
       console.log(this.userdataservice.user.email);
       
-      if(this.userdataservice.user.email.length == undefined && this.userdataservice.user.password.length == undefined ){
+      return true;
+      if(this.userdataservice.user.email.length == 0 && this.userdataservice.user.password.length == 0 ){
         this.rut.navigate(['./login']);
-        console.log("if");
+
         
       return false;
       }else{
-        console.log("else");
+     
         
         return true;
       }

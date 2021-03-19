@@ -9,31 +9,15 @@
     <ul class="nav user-menu float-right">
 
         <li class="nav-item dropdown has-arrow">
-            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+            <a href="#">
                 <span class="user-img">
                     <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
                     <span class="status online"></span>
                 </span>
-                <span>Admin</span>
+                <span>{{userdataservice.user.firstname}}</span>
             </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                <a class="dropdown-item" href="settings.html">Settings</a>
-                <a class="dropdown-item" (click)="logout()">Logout</a>
-            </div>
         </li>
     </ul>
-    <div class="dropdown mobile-user-menu float-right">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                class="fa fa-ellipsis-v"></i></a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="profile.html">My Profile</a>
-            <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-            <a class="dropdown-item" href="settings.html">Settings</a>
-            <a class="dropdown-item" href="login.html">Logout</a>
-        </div>
-    </div>
 </div>
 
 <div class="sidebar" id="sidebar">
@@ -43,40 +27,58 @@
                 <ul>
                     <li class="menu-title">Main</li>
                     <li>
-                        <a href="/dashboard">
+                        <a [routerLink]="['/dashboard']">
                             <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/doctor">
+                        <a [routerLink]="['/doctor']">
                             <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="/patient">
+                        <a [routerLink]="['/patient']">
                             <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/pharmacy">
+                        <a [routerLink]="['/pharmacy']">
                             <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/pathology">
+                        <a [routerLink]="['/pathology']">
                             <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/diet">
+                        <a [routerLink]="['/diet']">
                             <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/clinic"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
+                    </li>
+                    <li>
+                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
                     </li>
 
 
@@ -96,16 +98,23 @@
 <div class="page-wrapper" style="min-height: 430px;">
     <div class="content">
 
-        
+        <div class="row">
+            <div class="col-sm-4 col-3">
+                <p class="page-title" style="font-weight: bold;font-size: 20px;">Patient</p>
+            </div>
+            <div class="col-sm-8 col-9 text-right m-b-20">
+                <a [routerLink]="['../addpatient']" class="btn btn-primary btn-rounded float-right"><i
+                        class="fa fa-plus"></i> Add Patient</a>
+            </div>
+        </div>
 
-        <p style="font-weight: bold;font-size: 20px;">Patient List</p>
         <br>
         <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar>
         <table *ngIf="patientlist" [dtOptions]="dtOptions" datatable class="row-border hover">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Profile Pic</th>
+                    <th>UserId</th>
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Phone No</th>
@@ -119,7 +128,7 @@
             <tbody>
                 <tr *ngFor="let p of patientlist">
                     <th scope="row">{{p.patientid}}</th>
-                    <td>{{p.profilepic}}</td>
+                    <td>{{p.userId}}</td>
                     <td>{{p.patientname}}</td>
                     <td>{{p.gender}}</td>
                     <td>{{p.phoneno}}</td>

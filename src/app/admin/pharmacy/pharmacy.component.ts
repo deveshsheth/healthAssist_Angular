@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Pharmacy } from 'src/app/pharmacy/pharmacy';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { PharmacyService } from './pharmacy.service';
 
@@ -14,9 +16,31 @@ export class PharmacyComponent implements OnInit {
   pharmacylist: {}
   value1: number = 0
   isLog: boolean = false
-  constructor(private confirmationService: ConfirmationService, private userdataservice: UserserviceService, private rut: Router, private service: PharmacyService, private messageService: MessageService) { }
+  AssignUserPharmacy:{}
+  AssignUserPharmacyForm:FormGroup;
+  PharmacyData:Pharmacy
+  id=0
+  constructor(private route : ActivatedRoute,private confirmationService: ConfirmationService, public userdataservice: UserserviceService, private rut: Router, private service: PharmacyService, private messageService: MessageService) { }
 
   ngOnInit() {
+    this.service.getAssignUserPharmacyByid().then(res => {
+      this.AssignUserPharmacy = res.data;
+      
+    })
+    this.id=this.route.snapshot.params.pharmacyId;
+
+    this.service.getpharmacyByid(this.id).then(res => {
+
+      this.PharmacyData=res.data;
+
+      this.AssignUserPharmacyForm = new FormGroup({
+        pharmacyid:new FormControl(this.PharmacyData.pharmacyid,Validators.required),
+        userid:new FormControl('',Validators.required)
+       
+      })
+  })
+
+    
 
     if (this.userdataservice.user.email.length != 0) {
 
@@ -36,7 +60,7 @@ export class PharmacyComponent implements OnInit {
         })
         clearInterval(interval);
       }
-    }, 200);
+    }, 20);
 
     this.dtOptions = {
       pagingType: 'full_numbers'
@@ -49,6 +73,10 @@ export class PharmacyComponent implements OnInit {
     this.isLog = false;
     this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
     this.rut.navigateByUrl('');
+  }
+  submit(){
+    console.log(this.AssignUserPharmacyForm.value);
+    
   }
   delete(value) {
 

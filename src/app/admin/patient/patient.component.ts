@@ -14,9 +14,11 @@ export class PatientComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   value1: number = 0
   isLog: boolean = false
-  constructor(private rut : Router,private userdataservice: UserserviceService,private patientservice: PatientService, private messageService: MessageService) { }
+  
+  constructor(private rut : Router,public userdataservice: UserserviceService,private patientservice: PatientService, private messageService: MessageService) { }
 
   ngOnInit() {
+
 
     if (this.userdataservice.user.email.length != 0) {
 

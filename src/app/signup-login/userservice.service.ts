@@ -7,6 +7,6 @@ import { User } from './user';
 })
 export class UserserviceService {
 
-  user:User={userId:0,firstName:"",lastName:"",email:"",password:"",gender:"",roleId:0,status:0,statusReason:"",otp:""}
+  user:User={userId:0,firstname:"",lastname:"",email:"",password:"",gender:"",roleId:0,status:0,statusReason:"",otp:""}
   constructor() { }
 }

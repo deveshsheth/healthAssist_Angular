@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
+import { Doctor } from './doctor';
 import { DoctorStatusService } from './doctor-status.service';
 import { DoctorService } from './doctor.service';
 
@@ -12,12 +13,12 @@ import { DoctorService } from './doctor.service';
 })
 export class DoctorComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  listdoctor: {}
+  listdoctor:{}
   value1: number = 0
   isLog: boolean = false
   constructor(
     private confirmationService: ConfirmationService,
-    private userdataservice: UserserviceService,
+    public userdataservice: UserserviceService,
     private rut: Router,
     private service: DoctorService,
     private messageService : MessageService,
@@ -40,12 +41,15 @@ export class DoctorComponent implements OnInit {
         this.service.listdoctor().then(res => {
           this.listdoctor = res.data;
           console.log(res);
-
+    
         })
 
         clearInterval(interval);
       }
-    }, 200);
+    }, 20);
+
+    
+
     this.dtOptions = {
       pagingType: 'full_numbers'
     };

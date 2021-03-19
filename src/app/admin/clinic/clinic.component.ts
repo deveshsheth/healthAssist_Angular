@@ -13,13 +13,22 @@ export class ClinicComponent implements OnInit {
   isLog:boolean = false
   dtOptions: DataTables.Settings = {};
   listClinic:{}
-  constructor(private confirmationService: ConfirmationService,private service : ClinicService,private userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
+  value1 : number=0
+  constructor(private confirmationService: ConfirmationService,private service : ClinicService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
 
-    this.service.listClinic().then( res => {
-      this.listClinic = res.data;
-    })
+    
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.service.listClinic().then( res => {
+          this.listClinic = res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
 
 
     this.dtOptions = {

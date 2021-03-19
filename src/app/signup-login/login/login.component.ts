@@ -30,29 +30,29 @@ export class LoginComponent implements OnInit {
       if(res.status == 200){
         this.userservice.user = res.data;
         if(res.data.roleid == 1){
-          this.messageService.add({severity:'success', summary: 'Success', detail: 'Admin Successfully...!!!'});
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Welcome '+res.data.firstname+'..!!'});
           console.log("Admin");
           this.rut.navigateByUrl('dashboard');
         }
         else if(res.data.roleid ==2){
-          this.messageService.add({severity:'success', summary: 'Success', detail: 'Patient Successfully...!!!'});
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Welcome '+res.data.firstname+'..!!'});
           console.log("Patient");
           this.rut.navigateByUrl('');
         }
         else if(res.data.roleid ==3){
-          this.messageService.add({severity:'success', summary: 'Success', detail: 'Doctor Successfully...!!!'});
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Welcome '+res.data.firstname+'..!!'});
           console.log("Doctor");
-          this.rut.navigateByUrl('');
+          this.rut.navigateByUrl('doctorDashboard');
         }
         else if(res.data.roleid ==4){
-          this.messageService.add({severity:'success', summary: 'Success', detail: 'Pharmacy Successfully...!!!'});
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Welcome '+res.data.firstname+'..!!'});
           console.log("Pharmacy");
-          this.rut.navigateByUrl('');
+          this.rut.navigateByUrl('pharmacyhome');
         }
         else if(res.data.roleid ==5){
-          this.messageService.add({severity:'success', summary: 'Success', detail: 'Pathology Successfully...!!!'});
+          this.messageService.add({severity:'success', summary: 'Success', detail: 'Welcome '+res.data.firstname+'..!!'});
           console.log("Pathology");
-          this.rut.navigateByUrl('/home');
+          this.rut.navigateByUrl('pathologyhome');
         }
       }
       else{

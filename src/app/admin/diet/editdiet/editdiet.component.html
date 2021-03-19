@@ -1,0 +1,146 @@
+<div class="header">
+    <div class="header-left">
+        <a href="index-2.html" class="logo">
+            <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Health Assist</span>
+        </a>
+    </div>
+    <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+    <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+    <ul class="nav user-menu float-right">
+
+        <li class="nav-item dropdown has-arrow">
+            <a href="#">
+                <span class="user-img">
+                    <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                    <span class="status online"></span>
+                </span>
+                <span>{{userdataservice.user.firstname}}</span>
+            </a>
+            
+        </li>
+    </ul>
+    
+</div>
+
+<div class="sidebar" id="sidebar">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 1306px;">
+        <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
+            <div id="sidebar-menu" class="sidebar-menu">
+                <ul>
+                    <li class="menu-title">Main</li>
+                    <li>
+                        <a [routerLink]="['/dashboard']">
+                            <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/doctor']">
+                            <mdb-icon fas icon="user-md"></mdb-icon> <span>Doctors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/patient']">
+                            <mdb-icon fas icon="wheelchair"></mdb-icon> <span>Patients</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/pharmacy']">
+                            <mdb-icon fas icon="clinic-medical"></mdb-icon> <span>Pharmacy</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/pathology']">
+                            <mdb-icon fas icon="mortar-pestle"></mdb-icon> <span>Pathology</span>
+                        </a>
+                    </li>
+
+                    <li class="active">
+                        <a [routerLink]="['/diet']">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
+                    </li>
+                    <li>
+                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="slimScrollBar"
+            style="background: rgb(204, 204, 204); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 1315.8px;">
+        </div>
+        <div class="slimScrollRail"
+            style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+        </div>
+    </div>
+</div>
+
+
+<div class="page-wrapper" style="min-height: 430px;">
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title"><b>Edit Diet</b></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <form [formGroup]="dietForm" (ngSubmit)="submit()">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Diet Type</label>
+                                <input class="form-control" type="text" formControlName="diettype">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Age Group</label>
+                                <input class="form-control" type="text" formControlName="agegroup">
+                            </div>
+                        </div>
+                        
+
+
+
+                        <br><br>
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Diet Content</label>
+                                <input type="text" class="form-control"  formControlName="dietcontent">
+                            </div>
+                        </div>
+                       
+                    </div>
+
+                    <div class="m-t-20 text-center">
+                        <button type="submit" class="btn btn-primary submit-btn">Update Diet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

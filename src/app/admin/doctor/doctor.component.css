@@ -1,24 +1,74 @@
-.KYC_DOCTOR{
-    color:crimson;
-    font-weight: bold;
+.KYC_DOCTOR {
+    background-color: #4dbfce;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+
 }
+
+
 .PAUSE{
-    color:blue;
-    font-weight: bold;
+    background-color: gold;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
 .DISABLE{
-    color:darkred;
-    font-weight: bold;
+    background-color: red;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
 .PENDING{
 
-    color:goldenrod;
-    font-weight: bold;
+    background-color: rgb(131, 207, 233);
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 
 }
 .ACTIVE{
 
-    color:darkgreen;
-    font-weight: bold;
+    background-color: lightgreen;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 
-}
+}  
+
+

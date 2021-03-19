@@ -13,6 +13,14 @@ export class PatientService {
   listpatient():Promise <any> {
     return this.http.get(`${environment.Base_Url}listPatient`).toPromise();
   }
+  listcities():Promise <any> {
+    return this.http.get(`${environment.Base_Url}listCities`).toPromise();
+  }
+  addpatient(model:any):Observable<any>{
+    return this.http.post(`${environment.Base_Url}addPatient`,model);
+  }
+
+  
 
 
 }
