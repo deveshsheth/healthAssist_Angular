@@ -13,6 +13,8 @@ export class AppointmentComponent implements OnInit {
   isLog:boolean = false
   listAppointment:{}
   dtOptions: DataTables.Settings = {};
+  statusid=0
+  Appointment:{}
   constructor(private appointmentService : AppointmentService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -41,4 +43,22 @@ export class AppointmentComponent implements OnInit {
       this.messageService.add({severity: 'success', summary: 'Success', detail: "Logout Successfully...!!"});
     this.rut.navigateByUrl('');
   }
+
+  accept(value){
+    console.log(value);
+    this.Appointment={"appointmentid":value,"statusid":this.statusid=1}
+    this.appointmentService.acceptrejectappointment(this.Appointment).subscribe(res => {
+          console.log("stauts accpet",res);
+    })
+    
+  }
+  reject(value){
+    console.log(value);
+    this.Appointment={"appointmentid":value,"statusid":this.statusid=2}
+    this.appointmentService.acceptrejectappointment(this.Appointment).subscribe(res => {
+          console.log("stauts accpet",res);
+    })
+  
+  }
+  
 }

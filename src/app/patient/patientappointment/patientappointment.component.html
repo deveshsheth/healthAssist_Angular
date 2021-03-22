@@ -25,7 +25,7 @@
         <li *ngIf="isLog" class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpharmacy']">Pharmacy</a>
         </li>
-        <li  *ngIf="isLog" class="nav-item">
+        <li *ngIf="isLog" class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpathology']">Pathology</a>
         </li>
       </ul>
@@ -41,7 +41,7 @@
 
           <a *ngIf="!isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']"
             routerLinkActive="router-link-active">Sign up</a>
-          <!-- <a  *ngIf="isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
+
           <ul *ngIf="isLog" class="nav user-menu float-right" style="margin-left: -40px;">
 
             <li class="nav-item dropdown has-arrow">
@@ -62,7 +62,7 @@
                 <a class="dropdown-item" href="edit-profile.html">
                   <mdb-icon fas icon="eye"></mdb-icon>&nbsp;View Appointment
                 </a>
-                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+
                 <a class="dropdown-item" href="./" (click)="logout()">
                   <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
                 </a>
@@ -106,86 +106,97 @@
 
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
-        <h4 class="page-title" style="text-align: center;font-size: 30px;"><b> Book An Appoinment </b></h4>
-        
+      <h4 class="page-title" style="text-align: center;font-size: 30px;"><b> Book An Appoinment </b></h4>
+
     </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row">
     <div class="col-lg-8 offset-lg-2">
-        <form [formGroup]="appointmentForm" (ngSubmit)="submit()">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Doctor</label>
-                        <select class="browser-default custom-select mb-4" formControlName="doctorid" (change)="getClinicsByDoctId()">
-                          <option value="" selected>Choose Doctor</option>
-                          <option *ngFor="let d of listDoctor" value="{{d.userId}}">{{d.firstname}}&nbsp;{{d.lastname}} &nbsp;  || &nbsp;  {{d.specialization}}</option>
-                      </select>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Clinic</label>
-                        <select class="browser-default custom-select mb-4" formControlName="clinicid">
-                          <option value="" selected>Choose Clinic</option>
-                          <option *ngFor="let c of listClinic" value="{{c.clinicid}}">{{c.clinicname}}</option>
-                      </select>
-                    </div>
-                </div>
-                <!-- <div class="col-sm-6">
+      <form [formGroup]="appointmentForm" (ngSubmit)="submit()">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Doctor</label>
+              <select class="browser-default custom-select mb-4" formControlName="doctorid"
+                (change)="getClinicsByDoctId()">
+                <option value="" selected>Choose Doctor</option>
+                <option *ngFor="let d of listDoctor" value="{{d.userId}}">{{d.firstname}}&nbsp;{{d.lastname}} &nbsp; ||
+                  &nbsp; {{d.specialization}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Clinic</label>
+              <select class="browser-default custom-select mb-4" formControlName="clinicid">
+                <option value="" selected>Choose Clinic</option>
+                <option *ngFor="let c of listClinic" value="{{c.clinicid}}">{{c.clinicname}}</option>
+              </select>
+            </div>
+          </div>
+          <!-- <div class="col-sm-6">
                     <div class="form-group">
                         <label>Create Date</label>
                         <input class="form-control" type="text" formControlName="createdate" value="">
                     </div>
                 </div> -->
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Appoinment Date</label>
-                        <input class="form-control" type="date" formControlName="appointmentdate">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                      <label>Appoinment Time</label>
-                      <input class="form-control" type="time" formControlName="appointmenttime">
-                  </div>
-              </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Appoinment Date</label>
+              <input class="form-control" type="date" formControlName="appointmentdate">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Appoinment Time</label>
+              <input class="form-control" type="time" formControlName="appointmenttime">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Reference</label>
+              <input class="form-control" type="text" formControlName="reference">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Patient</label>
+              <select class="browser-default custom-select mb-4" formControlName="clinicid">
+                <option value="" selected>Choose Patient</option>
+                <option *ngFor="let up of listuserPatint" value="{{up.userId}}">{{up.patientname}}</option>
+              </select>
+            </div>
+          </div>
+
+          <br><br>
+          <div class="col-sm-12">
+            <div class="row">
               <div class="col-sm-12">
-                  <div class="form-group">
-                      <label>Reference</label>
-                      <input class="form-control" type="text" formControlName="reference">
-                  </div>
+                <div class="form-group">
+                  <label>Comment</label>
+                  <input type="text" class="form-control" formControlName="comment">
+                </div>
+
+
+                <div class="form-group">
+                  <label>Complain</label>
+                  <input type="text" class="form-control" formControlName="complain">
+                </div>
+
               </div>
 
-                <br><br>
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label>Comment</label>
-                                <input type="text" class="form-control" formControlName="comment">
-                            </div>
 
-
-                            <div class="form-group">
-                                <label>Complain</label>
-                                <input type="text" class="form-control" formControlName="complain">
-                            </div>
-
-                        </div>
-
-                        
-                    </div>
-                </div>
-               
             </div>
+          </div>
 
-            <div class="m-t-20 text-center">
-                <button type="submit" class="btn btn-primary submit-btn">Book Appointment</button>
-            </div>
-        </form>
+        </div>
+
+        <div class="m-t-20 text-center">
+          <button type="submit" class="btn btn-primary submit-btn">Book Appointment</button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 
 </div>
 <br><br><br><br><br>
@@ -203,10 +214,12 @@
       <div class="col-md-4 mx-auto">
 
 
-        
-        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40" height="40" alt="" > &nbsp; Health Assist</h5>
-    
-          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+
+        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40"
+            height="40" alt=""> &nbsp; Health Assist</h5>
+
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
           style="width: 60px; border-top:2px solid #fff;">
         <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating
           doctors, pathologies and pharmacy

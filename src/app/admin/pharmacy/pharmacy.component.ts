@@ -28,10 +28,13 @@ export class PharmacyComponent implements OnInit {
       
     })
     this.id=this.route.snapshot.params.pharmacyId;
+console.log("AssignUserPhrmacy....  ",this.id);
 
     this.service.getpharmacyByid(this.id).then(res => {
 
       this.PharmacyData=res.data;
+      
+      
 
       this.AssignUserPharmacyForm = new FormGroup({
         pharmacyid:new FormControl(this.PharmacyData.pharmacyid,Validators.required),
@@ -75,6 +78,9 @@ export class PharmacyComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
+    this.service.addUserPharmacy(this.AssignUserPharmacyForm.value).subscribe(res => {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+    })
     console.log(this.AssignUserPharmacyForm.value);
     
   }

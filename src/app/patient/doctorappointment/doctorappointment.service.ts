@@ -20,5 +20,8 @@ export class DoctorappointmentService {
   addAppointment(model :any):Observable<any> {
     return this.http.post(`${environment.Base_Url}addappointment`,model);
   }
+  listUserPatient(userid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listUserPatient/${userid}`).toPromise();
+  }
 
 }

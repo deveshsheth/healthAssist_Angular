@@ -35,13 +35,6 @@
                 <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon></span>
               </a>
               <div class="dropdown-menu">
-                <a class="dropdown-item">
-                  <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
-                </a>
-                <a class="dropdown-item" href="edit-profile.html">
-                  <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
-                </a>
-                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
                 <a class="dropdown-item" href="./" (click)="logout()">
                   <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
                 </a>
@@ -131,13 +124,13 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Pharmacy Name</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" formControlName="pharmacyname">
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Pharmacy Timings</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" formControlName="timing">
                   </div>
                 </div>
               </div>
@@ -145,17 +138,17 @@
                 
                   <div class="form-group">
                     <label>Phone No</label>
-                    <input class="form-control" type="text">
+                    <input class="form-control" type="text" formControlName="phoneno">
                   </div>
                 
                   <div class="form-group">
                     <label>About</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="about">
                   </div>
      
               <div class="form-group">
                 <label>Address</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="address">
               </div>
 
 
@@ -165,7 +158,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>City</label>
-                    <select class="browser-default custom-select mb-4">
+                    <select class="browser-default custom-select mb-4" formControlName="cityid">
                       <option value="" selected>Choose City</option>
                       <option *ngFor="let c of listcities" value="{{c.cityid}}">{{c.cityname}}</option>
                     </select>
@@ -174,7 +167,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Pincode</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" formControlName="pincode">
                   </div>
                 </div>
 
@@ -201,18 +194,7 @@
 
       <mdb-card-title>
         <h4>{{up.pharmacyname}}</h4>
-        <div class="dropdown dropdown-action" style="float: right;margin-top: -35px;">
-          <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-              class="fa fa-ellipsis-v"></i></a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" data-toggle="modal" data-target="#editmyModal">
-              <mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit
-            </a>
-            <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal" data-target="#delete_patient" (click)="delete(up.userpharmacyid)">
-              <mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete
-            </a>
-          </div>
-        </div>
+        <button type="button" mdbBtn color="primary" style="float: right;margin-top: -35px;"  [routerLink]="['/edituserpharmacy',up.pharmacyid]" data-toggle="modal" data-target="#myModal" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon></button>
         <hr style="width:8%; border-top:5px solid #107eed; border-bottom:none;margin-left: -3px;">
 
 
@@ -220,6 +202,7 @@
 
 
       <mdb-card-text>
+  
         <ul class="w-hours list-unstyled">
           <li class="d-flex justify-content-between align-items-center">
             <a href="#" style="font-size: larger;font-weight: 500;">Rating</a>

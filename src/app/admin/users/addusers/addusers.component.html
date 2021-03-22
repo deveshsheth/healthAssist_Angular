@@ -100,15 +100,6 @@
 <div class="page-wrapper">
     <div class="content">
         <div class="row">
-            <div class="col-sm-4 col-3">
-                <p class="page-title" style="font-weight: bold;font-size: 20px;">User</p>
-            </div>
-            <div class="col-sm-8 col-9 text-right m-b-20">
-                <a [routerLink]="['../addusers']" class="btn btn-primary btn-rounded float-right"><i
-                        class="fa fa-plus"></i> Add User</a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <form [formGroup]="userForm" (ngSubmit)="submit()">
                     <div class="row">
@@ -163,19 +154,7 @@
                                 </select>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select class="browser-default custom-select mb-4" formControlName="status">
-                                    <option  value="-1" >Choose Status</option>
-                                    <option value="1">{{doctorStatusService.doctorStatus[1]}}</option>
-                                    <option value=2>{{doctorStatusService.doctorStatus[2]}}</option>
-                                    <option value=3>{{doctorStatusService.doctorStatus[3]}}</option>
-                                    <option value=4>{{doctorStatusService.doctorStatus[4]}}</option>
-                                    <option value=5>{{doctorStatusService.doctorStatus[5]}}</option>
-                                </select>
-                            </div>
-                        </div> -->
+    
                        
                     </div>
 

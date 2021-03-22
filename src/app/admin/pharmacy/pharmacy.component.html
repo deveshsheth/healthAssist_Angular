@@ -106,7 +106,7 @@
                         class="fa fa-plus"></i> Add Pharmacy</a>
             </div>
         </div>
-        <form [formGroup]="AssignUserPharmacyForm" (ngSubmit)="submit()">
+        <form [formGroup]="AssignUserPharmacyForm" *ngIf="AssignUserPharmacyForm" (ngSubmit)="submit()">
             <div id="myModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 

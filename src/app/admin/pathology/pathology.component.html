@@ -107,6 +107,39 @@
                         class="fa fa-plus"></i> Add Pathology</a>
             </div>
         </div>
+        <div class="tab-pane show active" id="about-cont">
+        <form [formGroup]="AssignUserPathologyForm" *ngIf="AssignUserPathologyForm" (ngSubmit)="submit()">
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h4 class="modal-title"><b>User Pathology</b></h4>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <select class="browser-default custom-select mb-4" formControlName="userid">
+                                    <option value="" selected>Choose User</option>
+                                    <option *ngFor="let up of AssignUserPathology" value="{{up.userId}}">{{up.firstname}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-dismiss="modal" data-target="#myModal">Close</button>
+                            <button type="submit" value="submit" class="btn btn-primary" data-toggle="modal"
+                                data-target="#myModal">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
         <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar>
         <table *ngIf="pathologylist" datatable [dtOptions]="dtOptions" class="row-border hover">
             <thead>
@@ -140,6 +173,7 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" [routerLink]="['../editpathology',p.pathologyid]"><mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit</a>
                                 <a class="dropdown-item" data-toggle="modal" data-target="#delete_patient" (click)="delete(p.pathologyid)"><mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" data-target="#myModal" [routerLink]="['/assignuserpathology',p.pathologyid]"><mdb-icon fas icon="plus"></mdb-icon> &nbsp; Assign User</a>
                             </div>
                         </div>
                     </td>

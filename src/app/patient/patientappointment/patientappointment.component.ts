@@ -21,7 +21,7 @@ export class PatientappointmentComponent implements OnInit {
   appointmentForm:FormGroup;
   today: number = Date.now();
   myDate = new Date();
-
+  listuserPatint:{}
   a:string=""
   constructor(private datePipe: DatePipe,private service : PatientappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) {
     this.a = this.datePipe.transform(this.myDate, 'mediumDate');
@@ -33,11 +33,12 @@ export class PatientappointmentComponent implements OnInit {
  
   ngOnInit() {
 
-    // var currentDate = new Date();
-    // var myFormatDate = this.datePipe.transform(currentDate,"dd-mm-yyyy");
-    // console.log(myFormatDate)
+    this.service.listUserPatient(this.userdataservice.user.userId).then(res => {
+      this.listuserPatint = res.data;
+    })
+  
     this.appointmentForm= new FormGroup({
-      // patienid:new FormControl(this.userdataservice.user.userId,Validators.required),
+      patienid:new FormControl(this.userdataservice.user.userId,Validators.required),
       doctorid:new FormControl('',Validators.required),
       clinicid:new FormControl('',Validators.required),
       createdate:new FormControl(this.a,Validators.required),

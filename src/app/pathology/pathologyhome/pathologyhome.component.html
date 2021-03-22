@@ -35,13 +35,6 @@
                   <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon></span>
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item">
-                    <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
-                  </a>
-                  <a class="dropdown-item" href="edit-profile.html">
-                    <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
-                  </a>
-                  <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
                   <a class="dropdown-item" href="./" (click)="logout()">
                     <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
                   </a>
@@ -117,42 +110,9 @@
       </div>
     </div>
     <div class="tab-pane show active" id="about-cont">
-  
+
       <form [formGroup]="pathologyForm" (ngSubmit)="submit()">
         <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-  
-            <div class="modal-content">
-              <div class="modal-header">
-  
-                <h4 class="modal-title"><b>Pathology Form</b></h4>
-              </div>
-              <div class="modal-body">
-  
-                <div class="form-group">
-                  <label>Pathology Name</label>
-                  <select class="browser-default custom-select mb-4" formControlName="pathologyid">
-                    <option value="" selected>Choose Pathology</option>
-  
-                    <option *ngFor="let p of listPathology" value="{{p.pathologyid}}">{{p.pathologyname}}</option>
-                  </select>
-                </div>
-  
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal"
-                  data-target="#myModal">Close</button>
-                <button type="submit" value="submit" class="btn btn-primary" data-toggle="modal"
-                  data-target="#myModal">Save</button>
-              </div>
-            </div>
-  
-          </div>
-        </div>
-      </form>
-  
-      <form>
-        <div id="editmyModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
   
             <div class="modal-content">
@@ -165,13 +125,13 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Pathology Name</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="pathologyname">
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Pathology Timings</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="timing">
                     </div>
                   </div>
                 </div>
@@ -179,27 +139,24 @@
                   
                     <div class="form-group">
                       <label>Phone No</label>
-                      <input class="form-control" type="text">
+                      <input class="form-control" type="text" formControlName="phoneno">
                     </div>
                   
                     <div class="form-group">
                       <label>About</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="about">
                     </div>
        
                 <div class="form-group">
                   <label>Address</label>
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="address">
                 </div>
-  
-  
-                
   
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>City</label>
-                      <select class="browser-default custom-select mb-4">
+                      <select class="browser-default custom-select mb-4" formControlName="cityid">
                         <option value="" selected>Choose City</option>
                         <option *ngFor="let c of listcities" value="{{c.cityid}}">{{c.cityname}}</option>
                       </select>
@@ -208,7 +165,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Pincode</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control" formControlName="pincode">
                     </div>
                   </div>
   
@@ -228,7 +185,6 @@
         </div>
       </form>
   
-  
     </div>
     <mdb-card *ngFor="let up of listUserPathology">
       <mdb-card-body>
@@ -236,18 +192,7 @@
   
         <mdb-card-title>
           <h4>{{up.pathologyname}}</h4>
-          <div class="dropdown dropdown-action" style="float: right;margin-top: -35px;">
-            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                class="fa fa-ellipsis-v"></i></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" data-toggle="modal" data-target="#editmyModal">
-                <mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit
-              </a>
-              <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal" data-target="#delete_patient" (click)="delete(up.userpharmacyid)">
-                <mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete
-              </a>
-            </div>
-          </div>
+          <button type="button" mdbBtn color="primary" style="float: right;margin-top: -35px;"  [routerLink]="['/edituserpathology',up.pathologyid]" data-toggle="modal" data-target="#myModal" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon></button>
           <hr style="width:8%; border-top:5px solid #107eed; border-bottom:none;margin-left: -3px;">
   
   

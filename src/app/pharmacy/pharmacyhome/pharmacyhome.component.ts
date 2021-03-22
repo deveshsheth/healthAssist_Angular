@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { Pharmacy } from '../pharmacy';
@@ -19,9 +19,13 @@ export class PharmacyhomeComponent implements OnInit {
   listcities:{}
   editUserPharmacy:FormGroup
   editPharmacyData:Pharmacy
-  constructor(private confirmationService : ConfirmationService,private pharmacyService : PharmacyService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
+  id=0;
+  constructor(private route : ActivatedRoute,private confirmationService : ConfirmationService,private pharmacyService : PharmacyService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
+
+    this.id = this.route.snapshot.params.pharmacyId;
+
     this.pharmacyService.listPharmacy().then(res => {
       this.listPharmacy = res.data;
     })
@@ -34,23 +38,33 @@ export class PharmacyhomeComponent implements OnInit {
       
     })
 
-    this.editUserPharmacy = new FormGroup({
+    this.pharmacyForm = new FormGroup({
       userid:new FormControl(this.userdataservice.user.userId,Validators.required),
+      pharmacyid:new FormControl('',Validators.required),
       pharmacyname:new FormControl('',Validators.required),
       timing:new FormControl('',Validators.required),
-      phoneno:new FormControl('',Validators.required),
-      rating:new FormControl('',Validators.required),
       address:new FormControl('',Validators.required),
+      phoneno:new FormControl('',Validators.required),
       about:new FormControl('',Validators.required),
       cityid:new FormControl('',Validators.required),
       pincode:new FormControl('',Validators.required)
     })
 
-    this.pharmacyForm = new FormGroup({
-      userid:new FormControl(this.userdataservice.user.userId,Validators.required),
-      pharmacyid:new FormControl('',Validators.required)
-    })
+    
+    this.pharmacyService.getpharmacyByid(this.id).then(res => {
+      this.editPharmacyData = res.data;
 
+      this.pharmacyForm = new FormGroup({
+        pharmacyid:new FormControl(this.editPharmacyData.pharmacyid,Validators.required),
+        pharmacyname:new FormControl(this.editPharmacyData.pharmacyname,Validators.required),
+        timing:new FormControl(this.editPharmacyData.timing,Validators.required),
+        address:new FormControl(this.editPharmacyData.address,Validators.required),
+        phoneno:new FormControl(this.editPharmacyData.phoneno,Validators.required),
+        about:new FormControl(this.editPharmacyData.about,Validators.required),
+        cityid:new FormControl(this.editPharmacyData.cityid,Validators.required),
+        pincode:new FormControl(this.editPharmacyData.pincode,Validators.required)
+      })
+    })
 
 
 
@@ -71,9 +85,17 @@ export class PharmacyhomeComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
-    this.pharmacyService.addPharmacy(this.pharmacyForm.value).subscribe(res => {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
-    })
+    if(this.id){
+      this.pharmacyService.updatepharmacy(this.pharmacyForm.value).subscribe(res => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
+      })
+    }
+    else{
+      this.pharmacyService.addAssignUserPharmacy(this.pharmacyForm.value).subscribe(res => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
+      })
+    }
+    
     this.rut.navigateByUrl('pharmacyhome')
     console.log(this.pharmacyForm.value);
     

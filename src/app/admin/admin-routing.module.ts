@@ -60,6 +60,7 @@ const routes: Routes = [
   {path:'pathology',component:PathologyComponent,canActivate:[AuthguardGuard]},
   {path:'addpathology',component:AddpathologyComponent,canActivate:[AuthguardGuard]},
   {path:'editpathology/:pathologyId',component:EditpathologyComponent,canActivate:[AuthguardGuard]},
+  {path:'assignuserpathology/:pathologyId',component:PathologyComponent,canActivate:[AuthguardGuard]},
   
   //clinic
   {path:'clinic',component:ClinicComponent,canActivate:[AuthguardGuard]},

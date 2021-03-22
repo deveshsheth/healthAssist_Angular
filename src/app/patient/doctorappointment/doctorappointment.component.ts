@@ -15,11 +15,16 @@ export class DoctorappointmentComponent implements OnInit {
   listDoctClinic:{};
   userid = 0;
   currentDate = new Date();
+  listuserPatint:{}
   constructor(private route : ActivatedRoute,private service : DoctorappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
 
     this.userid = this.route.snapshot.params.userId;
+
+    this.service.listUserPatient(this.userdataservice.user.userId).then(res => {
+      this.listuserPatint = res.data;
+    })
 
     this.service.listDoctClinic(this.userid).then(res => {
       this.listDoctClinic = res.data;

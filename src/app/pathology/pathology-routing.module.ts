@@ -6,7 +6,8 @@ import { PathologyhomeComponent } from './pathologyhome/pathologyhome.component'
 
 const routes: Routes = [
   {path:'pathologyhome',component:PathologyhomeComponent,canActivate:[AuthguardGuard]},
-  {path:'pathologydetails/:pathologyId',component:PathologydetailsComponent,canActivate:[AuthguardGuard]}
+  {path:'pathologydetails/:pathologyId',component:PathologydetailsComponent,canActivate:[AuthguardGuard]},
+  {path:'edituserpathology/:pathologyId',component:PathologyhomeComponent,canActivate:[AuthguardGuard]}
 ];
 
 @NgModule({

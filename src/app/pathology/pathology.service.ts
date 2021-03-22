@@ -29,4 +29,12 @@ export class PathologyService {
   getpathologyByid(pathologyId :any):Promise<any> {
     return this.http.get(`${environment.Base_Url}getpathology/${pathologyId}`).toPromise();
   }
+
+  addAssignUserPathology(model :any):Observable<any> {
+    return this.http.post(`${environment.Base_Url}addAssignUserPathology`,model);
+  }
+
+  updatepathology(model : any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updatePathology`,model);
+  }
 }

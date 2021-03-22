@@ -126,12 +126,11 @@
                         <div class="dropdown dropdown-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <!-- <a class="dropdown-item" [routerLink]="['../editdiet',d.dietid]"><mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit</a> -->
-                                <!-- <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" data-target="#delete_patient" (click)="delete(d.dietid)"><mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete</a> -->
-                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal"><mdb-icon fas icon="check"></mdb-icon> &nbsp; Accept</a>
-                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal"><mdb-icon fas icon="times"></mdb-icon> &nbsp; Reject</a>
-                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal"><mdb-icon fas icon="pause"></mdb-icon> &nbsp; Hold</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" (click)="accept(a.appointmentid)"><mdb-icon fas icon="check"></mdb-icon> &nbsp; Accept</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" (click)="reject(a.appointmentid)"><mdb-icon fas icon="times"></mdb-icon> &nbsp; Reject</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"   [routerLink]="['/prescription']"><mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon> &nbsp; Proceed</a>
                                 <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal"><mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule</a>
+                                
                             </div>
                         </div>
                     </td>

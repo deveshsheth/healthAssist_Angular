@@ -22,6 +22,9 @@ export class PathologyService {
   addpathology(model :any):Observable<any> {
     return this.http.post(`${environment.Base_Url}addPathology`,model);
   }
+  getAssignUserPathologyByid():Promise<any> {
+    return this.http.get(`${environment.Base_Url}getAssignUserPathology`).toPromise();
+  }
 
   getpathologyByid(pathologyId :any):Promise<any> {
     return this.http.get(`${environment.Base_Url}getpathology/${pathologyId}`).toPromise();
@@ -33,5 +36,9 @@ export class PathologyService {
 
   deletepathology(pathologyId : any):Observable<any> {
     return this.http.delete(`${environment.Base_Url}addPathology/${pathologyId}`);
+  }
+
+  addUserPathology(model :any):Observable<any> {
+    return this.http.post(`${environment.Base_Url}adduserPathology`,model);
   }
 }

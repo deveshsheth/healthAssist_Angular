@@ -93,7 +93,7 @@
         </div>
 
         <div class="col-sm-5 col-6 text-right m-b-30">
-            <a href="edit-profile.html" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a [routerLink]="['/editpatientprofile']" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
         </div>
     </div>
     <div class="card-box profile-header">
@@ -111,36 +111,13 @@
                                 <div class="profile-info-left"><br>
                                     <h3 class="user-name m-t-0 mb-0">
                                         {{userdataservice.user.firstname}}&nbsp;{{userdataservice.user.lastname}}</h3>
-                                    <!-- <small class="text-muted">specialization</small> --> <br>
+                                    <small class="text-muted" style="font-size: 15px;">{{userdataservice.user.gender}}</small> <br>
                                     <div class="staff-id"> <b> Email :
                                         </b>{{userdataservice.user.email}}</div>
-                                    <!-- <div class="staff-msg"><a href="chat.html" class="btn btn-primary">Get Details</a></div> -->
+                                  <br><br>
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <ul class="personal-info">
-                                    <li>
-                                        <span class="title">Phone No :</span>
-                                        <span class="text"><a href="#">{{getpatientUserId.phoneno}}</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Age:</span>
-                                        <span class="text"><a href="#">{{getpatientUserId.age}}</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="title">Gender:</span>
-                                        <span class="text">{{userdataservice.user.gender}}</span>
-                                    </li>
-                                    <li>
-                                        <!-- <span class="title">Registration No :</span>
-                                        <span class="text">abcdf4</span> -->
-                                    </li>
-                                    <li>
-                                        <span class="title">City:</span>
-                                        <span class="text">{{getpatientUserId.cityid}}</span>
-                                    </li>
-                                </ul>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>
@@ -253,6 +230,8 @@
                                             
                                             <th>Patient name</th>
                                             <th>Age</th>
+                                            <th>PhoneNo</th>
+                                            <th>City</th>
                                             <th>Gender</th>
                                         </tr>
                                     </thead>
@@ -260,6 +239,8 @@
                                         <tr *ngFor="let up of listuserPatint">
                                             <td>{{up.patientname}}</td>
                                             <td>{{up.age}}</td>
+                                            <td>{{up.phoneno}}</td>
+                                            <td>{{up.cityname}}</td>
                                             <td>{{up.gender}}</td>
                                         </tr>
                                     </tbody>

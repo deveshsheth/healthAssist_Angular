@@ -29,7 +29,9 @@ export class PatientprofileComponent implements OnInit {
      this.userdataservice.user.userId;
 
     this.patientService.getpatientByid(this.userdataservice.user.userId).then(res => {
+      console.log("patient profile = ",res.data);
       this.getpatientUserId = res.data;
+
       console.log(this.getpatientUserId.patientid);
       console.log(this.getpatientUserId.phoneno);
       console.log(this.getpatientUserId.pincode);
@@ -38,7 +40,7 @@ export class PatientprofileComponent implements OnInit {
       
       this.cityid = this.getpatientUserId.cityid
    
-      // console.log(this.userdataservice.user);
+       
       this.patientForm = new FormGroup({
         patientname:new FormControl('',Validators.required),
         gender:new FormControl('',Validators.required),

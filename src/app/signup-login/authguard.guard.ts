@@ -17,7 +17,7 @@ export class AuthguardGuard implements CanActivate {
       console.log("canactivate---authguard")
       console.log(this.userdataservice.user.email);
       
-      return true;
+      
       if(this.userdataservice.user.email.length == 0 && this.userdataservice.user.password.length == 0 ){
         this.rut.navigate(['./login']);
 
