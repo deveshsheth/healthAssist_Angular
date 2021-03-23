@@ -2,30 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Medicine } from 'src/app/admin/medicine/medicine';
+import { MedicineService } from 'src/app/admin/medicine/medicine.service';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
-import { Medicine } from './medicine';
-import { MedicineService } from './medicine.service';
 
 @Component({
-  selector: 'app-medicine',
-  templateUrl: './medicine.component.html',
-  styleUrls: ['./medicine.component.css']
+  selector: 'app-doctormedicine',
+  templateUrl: './doctormedicine.component.html',
+  styleUrls: ['./doctormedicine.component.css']
 })
-export class MedicineComponent implements OnInit {
+export class DoctormedicineComponent implements OnInit {
   isLog:boolean = false
   dtOptions: DataTables.Settings = {};
-  medicineForm:FormGroup
-  editmedicineForm:FormGroup
   listMedicine:{}
+  medicineForm:FormGroup
   medicineData:Medicine;
   id=0;
-  constructor(private confirmationService :ConfirmationService,private route:ActivatedRoute,private medicineService : MedicineService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
+  constructor(private confirmationService :ConfirmationService,private route:ActivatedRoute,private Service : MedicineService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
-    
-  this.id = this.route.snapshot.params.medicineid;
-  console.log(this.id);
-  this.medicineService.getMedicineByid(this.id).then(res => {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
+    this.Service.listMedicine().then(res => {
+      this.listMedicine = res .data;
+    })
+
+    this.id = this.route.snapshot.params.medicineid;
+  this.Service.getMedicineByid(this.id).then(res => {
     this.medicineData = res.data;
     
     
@@ -43,12 +47,6 @@ export class MedicineComponent implements OnInit {
       medicinetype:new FormControl('',Validators.required)
     })
 
-
-    this.medicineService.listMedicine().then(res => {
-      this.listMedicine = res.data;
-    })
-
-    
     if(this.userdataservice.user.email.length != 0){
      
       this.isLog = true;
@@ -56,9 +54,7 @@ export class MedicineComponent implements OnInit {
     }else {
       this.isLog = false;
     }
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
+
   }
   logout(){
     this.userdataservice.user = null
@@ -70,15 +66,15 @@ export class MedicineComponent implements OnInit {
   }
   submit(){
     if(this.id){
-      this.medicineService.updateMedicine(this.medicineForm.value).subscribe(res => {
+      this.Service.updateMedicine(this.medicineForm.value).subscribe(res => {
         this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
-        this.rut.navigateByUrl('medicine')
+        this.rut.navigateByUrl('doctormedicine')
       })
     }else {
-      this.medicineService.addMedicine(this.medicineForm.value).subscribe(res => {
+      this.Service.addMedicine(this.medicineForm.value).subscribe(res => {
         this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
       })
-      this.rut.navigateByUrl('medicine')
+      this.rut.navigateByUrl('doctormedicine')
     }
     
     
@@ -90,11 +86,11 @@ export class MedicineComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         
-        this.medicineService.deleteMedicine(value).subscribe(res => {
+        this.Service.deleteMedicine(value).subscribe(res => {
           this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: res.msg });
         
         })
-        this.rut.navigateByUrl('medicine')
+        this.rut.navigateByUrl('doctormedicine')
       },
       reject:() => {
         this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });

@@ -128,18 +128,13 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label>Clinic</label>
-              <select class="browser-default custom-select mb-4" formControlName="clinicid">
+              <select class="browser-default custom-select mb-4" formControlName="clinicid"
+              (change)="getDoctClinicsByDoctId()">
                 <option value="" selected>Choose Clinic</option>
                 <option *ngFor="let c of listClinic" value="{{c.clinicid}}">{{c.clinicname}}</option>
               </select>
             </div>
           </div>
-          <!-- <div class="col-sm-6">
-                    <div class="form-group">
-                        <label>Create Date</label>
-                        <input class="form-control" type="text" formControlName="createdate" value="">
-                    </div>
-                </div> -->
           <div class="col-sm-6">
             <div class="form-group">
               <label>Appoinment Date</label>
@@ -150,6 +145,10 @@
             <div class="form-group">
               <label>Appoinment Time</label>
               <input class="form-control" type="time" formControlName="appointmenttime">
+              <!-- <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
+                <option value="" selected>Choose Clinic</option>
+                <option *ngFor="let dc of listDoctClinic" value="{{dc.docclinicid}}">{{dc.monday}}</option>
+              </select> -->
             </div>
           </div>
           <div class="col-sm-6">
@@ -161,9 +160,9 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label>Patient</label>
-              <select class="browser-default custom-select mb-4" formControlName="clinicid">
+              <select class="browser-default custom-select mb-4" formControlName="patientid">
                 <option value="" selected>Choose Patient</option>
-                <option *ngFor="let up of listuserPatint" value="{{up.userId}}">{{up.patientname}}</option>
+                <option *ngFor="let up of listuserPatint" value="{{up.patientid}}">{{up.patientname}}</option>
               </select>
             </div>
           </div>

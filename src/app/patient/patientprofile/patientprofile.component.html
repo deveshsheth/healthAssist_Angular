@@ -16,7 +16,7 @@
                 <li *ngIf="isLog" class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon>
-                        </a>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown03">
                         <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
 
@@ -52,7 +52,7 @@
                                     <span class="status online"></span>
                                 </span> &nbsp;
                                 <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon>
-                                    </span>
+                                </span>
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" [routerLink]="['/patientprofile']">
@@ -63,7 +63,7 @@
                                 </a>
                                 <a class="dropdown-item" href="edit-profile.html">
                                     <mdb-icon fas icon="eye"></mdb-icon>&nbsp;View Appointment
-                                  </a>
+                                </a>
                                 <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
                                 <a class="dropdown-item" href="./" (click)="logout()">
                                     <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
@@ -93,7 +93,8 @@
         </div>
 
         <div class="col-sm-5 col-6 text-right m-b-30">
-            <a [routerLink]="['/editpatientprofile']" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+            <a [routerLink]="['/editpatientprofile']" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>
+                Edit Profile</a>
         </div>
     </div>
     <div class="card-box profile-header">
@@ -111,13 +112,14 @@
                                 <div class="profile-info-left"><br>
                                     <h3 class="user-name m-t-0 mb-0">
                                         {{userdataservice.user.firstname}}&nbsp;{{userdataservice.user.lastname}}</h3>
-                                    <small class="text-muted" style="font-size: 15px;">{{userdataservice.user.gender}}</small> <br>
+                                    <small class="text-muted"
+                                        style="font-size: 15px;">{{userdataservice.user.gender}}</small> <br>
                                     <div class="staff-id"> <b> Email :
                                         </b>{{userdataservice.user.email}}</div>
-                                  <br><br>
+                                    <br><br>
                                 </div>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
@@ -154,54 +156,54 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        
-                                                            <div class="form-group">
-                                                                <label>Patient Name</label>
-                                                                <input class="form-control" type="text"
-                                                                    formControlName="patientname">
+
+                                                        <div class="form-group">
+                                                            <label>Patient Name</label>
+                                                            <input class="form-control" type="text"
+                                                                formControlName="patientname">
+                                                        </div>
+
+
+
+                                                        <div class="row mt-2 ml-1">
+                                                            <p>Gender : </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <div
+                                                                class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" class="custom-control-input"
+                                                                    id="defaultInline1" value="male" name="gender"
+                                                                    formControlName="gender" mdbInput>
+                                                                <label class="custom-control-label"
+                                                                    for="defaultInline1">Male</label>
                                                             </div>
-                                                        
-                                                    
-                                                  
-                                                            <div class="row mt-2 ml-1">
-                                                                <p>Gender : </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <div
-                                                                    class="custom-control custom-radio custom-control-inline">
-                                                                    <input type="radio" class="custom-control-input"
-                                                                        id="defaultInline1" value="male" name="gender"
-                                                                        formControlName="gender" mdbInput>
-                                                                    <label class="custom-control-label"
-                                                                        for="defaultInline1">Male</label>
-                                                                </div>
-                                                                <div
-                                                                    class="custom-control custom-radio custom-control-inline ml-3">
-                                                                    <input type="radio" class="custom-control-input"
-                                                                        id="defaultInline2" value="female" name="gender"
-                                                                        formControlName="gender" mdbInput>
-                                                                    <label class="custom-control-label"
-                                                                        for="defaultInline2">Female</label>
-                                                                </div>
+                                                            <div
+                                                                class="custom-control custom-radio custom-control-inline ml-3">
+                                                                <input type="radio" class="custom-control-input"
+                                                                    id="defaultInline2" value="female" name="gender"
+                                                                    formControlName="gender" mdbInput>
+                                                                <label class="custom-control-label"
+                                                                    for="defaultInline2">Female</label>
                                                             </div>
-                                                       
-                                                            <div class="form-group">
-                                                                <label>Phone no</label>
-                                                                <input class="form-control" type="text"
-                                                                    formControlName="phoneno">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Email</label>
-                                                                <input class="form-control" type="text"
-                                                                    formControlName="email">
-                                                            </div>
-                                                       
-                                                        
-                                                            <div class="form-group">
-                                                                <label>Age</label>
-                                                                <input class="form-control" type="text"
-                                                                    formControlName="age">
-                                                            </div>
-                                                     
-                                                       
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Phone no</label>
+                                                            <input class="form-control" type="text"
+                                                                formControlName="phoneno">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input class="form-control" type="text"
+                                                                formControlName="email">
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label>Age</label>
+                                                            <input class="form-control" type="text"
+                                                                formControlName="age">
+                                                        </div>
+
+
 
                                                     </div>
 
@@ -224,10 +226,11 @@
 
                             </div>
                             <div class="experience-box">
-                                <table *ngIf="listuserPatint" datatable [dtOptions]="dtOptions" class="row-border hover">
+                                <table *ngIf="listuserPatint" datatable [dtOptions]="dtOptions"
+                                    class="row-border hover">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th>Patient name</th>
                                             <th>Age</th>
                                             <th>PhoneNo</th>

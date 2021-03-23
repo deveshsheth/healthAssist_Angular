@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
         friday:new FormControl('',Validators.required),
         saturday:new FormControl('',Validators.required),
         sunday:new FormControl('',Validators.required),
-        threshold:new FormControl('',Validators.required)
+        // threshold:new FormControl('',Validators.required)
       })
 
     })

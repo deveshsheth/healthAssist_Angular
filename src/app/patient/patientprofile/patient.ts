@@ -3,7 +3,6 @@ import { User } from "src/app/signup-login/user";
 export interface Patient extends User {
     patientid:number;
     patientname:String;
-    // gender:String;
     phoneno:String;
     age:number;
     profilepic:String;

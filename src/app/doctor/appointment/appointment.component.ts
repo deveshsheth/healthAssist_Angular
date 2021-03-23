@@ -48,17 +48,18 @@ export class AppointmentComponent implements OnInit {
     console.log(value);
     this.Appointment={"appointmentid":value,"statusid":this.statusid=1}
     this.appointmentService.acceptrejectappointment(this.Appointment).subscribe(res => {
-          console.log("stauts accpet",res);
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Status Updated..!!"});
     })
+    this.rut.navigateByUrl('appointment')
     
   }
   reject(value){
     console.log(value);
     this.Appointment={"appointmentid":value,"statusid":this.statusid=2}
     this.appointmentService.acceptrejectappointment(this.Appointment).subscribe(res => {
-          console.log("stauts accpet",res);
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Status Updated..!!"});
     })
-  
+    this.rut.navigateByUrl('appointment')
   }
   
 }

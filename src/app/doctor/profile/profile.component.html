@@ -33,7 +33,7 @@
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
                     <li class="menu-title">Main</li>
-                    <li class="active">
+                    <li>
                         <a [routerLink]="['/doctorDashboard']">
                             <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
                         </a>
@@ -41,6 +41,21 @@
                     <li>
                         <a [routerLink]="['/appointment']">
                             <mdb-icon fas icon="user-md"></mdb-icon> <span>Appointment</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/doctordiet']">
+                            <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/doctordisease']">
+                            <i class="fas fa-splotch"></i> <span>Disease</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/doctormedicine']">
+                            <mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span>
                         </a>
                     </li>
 

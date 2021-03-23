@@ -19,10 +19,12 @@ import { FullCalendarModule } from 'primeng/fullcalendar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { DoctormedicineComponent } from './doctormedicine/doctormedicine.component';
+import { DoctordiseaseComponent } from './doctordisease/doctordisease.component';
+import { DoctordietComponent } from './doctordiet/doctordiet.component';
 
 @NgModule({
-  declarations: [ AppointmentComponent, PrescriptionComponent, ProfileComponent, EditprofileComponent, DashboardComponent],
+  declarations: [ AppointmentComponent, PrescriptionComponent, ProfileComponent, EditprofileComponent, DashboardComponent, DoctormedicineComponent, DoctordiseaseComponent, DoctordietComponent],
   imports: [
     CommonModule,
     DoctorRoutingModule,

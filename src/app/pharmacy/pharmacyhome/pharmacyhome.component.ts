@@ -89,15 +89,16 @@ export class PharmacyhomeComponent implements OnInit {
       this.pharmacyService.updatepharmacy(this.pharmacyForm.value).subscribe(res => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
       })
+
     }
     else{
       this.pharmacyService.addAssignUserPharmacy(this.pharmacyForm.value).subscribe(res => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
       })
+     
     }
     
-    this.rut.navigateByUrl('pharmacyhome')
-    console.log(this.pharmacyForm.value);
+  
     
   }
   delete(value){

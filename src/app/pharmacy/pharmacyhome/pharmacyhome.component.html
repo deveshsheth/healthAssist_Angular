@@ -110,7 +110,7 @@
   </div>
   <div class="tab-pane show active" id="about-cont">
 
-    <form [formGroup]="pharmacyForm" (ngSubmit)="submit()">
+    <form [formGroup]="pharmacyForm" *ngIf="pharmacyForm" (ngSubmit)="submit()">
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
