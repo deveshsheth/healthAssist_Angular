@@ -26,10 +26,9 @@ import { PathologyComponent } from './pathology/pathology.component';
 import {RatingModule} from 'primeng/rating';
 import { UserpharmacyComponent } from './userpharmacy/userpharmacy.component';
 import { UserpathologyComponent } from './userpathology/userpathology.component';
-import { PatientlistComponent } from './patientlist/patientlist.component';
 import { EditpatientprofileComponent } from './editpatientprofile/editpatientprofile.component';
 @NgModule({
-  declarations: [DoctorsComponent, SingledoctorComponent, DoctorappointmentComponent, PatientappointmentComponent, PatientprofileComponent, PharmacyComponent, PathologyComponent, UserpharmacyComponent, UserpathologyComponent, PatientlistComponent, EditpatientprofileComponent],
+  declarations: [DoctorsComponent, SingledoctorComponent, DoctorappointmentComponent, PatientappointmentComponent, PatientprofileComponent, PharmacyComponent, PathologyComponent, UserpharmacyComponent, UserpathologyComponent, EditpatientprofileComponent],
   imports: [
     CommonModule,
     PatientRoutingModule,

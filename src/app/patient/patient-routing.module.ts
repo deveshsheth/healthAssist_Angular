@@ -7,7 +7,6 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { EditpatientprofileComponent } from './editpatientprofile/editpatientprofile.component';
 import { PathologyComponent } from './pathology/pathology.component';
 import { PatientappointmentComponent } from './patientappointment/patientappointment.component';
-import { PatientlistComponent } from './patientlist/patientlist.component';
 import { PatientprofileComponent } from './patientprofile/patientprofile.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { SingledoctorComponent } from './singledoctor/singledoctor.component';
@@ -24,7 +23,6 @@ const routes: Routes = [
   {path:'patientpathology',component:PathologyComponent,canActivate:[AuthguardGuard]},
   {path:'userpharmacy/:pharmacyId',component:UserpharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'userpathology/:pathologyId',component:UserpathologyComponent,canActivate:[AuthguardGuard]},
-  {path:'patientlist',component:PatientlistComponent,canActivate:[AuthguardGuard]},
   {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]}
   
 ];
