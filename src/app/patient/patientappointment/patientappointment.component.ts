@@ -26,8 +26,6 @@ export class PatientappointmentComponent implements OnInit {
   listDoctClinic:{}
   constructor(private datePipe: DatePipe,private service : PatientappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) {
     this.a = this.datePipe.transform(this.myDate, 'mediumDate');
-
-    console.log("current date",this.a);
     
    }
 
@@ -55,7 +53,6 @@ export class PatientappointmentComponent implements OnInit {
 
     this.service.listClinic().then(res => {
       this.listClinic = res.data;
-      console.log("ListClinic......",res.data);
       
     })
     this.service.listdoctors().then(res => {
@@ -71,8 +68,6 @@ export class PatientappointmentComponent implements OnInit {
   }
   logout() {
     this.userdataservice.user = null
-    console.log("logout successfully...!!");
-
     this.isLog = false;
     this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
     this.rut.navigateByUrl('');
@@ -82,21 +77,18 @@ export class PatientappointmentComponent implements OnInit {
     this.service.addAppointment(this.appointmentForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Booked Successfully...!!"});
     })
-     console.log(this.appointmentForm.value);
-    
+
     
   }
 
   getClinicsByDoctId(){
     var docProfileId = this.appointmentForm.value.doctorid 
-    console.log(this.appointmentForm.value.doctorid);
     //api - boot -> clinics 
     this.service.listDoctClinic(docProfileId).then(res => {
       this.listClinic = res.data;
-      console.log("fghjkfdgshjklgdhjkl",res.data);
       
     })
-    console.log(" lets get all clinic ",docProfileId);
+   
     
   }
 
@@ -108,7 +100,7 @@ export class PatientappointmentComponent implements OnInit {
       console.log("fghjkfdgshjklgdhjkl",res.data);
       
     })
-    console.log(" lets get all clinic ",doctclinicid);
+    console.log(" lets get all doct clinic ",doctclinicid);
     
   }
 

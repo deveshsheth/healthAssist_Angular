@@ -42,12 +42,20 @@ export class PrescriptionService {
     return this.http.post(`${environment.Base_Url}addAppointmentDisease`,model);
   }
 
-  listAppointmentDisease():Promise<any> {
-    return this.http.get(`${environment.Base_Url}listAppointmentDisease`).toPromise();
+  listAppointmentDisease(appointmentid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}listAppointmentDisease/${appointmentid}`).toPromise();
   }
 
   listDiet():Promise <any> {
     return this.http.get(`${environment.Base_Url}listDiet`).toPromise();
+  }
+
+  listDietUser(patientid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listDietUser/${patientid}`).toPromise();
+  }
+
+  addDietuser(model : any):Observable<any> {
+    return this.http.post(`${environment.Base_Url}addDietUser`,model);
   }
 
 }

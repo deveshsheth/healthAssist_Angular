@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
@@ -15,6 +16,7 @@ export class AppointmentComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   statusid=0
   Appointment:{}
+  RescheduleForm:FormGroup
   constructor(private appointmentService : AppointmentService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -22,6 +24,11 @@ export class AppointmentComponent implements OnInit {
       this.listAppointment = res.data;
       console.log(res.data);
       
+    })
+
+    this.RescheduleForm = new FormGroup({
+      appointmentdate:new FormControl('',Validators.required),
+      appointmenttime:new FormControl('',Validators.required)
     })
 
     this.dtOptions = {
@@ -60,6 +67,11 @@ export class AppointmentComponent implements OnInit {
       this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Status Updated..!!"});
     })
     this.rut.navigateByUrl('appointment')
+  }
+
+  RescheduleSubmit(){
+    console.log(this.RescheduleForm.value);
+    
   }
   
 }

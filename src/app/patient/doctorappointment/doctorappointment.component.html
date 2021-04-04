@@ -60,7 +60,7 @@
                     <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
                   </a>
                   <a class="dropdown-item" href="edit-profile.html">
-                    <mdb-icon fas icon="eye"></mdb-icon>&nbsp;View Appointment
+                    <mdb-icon fas icon="eye"></mdb-icon>&nbsp;Appointment
                   </a>
                   <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
                   <a class="dropdown-item" href="./" (click)="logout()">
@@ -118,7 +118,8 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Clinic</label>
-                        <select class="browser-default custom-select mb-4" formControlName="clinicid">
+                        <select class="browser-default custom-select mb-4" formControlName="clinicid"
+                        (change)="getDoctClinicsByDoctId()">
                           <option value="" selected>Choose Clinic</option>
                           <option *ngFor="let dc of listDoctClinic" value="{{dc.clinicid}}">{{dc.clinicname}}</option>
                       </select>
@@ -142,7 +143,11 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                       <label>Appoinment Time</label>
-                      <input class="form-control" type="time" formControlName="appointmenttime">
+                      <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
+                        <option value="" selected>Appointment Time</option>
+                        <option *ngFor="let dc of listDoctClinic" value="{{dc.doctclinicid}}">{{dc.monday}}</option>
+                      </select>
+                      <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
                   </div>
               </div>
 

@@ -29,14 +29,8 @@ export class PatientprofileComponent implements OnInit {
      this.userdataservice.user.userId;
 
     this.patientService.getpatientByid(this.userdataservice.user.userId).then(res => {
-      console.log("patient profile = ",res.data);
-      this.getpatientUserId = res.data;
 
-      console.log(this.getpatientUserId.patientid);
-      console.log(this.getpatientUserId.phoneno);
-      console.log(this.getpatientUserId.pincode);
-      console.log(this.getpatientUserId.email);
-      console.log(this.getpatientUserId.cityname);
+      this.getpatientUserId = res.data;
       
       this.cityid = this.getpatientUserId.cityid
    

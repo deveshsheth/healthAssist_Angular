@@ -14,8 +14,7 @@ export class AuthguardGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log("canactivate---authguard")
-      console.log(this.userdataservice.user.email);
+
       
       
       if(this.userdataservice.user.email.length == 0 && this.userdataservice.user.password.length == 0 ){

@@ -28,7 +28,15 @@ export class PrescriptionComponent implements OnInit {
   listAppointmentDisease:{}
   listAppointment:{};
   listDiet:{}
+  listDietUser:{}
   dietUserForm:FormGroup
+  public medicine: any[] = [{
+    //id: 1,
+    medicinename: '',
+    frequency: '',
+    duration: '',
+    instructions: ''
+  }];
   constructor(private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { }
 
   ngOnInit() {
@@ -36,11 +44,6 @@ export class PrescriptionComponent implements OnInit {
     this.Service.listAppointmentForDoctor(this.userdataservice.user.userId).then(res => {
       this.listAppointment = res.data;
      
-    })
-
-    this.dietUserForm = new FormGroup({
-      dietid:new FormControl('',Validators.required),
-      userid:new FormControl('',Validators.required)
     })
 
     this.Service.listDiet().then(res => {
@@ -52,6 +55,8 @@ export class PrescriptionComponent implements OnInit {
 
     this.Service.getAppointmentByid(this.id).then(res => {
       this.prescriptionData = res.data;
+      console.log(res.data);
+      
 
       
 
@@ -75,6 +80,16 @@ export class PrescriptionComponent implements OnInit {
         patientprofileid:new FormControl(this.prescriptionData.patientid,Validators.required),
         diseaseid:new FormControl('',Validators.required)
       })
+
+      this.dietUserForm = new FormGroup({
+        dietid:new FormControl('',Validators.required),
+        userid:new FormControl(this.prescriptionData.patientid,Validators.required)
+      })
+
+      this.Service.listDietUser(this.prescriptionData.patientid).then(res => {
+        this.listDietUser = res.data;
+      })
+
     })
 
 
@@ -87,9 +102,11 @@ export class PrescriptionComponent implements OnInit {
       this.listDisease = res.data;
     })
 
-    this.Service.listAppointmentDisease().then(res => {
+    this.Service.listAppointmentDisease(this.id).then(res => {
       this.listAppointmentDisease = res.data;
     })
+
+    
     
 
     this.dtOptions = {
@@ -121,12 +138,27 @@ export class PrescriptionComponent implements OnInit {
     this.Service.addAppointmentDisease(this.diseaseForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
     })
-    console.log(this.diseaseForm.value);
     
   }
   dietUserSubmit(){
-    console.log(this.dietUserForm.value);
+    this.Service.addDietuser(this.dietUserForm.value).subscribe(res => {
+      this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+    })
     
+  }
+
+  addMore() {
+    this.medicine.push({
+      //id: this.addresses.length + 1,
+      medicinename: '',
+    frequency: '',
+    duration: '',
+    instructions: ''
+    });
+  }
+
+  remove(i: number) {
+    this.medicine.splice(i, 1);
   }
 
 

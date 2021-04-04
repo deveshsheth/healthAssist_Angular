@@ -16,5 +16,8 @@ export interface Appointment {
     lastname:String;
     clinicname:String;
     statusreason:String;
-    
+    email:String;
+    phoneno:String;
+    gender:String;
+    age:number;
 }
