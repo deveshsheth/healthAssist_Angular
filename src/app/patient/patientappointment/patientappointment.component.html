@@ -147,7 +147,7 @@
               <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
               <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
                 <option value="" selected>Appointment Time</option>
-                <option *ngFor="let dc of listDoctClinic" value="{{dc.doctclinicid}}">{{dc.monday}}</option>
+                <option *ngFor="let dc of listDoctClinic" value="{{dc.docid}}">{{dc.monday}}</option>
               </select>
             </div>
           </div>

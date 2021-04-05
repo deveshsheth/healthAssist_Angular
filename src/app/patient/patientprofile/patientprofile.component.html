@@ -229,7 +229,7 @@
 
                             </div>
                             <div class="experience-box">
-                                <table *ngIf="listuserPatint" datatable [dtOptions]="dtOptions"
+                                <table *ngIf="listuserPatient" datatable [dtOptions]="dtOptions"
                                     class="row-border hover">
                                     <thead>
                                         <tr>
@@ -242,7 +242,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let up of listuserPatint">
+                                        <tr *ngFor="let up of listuserPatient">
                                             <td>{{up.patientname}}</td>
                                             <td>{{up.age}}</td>
                                             <td>{{up.phoneno}}</td>

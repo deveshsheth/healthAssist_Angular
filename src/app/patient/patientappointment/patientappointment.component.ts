@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { PatientappointmentService } from './patientappointment.service';
@@ -24,13 +24,16 @@ export class PatientappointmentComponent implements OnInit {
   listuserPatint:{}
   a:string=""
   listDoctClinic:{}
-  constructor(private datePipe: DatePipe,private service : PatientappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) {
+  userid=0
+  constructor(private route : ActivatedRoute,private datePipe: DatePipe,private service : PatientappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) {
     this.a = this.datePipe.transform(this.myDate, 'mediumDate');
     
    }
 
  
   ngOnInit() {
+    this.userid = this.route.snapshot.params.userId;
+
     this.service.listDoctClinic(this.userdataservice.user.userId).then(res => {
       this.listDoctClinic = res.data;
     })
@@ -93,14 +96,14 @@ export class PatientappointmentComponent implements OnInit {
   }
 
   getDoctClinicsByDoctId(){
-    var doctclinicid = this.appointmentForm.value.appointmenttime 
+    //var doctclinicid = this.appointmentForm.value.appointmenttime 
     console.log(this.appointmentForm.value.appointmenttime);
-    this.service.listDoctClinic(doctclinicid).then(res => {
+    this.service.listDoctClinic(this.userid).then(res => {
       this.listDoctClinic = res.data;
-      console.log("fghjkfdgshjklgdhjkl",res.data);
-      
+    console.log("list app time"+res.data);
+    
     })
-    console.log(" lets get all doct clinic ",doctclinicid);
+
     
   }
 

@@ -21,7 +21,7 @@ export class PatientprofileComponent implements OnInit {
   phoneno:String
   cityid:number
   pincode:number
-  listuserPatint:{}
+  listuserPatient:{}
   constructor(private route:ActivatedRoute,public patientService : PatientprofileService,private rut: Router,public userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -49,7 +49,7 @@ export class PatientprofileComponent implements OnInit {
     })
 
     this.patientService.listUserPatient(this.userdataservice.user.userId).then(res => {
-      this.listuserPatint = res.data;
+      this.listuserPatient = res.data;
       console.log("List User Patient ==>  ",res.data);
       
     })
@@ -81,8 +81,8 @@ export class PatientprofileComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
-    this.patientService.addPatientProfile(this.patientForm.value).subscribe(res => {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: "Patient Child Added Successfully...!!" });
+    this.patientService.addFamilyMember(this.patientForm.value).subscribe(res => {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
       
     })
     console.log(this.patientForm.value);

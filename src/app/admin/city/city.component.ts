@@ -6,6 +6,7 @@ import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { City } from './city';
 import { CityService } from './city.service';
 
+
 @Component({
   selector: 'app-city',
   templateUrl: './city.component.html',
@@ -15,7 +16,7 @@ export class CityComponent implements OnInit {
   isLog: boolean = false
   dtOptions: DataTables.Settings = {};
   listCities: {}
-  liststates:{}
+  liststates: {}
   getCityData: City
   id = 0
   cityForm: FormGroup
@@ -45,57 +46,63 @@ export class CityComponent implements OnInit {
       stateid: new FormControl('', Validators.required)
     })
 
-    if (this.userdataservice.user.email.length != 0) {
-
-      this.isLog = true;
-
-    } else {
-      this.isLog = false;
-    }
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
-  }
-  logout() {
-    this.userdataservice.user = null
-    console.log("logout successfully...!!");
-
-    this.isLog = false;
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
-    this.rut.navigateByUrl('');
-  }
-  submit(){
-    if(this.id){
-      this.citiesService.updateCities(this.cityForm.value).subscribe(res => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
-        })
-     
-    }else {
-      this.citiesService.addCities(this.cityForm.value).subscribe(res => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg});
-        })
-    }
     
-    this.rut.navigateByUrl('city')
+
+
+  if(this.userdataservice.user.email.length != 0) {
+
+  this.isLog = true;
+
+} else {
+  this.isLog = false;
+}
+this.dtOptions = {
+  pagingType: 'full_numbers'
+};
+
   }
-  delete(value){
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to proceed?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        
-        this.citiesService.deleteCities(value).subscribe(res => {
-          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: res.msg });
-        
-        })
-        this.rut.navigateByUrl('city')
-      },
-      reject:() => {
-        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
-      }
-    });
+
+logout() {
+  this.userdataservice.user = null
+  console.log("logout successfully...!!");
+
+  this.isLog = false;
+  this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
+  this.rut.navigateByUrl('');
+}
+submit(){
+  if (this.id) {
+    this.citiesService.updateCities(this.cityForm.value).subscribe(res => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+    })
+
+  } else {
+    this.citiesService.addCities(this.cityForm.value).subscribe(res => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+    })
   }
+
+  this.rut.navigateByUrl('city')
+}
+delete (value){
+  this.confirmationService.confirm({
+    message: 'Are you sure that you want to proceed?',
+    header: 'Confirmation',
+    icon: 'pi pi-exclamation-triangle',
+    accept: () => {
+
+      this.citiesService.deleteCities(value).subscribe(res => {
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: res.msg });
+
+      })
+      this.rut.navigateByUrl('city')
+    },
+    reject: () => {
+      this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+    }
+  });
+}
+
   
 
 }
