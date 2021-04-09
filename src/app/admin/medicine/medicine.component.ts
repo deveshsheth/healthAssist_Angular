@@ -19,6 +19,7 @@ export class MedicineComponent implements OnInit {
   listMedicine:{}
   medicineData:Medicine;
   id=0;
+  value1 : number=0
   constructor(private confirmationService :ConfirmationService,private route:ActivatedRoute,private medicineService : MedicineService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -44,9 +45,19 @@ export class MedicineComponent implements OnInit {
     })
 
 
-    this.medicineService.listMedicine().then(res => {
-      this.listMedicine = res.data;
-    })
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.medicineService.listMedicine().then(res => {
+          this.listMedicine = res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
+
+
+    
 
     
     if(this.userdataservice.user.email.length != 0){

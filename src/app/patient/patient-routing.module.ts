@@ -5,6 +5,7 @@ import { AuthguardGuard } from '../signup-login/authguard.guard';
 import { DoctorappointmentComponent } from './doctorappointment/doctorappointment.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { EditpatientprofileComponent } from './editpatientprofile/editpatientprofile.component';
+
 import { PathologyComponent } from './pathology/pathology.component';
 import { PatientappointmentComponent } from './patientappointment/patientappointment.component';
 import { PatientprofileComponent } from './patientprofile/patientprofile.component';
@@ -12,6 +13,8 @@ import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { SingledoctorComponent } from './singledoctor/singledoctor.component';
 import { UserpathologyComponent } from './userpathology/userpathology.component';
 import { UserpharmacyComponent } from './userpharmacy/userpharmacy.component';
+import { ViewappointmentComponent } from './viewappointment/viewappointment.component';
+import { ViewprescriptionComponent } from './viewprescription/viewprescription.component';
 
 const routes: Routes = [
   {path:'patientdoctors',component:DoctorsComponent,canActivate:[AuthguardGuard]},
@@ -23,8 +26,9 @@ const routes: Routes = [
   {path:'patientpathology',component:PathologyComponent,canActivate:[AuthguardGuard]},
   {path:'userpharmacy/:pharmacyId',component:UserpharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'userpathology/:pathologyId',component:UserpathologyComponent,canActivate:[AuthguardGuard]},
-  {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]}
-  
+  {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]},
+  {path:'viewappointment',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
+  {path:'viewprescription',component:ViewprescriptionComponent,canActivate:[AuthguardGuard]}
 ];
 
 @NgModule({

@@ -18,12 +18,21 @@ export class StateComponent implements OnInit {
   getStateData: State
   id = 0
   stateForm: FormGroup
+  value1:number = 0
   constructor(private stateService: StateService, private confirmationService: ConfirmationService, private route: ActivatedRoute, public userdataservice: UserserviceService, private rut: Router, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.stateService.listStates().then(res => {
-      this.liststates = res.data;
-    })
+    
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.stateService.listStates().then(res => {
+          this.liststates = res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
 
     this.id = this.route.snapshot.params.stateid;
     this.stateService.getStateByid(this.id).then(res => {

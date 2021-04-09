@@ -1,0 +1,301 @@
+<div class="text">
+
+
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary py-3" [containerInside]="false">
+
+
+        <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="./assets/images/Home/HealthAssistLogo.png"
+                    width="35" height="35" alt="">&nbsp;&nbsp; Health Assist</a></mdb-navbar-brand>
+
+
+
+
+        <links>
+            <ul class="navbar-nav mr-auto">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li *ngIf="isLog" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown03">
+                        <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
+
+                        <li><a class="dropdown-item" [routerLink]="['/patientappointment']">Appoinment</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="isLog" class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpharmacy']">Pharmacy</a>
+                </li>
+                <li *ngIf="isLog" class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpathology']">Pathology</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a *ngIf="!isLog" class="nav-link waves-light" mdbWavesEffect [routerLink]="['../login']"
+                        routerLinkActive="router-link-active">Sign in</a>
+
+                </li>
+                &nbsp;
+                <li class="nav-item active">
+
+                    <a *ngIf="!isLog" class="nav-link waves-light" outline="true" mdbWavesEffect
+                        [routerLink]="['../signup']" routerLinkActive="router-link-active">Sign up</a>
+                    <!-- <a  *ngIf="isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
+                    <ul *ngIf="isLog" class="nav user-menu float-right" style="margin-left: -40px;">
+
+                        <li class="nav-item dropdown has-arrow">
+                            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                                <span class="user-img">
+                                    <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+                                    <span class="status online"></span>
+                                </span> &nbsp;
+                                <span>{{userdataservice.user.firstname}}<mdb-icon fas icon="caret-down"></mdb-icon>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" [routerLink]="['/patientprofile']">
+                                    <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
+                                </a>
+                                <a class="dropdown-item" href="edit-profile.html">
+                                    <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
+                                </a>
+                                <a class="dropdown-item" [routerLink]="['/viewappointment']">
+                                    <mdb-icon fas icon="eye"></mdb-icon>&nbsp;Appointment
+                                </a>
+                                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+                                <a class="dropdown-item" href="./" (click)="logout()">
+                                    <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </links>
+
+
+
+
+    </mdb-navbar>
+
+
+
+</div>
+<br>
+<div class="container">
+    
+        <a pButton icon="pi pi-plus" label="Export" style="float: right;color: #fff;"
+        id="btnExport" value="Export"></a>
+        <br><br><br>
+
+    <div class="col-md-12" id="tblCustomers">
+        <div class="card">
+            <div class="card-body">
+                <div class="row custom-invoice">
+                    <div class="col-6 col-sm-6 m-b-20">
+                        <img src="assets/img/logo-dark.png" class="inv-logo" alt="">
+                        <ul class="list-unstyled">
+                            <li>PreClinic</li>
+                            <li>3864 Quiet Valley Lane,</li>
+                            <li>Sherman Oaks, CA, 91403</li>
+                            <li>GST No:</li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-sm-6 m-b-20">
+                        <div class="invoice-details">
+                            <h3 class="text-uppercase">Invoice #INV-0001</h3>
+                            <ul class="list-unstyled">
+                                <li>Date: <span>October 12, 2017</span></li>
+                                <li>Due date: <span>November 25, 2017</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6 m-b-20">
+
+                        <h5>Invoice to:</h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <h5><strong>Barry Cuda</strong></h5>
+                            </li>
+                            <li><span>Global Technologies</span></li>
+                            <li>5754 Airport Rd</li>
+                            <li>Coosada, AL, 36020</li>
+                            <li>United States</li>
+                            <li>888-777-6655</li>
+                            <li><a href="#">barrycuda@example.com</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-sm-6 col-lg-6 m-b-20">
+                        <div class="invoices-view">
+                            <span class="text-muted">Payment Details:</span>
+                            <ul class="list-unstyled invoice-payment-details">
+                                <li>
+                                    <h5>Total Due: <span class="text-right">$288.2</span></h5>
+                                </li>
+                                <li>Bank name: <span>Profit Bank Europe</span></li>
+                                <li>Country: <span>United Kingdom</span></li>
+                                <li>City: <span>London E1 8BF</span></li>
+                                <li>Address: <span>3 Goodman Street</span></li>
+                                <li>IBAN: <span>KFH37784028476740</span></li>
+                                <li>SWIFT code: <span>BPT4E</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>ITEM</th>
+                                <th>DESCRIPTION</th>
+                                <th>UNIT COST</th>
+                                <th>QUANTITY</th>
+                                <th>TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Full body checkup</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                <td>$150</td>
+                                <td>1</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Blood Test</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                <td>$12</td>
+                                <td>1</td>
+                                <td>$12</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>General checkup</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+                                <td>$100</td>
+                                <td>1</td>
+                                <td>$100</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <div class="row invoice-payment">
+                        <div class="col-sm-7">
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="m-b-20">
+                                <h6>Total due</h6>
+                                <div class="table-responsive no-border">
+                                    <table class="table mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th>Subtotal:</th>
+                                                <td class="text-right">$262</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tax: <span class="text-regular">(10%)</span></th>
+                                                <td class="text-right">$26.2</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total:</th>
+                                                <td class="text-right text-primary">
+                                                    <h5>$288.2</h5>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="invoice-info">
+                        <h5>Other information</h5>
+                        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed
+                            dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a
+                            ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu
+                            scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque
+                            libero, eu finibus sapien interdum vel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="page-footer font-small bg-primary pt-4">
+
+
+    <div class="container text-center text-md-left">
+
+
+        <div class="row">
+
+
+            <div class="col-md-4 mx-auto">
+
+
+
+                <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png"
+                        width="40" height="40" alt=""> &nbsp; Health Assist</h5>
+
+                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; border-top:2px solid #fff;">
+                <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating
+                    doctors, pathologies and pharmacy
+                    details.</p>
+
+            </div>
+
+            <div class="col-md-2 mx-auto">
+
+
+
+
+            </div>
+
+            <div class="col-md-2 mx-auto">
+
+
+
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
+
+
+                <h6 class="text-uppercase font-weight-bold">Contact us</h6>
+                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; border-top:2px solid #fff;">
+                <p style="font-size: medium;">
+                    <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
+                </p>
+                <p style="font-size: medium;">
+                    <mdb-icon fas icon="envelope"></mdb-icon>&nbsp;&nbsp;&nbsp; healthassist21@gmail.com
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-copyright text-center py-3">© 2021 Copyright:
+        <a href="http://healthassist.live/"> HealthAssist.live</a>
+    </div>
+
+
+</footer>

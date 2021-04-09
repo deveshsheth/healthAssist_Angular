@@ -168,6 +168,8 @@
 
             </div>
             <div class="experience-box">
+                <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar><br>
+                
                 <p-button icon="pi pi-file-pdf" class="p-button-warning p-mr-2" id="btnExport" value="Export" pTooltip="PDF" tooltipPosition="bottom"></p-button><br><br>
                 <table id="tblCustomers" *ngIf="listCities" datatable [dtOptions]="dtOptions" class="row-border hover" >
                     <thead>

@@ -14,15 +14,25 @@ export class UsersComponent implements OnInit {
   isLog:boolean = false
   dtOptions: DataTables.Settings = {};
   listUser:{}
+  value1 : number=0
   constructor(public doctorStatusService:DoctorStatusService,private confirmationService: ConfirmationService,private service : UsersService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this.service.listuser().then(res => {
-      this.listUser =res.data;
-    })
+
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.service.listuser().then(res => {
+          this.listUser =res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
+    
 
     if(this.userdataservice.user.email.length != 0){
      

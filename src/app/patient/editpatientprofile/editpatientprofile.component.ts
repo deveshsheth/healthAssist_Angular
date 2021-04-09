@@ -57,7 +57,7 @@ export class EditpatientprofileComponent implements OnInit {
       this.service.updateUser(this.edituserForm.value).subscribe(res => {
         console.log(res);
         
-        this.rut.navigateByUrl('doctors')
+        this.rut.navigateByUrl('patientprofile')
         this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});
         
       })

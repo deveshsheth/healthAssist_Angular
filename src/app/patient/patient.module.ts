@@ -27,8 +27,11 @@ import {RatingModule} from 'primeng/rating';
 import { UserpharmacyComponent } from './userpharmacy/userpharmacy.component';
 import { UserpathologyComponent } from './userpathology/userpathology.component';
 import { EditpatientprofileComponent } from './editpatientprofile/editpatientprofile.component';
+import { ViewappointmentComponent } from './viewappointment/viewappointment.component';
+import { ViewprescriptionComponent } from './viewprescription/viewprescription.component';
+
 @NgModule({
-  declarations: [DoctorsComponent, SingledoctorComponent, DoctorappointmentComponent, PatientappointmentComponent, PatientprofileComponent, PharmacyComponent, PathologyComponent, UserpharmacyComponent, UserpathologyComponent, EditpatientprofileComponent],
+  declarations: [DoctorsComponent, SingledoctorComponent, DoctorappointmentComponent, PatientappointmentComponent, PatientprofileComponent, PharmacyComponent, PathologyComponent, UserpharmacyComponent, UserpathologyComponent, EditpatientprofileComponent, ViewappointmentComponent, ViewprescriptionComponent],
   imports: [
     CommonModule,
     PatientRoutingModule,

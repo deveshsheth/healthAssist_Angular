@@ -20,12 +20,21 @@ export class CityComponent implements OnInit {
   getCityData: City
   id = 0
   cityForm: FormGroup
+  value1 : number=0
   constructor(private citiesService: CityService, private confirmationService: ConfirmationService, private route: ActivatedRoute, public userdataservice: UserserviceService, private rut: Router, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.citiesService.listCities().then(res => {
-      this.listCities = res.data;
-    })
+    
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.citiesService.listCities().then(res => {
+          this.listCities = res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
     this.citiesService.listStates().then(res => {
       this.liststates = res.data;
     })

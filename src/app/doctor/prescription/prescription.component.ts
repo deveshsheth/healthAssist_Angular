@@ -37,7 +37,7 @@ export class PrescriptionComponent implements OnInit {
     duration: '',
     instructions: ''
   }];
-  constructor(private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { }
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { }
 
   ngOnInit() {
 
@@ -129,9 +129,11 @@ export class PrescriptionComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit() {
-    this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
-      this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
-    })
+    // this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
+    //   this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+    // })
+    console.log(this.prescriptionMedicineForm.value);
+    
 
   }
   diseaseSubmit(){

@@ -14,8 +14,8 @@
       <ul class="navbar-nav mr-auto">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li *ngIf="isLog" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
+          <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
           <ul class="dropdown-menu" aria-labelledby="dropdown03">
             <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
 
@@ -41,7 +41,7 @@
 
           <a *ngIf="!isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['../signup']"
             routerLinkActive="router-link-active">Sign up</a>
-
+          <!-- <a  *ngIf="isLog" class="nav-link waves-light" outline="true" mdbWavesEffect [routerLink]="['']" routerLinkActive="router-link-active" (click)="logout()">Logout</a> -->
           <ul *ngIf="isLog" class="nav user-menu float-right" style="margin-left: -40px;">
 
             <li class="nav-item dropdown has-arrow">
@@ -62,7 +62,7 @@
                 <a class="dropdown-item" [routerLink]="['/viewappointment']">
                   <mdb-icon fas icon="eye"></mdb-icon>&nbsp;Appointment
                 </a>
-
+                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
                 <a class="dropdown-item" href="./" (click)="logout()">
                   <mdb-icon fas icon="power-off"></mdb-icon>&nbsp;Logout
                 </a>
@@ -83,123 +83,102 @@
 
 </div>
 
+<div class="tab-content">
+  <div class="tab-pane show active" id="about-cont">
 
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white"
-            style="font-size: 20px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-            Book Your Seat</span>
-          <h1 class="text-capitalize mb-5 text-lg"
-            style="font-weight: 500;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
-            Appoinment</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <form [formGroup]="RescheduleForm" (ngSubmit)="RescheduleSubmit()">
+      <div id="myRescheduleForm" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-<div class="container">
-
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h4 class="page-title" style="text-align: center;font-size: 30px;"><b> Book An Appoinment </b></h4>
-
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <form [formGroup]="appointmentForm" (ngSubmit)="submit()">
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Doctor</label>
-              <select class="browser-default custom-select mb-4" formControlName="doctorid"
-                (change)="getClinicsByDoctId()">
-                <option value="" selected>Choose Doctor</option>
-                <option *ngFor="let d of listDoctor" value="{{d.userId}}">{{d.firstname}}&nbsp;{{d.lastname}} &nbsp; ||
-                  &nbsp; {{d.specialization}}</option>
-              </select>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><b>Reschedule Form</b></h4>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Clinic</label>
-              <select class="browser-default custom-select mb-4" formControlName="clinicid"
-              (change)="getDoctClinicsByDoctId()">
-                <option value="" selected>Choose Clinic</option>
-                <option *ngFor="let c of listClinic" value="{{c.clinicid}}">{{c.clinicname}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Appoinment Date</label>
-              <input class="form-control" type="date" formControlName="appointmentdate">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Appoinment Time</label>
-              <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
-              <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
-                <option value="" selected>Appointment Time</option>
-                <option *ngFor="let dc of listDoctClinic" value="{{dc.docid}}">{{dc.monday}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Reference</label>
-              <input class="form-control" type="text" formControlName="reference">
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <label>Patient</label>
-              <select class="browser-default custom-select mb-4" formControlName="patientid">
-                <option value="" selected>Choose Patient</option>
-                <option *ngFor="let up of listuserPatint" value="{{up.patientid}}">{{up.patientname}}</option>
-              </select>
-            </div>
-          </div>
+            <div class="modal-body">
 
-          <br><br>
-          <div class="col-sm-12">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="form-group">
-                  <label>Comment</label>
-                  <input type="text" class="form-control" formControlName="comment">
-                </div>
-
-
-                <div class="form-group">
-                  <label>Complain</label>
-                  <input type="text" class="form-control" formControlName="complain">
-                </div>
-
+              <div class="form-group">
+                <label>Appointment Date</label>
+                <input class="form-control" type="date" formControlName="appointmentdate">
               </div>
 
+              <div class="form-group">
+                <label>Appointment Time</label>
+                <input class="form-control" type="time" formControlName="appointmenttime">
+              </div>
 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-dismiss="modal"
+                data-target="#myRescheduleForm">Close</button>
+              <button type="submit" value="submit" class="btn btn-primary" data-toggle="modal"
+                data-target="#myRescheduleForm">Save</button>
             </div>
           </div>
 
         </div>
+      </div>
+    </form>
 
-        <div class="m-t-20 text-center">
-          <button type="submit" class="btn btn-primary submit-btn">Book Appointment</button>
-        </div>
-      </form>
-    </div>
+
   </div>
 
-</div>
-<br><br><br><br><br>
 
+
+
+
+
+</div>
+
+<div class="container">
+  <!-- <p-button icon="pi pi-file-pdf" class="p-button-warning p-mr-2" id="btnExport" value="Export" pTooltip="PDF"
+    tooltipPosition="bottom"></p-button> -->
+    <a pButton icon="pi pi-plus" label="Export" style="float: right;color: #fff;"
+        id="btnExport" value="Export"></a>
+    
+    <br><br><br>
+  <table id="tblCustomers" datatable [dtOptions]="dtOptions" class="row-border hover">
+    <thead>
+      <tr>
+        <!-- <th>ID</th> -->
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Clinic</th>
+        <th>AppointmentDate</th>
+        <th>AppointmentTime</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of listAppointment">
+        <td>{{a.patientname}}</td>
+        <td>{{a.doctorid}}</td>
+        <td>{{a.clinicname}}</td>
+        <td>{{a.appointmentdate | date:'mediumDate'}}</td>
+        <td>{{a.appointmenttime}}</td>
+        <td *ngIf="a.statusid"> 
+                <span class="{{viewAppointmentService.appointmentStatus[a.statusid]}}">{{viewAppointmentService.appointmentStatus[a.statusid]}}</span>
+            </td>
+        <td class="text-right">
+          <div class="dropdown dropdown-action">
+            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                class="fa fa-ellipsis-v"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" [routerLink]="['/viewprescription']" styleClass="p-mr-2">
+                <mdb-icon fas icon="eye"></mdb-icon> &nbsp; View Prescription
+              </a>
+              <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal" data-target="#myRescheduleForm">
+                <mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule
+              </a>
+
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 <footer class="page-footer font-small bg-primary pt-4">
 
@@ -260,7 +239,6 @@
 
 
   </div>
-
 
 
   <div class="footer-copyright text-center py-3">© 2021 Copyright:

@@ -22,7 +22,7 @@ export class AppointmentComponent implements OnInit {
   ngOnInit() {
     this.appointmentService.listAppointment(this.userdataservice.user.userId).then(res => {
       this.listAppointment = res.data;
-      console.log(res.data);
+      
       
     })
 

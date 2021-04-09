@@ -18,12 +18,21 @@ export class DiseaseComponent implements OnInit {
   diseaseForm:FormGroup
   id=0;
   diseaseData:Disease
+  value1:number = 0
   constructor(private diseaseservice : DiseaseService,private confirmationService :ConfirmationService,private route:ActivatedRoute,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
-    this.diseaseservice.listDisease().then(res => {
-      this.listDisease = res.data;
-    })
+   
+    let interval = setInterval(() => {
+      this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+      if (this.value1 >= 100) {
+        this.value1 = 100;
+        this.diseaseservice.listDisease().then(res => {
+          this.listDisease = res.data;
+        })
+        clearInterval(interval);
+      }
+    }, 20);
 
     this.diseaseForm = new FormGroup({
       diseasename : new FormControl('',Validators.required),
