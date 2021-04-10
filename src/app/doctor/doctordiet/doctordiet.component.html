@@ -141,7 +141,8 @@
 
             </div>
             <div class="experience-box">
-        <p-button icon="pi pi-file-pdf" class="p-button-warning p-mr-2" id="btnExport" value="Export" pTooltip="PDF" tooltipPosition="bottom"></p-button><br><br>
+                <a pButton icon="pi pi-plus" label="Export" style="float: left;color: #fff;"
+                id="btnExport" value="Export"></a><br><br><br>
 
                 <table id="tblCustomers" *ngIf="listDiet" datatable [dtOptions]="dtOptions" class="row-border hover">
                     <thead>

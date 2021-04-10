@@ -116,7 +116,9 @@
             <div class="col-sm-8 col-9 text-right m-b-20">
                 <button type="button" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#myModal"><i
                         class="fa fa-plus"></i> Add
-                    Cities</button><br><br>
+                    Cities</button>
+                    
+                    <br><br>
 
                 
                 
@@ -170,7 +172,8 @@
             <div class="experience-box">
                 <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar><br>
                 
-                <p-button icon="pi pi-file-pdf" class="p-button-warning p-mr-2" id="btnExport" value="Export" pTooltip="PDF" tooltipPosition="bottom"></p-button><br><br>
+                <a pButton icon="pi pi-plus" label="Export" style="float: left;color: #fff;"
+        id="btnExport" value="Export"></a><br><br><br>
                 <table id="tblCustomers" *ngIf="listCities" datatable [dtOptions]="dtOptions" class="row-border hover" >
                     <thead>
                         <tr>

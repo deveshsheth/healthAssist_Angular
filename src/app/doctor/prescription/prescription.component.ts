@@ -129,10 +129,10 @@ export class PrescriptionComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit() {
-    // this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
-    //   this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
-    // })
-    console.log(this.prescriptionMedicineForm.value);
+    this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
+      this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+    })
+    // console.log(this.prescriptionMedicineForm.value);
     
 
   }

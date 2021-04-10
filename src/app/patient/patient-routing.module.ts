@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'userpathology/:pathologyId',component:UserpathologyComponent,canActivate:[AuthguardGuard]},
   {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]},
   {path:'viewappointment',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
-  {path:'viewprescription',component:ViewprescriptionComponent,canActivate:[AuthguardGuard]}
+  {path:'viewprescription/:appointmentid',component:ViewprescriptionComponent,canActivate:[AuthguardGuard]}
 ];
 
 @NgModule({

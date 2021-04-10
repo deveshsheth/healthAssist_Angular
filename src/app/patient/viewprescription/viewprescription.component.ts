@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Appointment } from 'src/app/doctor/appointment';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
+import { ViewprescriptionService } from './viewprescription.service';
 
 @Component({
   selector: 'app-viewprescription',
@@ -10,9 +12,35 @@ import { UserserviceService } from 'src/app/signup-login/userservice.service';
 })
 export class ViewprescriptionComponent implements OnInit {
   isLog: boolean = false
-  constructor(private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
+  id = 0
+  patientData: Appointment;
+  listPatientDisease:{}
+  listDietUser:{}
+  listPrescriptionMedicine:{}
+  constructor(private route : ActivatedRoute,private viewPrescriptionService : ViewprescriptionService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
+   
+    this.id = this.route.snapshot.params.appointmentid;
+
+    this.viewPrescriptionService.getAppointmentByid(this.id).then(res => {
+      this.patientData = res.data;
+       console.log(res.data);
+      
+      this.viewPrescriptionService.listDietUser(this.patientData.patientid).then(res => {
+        this.listDietUser = res.data;
+      })
+
+    })
+
+    this.viewPrescriptionService.listAppointmentDisease(this.id).then(res => {
+      this.listPatientDisease = res.data;
+    })
+
+    this.viewPrescriptionService.listPrescriptionMedicine(this.id).then(res => {
+      this.listPrescriptionMedicine = res.data;
+    })
+
     if (this.userdataservice.user.email.length != 0) {
 
       this.isLog = true;
@@ -29,5 +57,8 @@ export class ViewprescriptionComponent implements OnInit {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
     this.rut.navigateByUrl('');
   }
+  counter(i: number) {
+    return new Array(i);
+}
 
 }
