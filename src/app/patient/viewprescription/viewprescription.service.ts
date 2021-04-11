@@ -25,4 +25,8 @@ export class ViewprescriptionService {
     return this.http.get(`${environment.Base_Url}listPrescriptionMedicine/${appointmentid}`).toPromise();
   }
 
+  pastAppointmentList(patientid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}pastAppointmentList/${patientid}`).toPromise();
+  }
+
 }

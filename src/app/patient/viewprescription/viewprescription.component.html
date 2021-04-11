@@ -57,7 +57,7 @@
                                 <a class="dropdown-item" [routerLink]="['/patientprofile']">
                                     <mdb-icon fas icon="user-alt"></mdb-icon>&nbsp;My Profile
                                 </a>
-                                <a class="dropdown-item" href="edit-profile.html">
+                                <a class="dropdown-item" [routerLink]="['/editpatientprofile']">
                                     <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;Edit Profile
                                 </a>
                                 <a class="dropdown-item" [routerLink]="['/viewappointment']">
@@ -143,8 +143,8 @@
                                 <li>
                                     <h5><strong>Prescription Details</strong></h5>
                                 </li>
-                                <li>Prescription Date: <span>{{patientData.prescriptiondate}}</span></li>
-                                <li>General Advice: <span>{{patientData.generaladvice}}</span></li>
+                                <li>Prescription Date: <span>{{patientData.prescriptiondate | date:'mediumDate'}}</span></li>
+                                <li>General Advice: <span>{{patientData.generaladvice}}</span></li><br>
                                 <li>FollowupComment: <span>{{patientData.followupcomment}}</span></li>
                                 <li>Description: <span>{{patientData.description}}</span></li>
                                
@@ -225,39 +225,25 @@
                 <br>
                 <h5><strong>Past Appointment List</strong></h5>
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+                    <table *ngIf="pastAppointmentList" class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <!-- <th>#</th> -->
-                                <th>Patient</th>
-                                <th>AppCreateDate</th>
+                                <th>Patient Name</th>
+                                <th>Clinic Name</th>
                                 <th>Comment</th>
-                                <th>Clinic</th>
                                 <th>Refrence</th>
-                                <th>AppointmentDate</th>
-                                <th>AppointmentTime</th>
+                                <th>Appointment Date</th>
+                                <th>Appointment Time</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <!-- <td>1</td> -->
-                                <td>Dev</td>
-                                <td>23-03-2021</td>
-                                <td>Fever</td>
-                                <td>ABC CLinic</td>
-                                <td>XYZ</td>
-                                <td>25-03-2021</td>
-                                <td>3:00pm to 4:00pm</td>
-                            </tr>
-                            <tr>
-                                <!-- <td>2</td> -->
-                                <td>Dev</td>
-                                <td>23-03-2021</td>
-                                <td>Fever</td>
-                                <td>ABC CLinic</td>
-                                <td>XYZ</td>
-                                <td>25-03-2021</td>
-                                <td>3:00pm to 4:00pm</td>
+                            <tr *ngFor="let pa of pastAppointmentList">
+                                <td>{{pa.patientname}}</td>
+                                <td>{{pa.clinicname}}</td>
+                                <td>{{pa.comment}}</td>
+                                <td>{{pa.reference}}</td>
+                                <td>{{pa.appointmentdate | date:'mediumDate'}}</td>
+                                <td>{{pa.appointmenttime}}</td>
                             </tr>
                            
                         </tbody>

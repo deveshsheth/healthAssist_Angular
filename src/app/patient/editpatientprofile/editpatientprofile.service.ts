@@ -16,4 +16,7 @@ export class EditpatientprofileService {
   updateUser(model : any):Observable<any> {
     return this.http.put(`${environment.Base_Url}updateSignup`,model);
   }
+  listcities():Promise <any> {
+    return this.http.get(`${environment.Base_Url}listCities`).toPromise();
+  }
 }

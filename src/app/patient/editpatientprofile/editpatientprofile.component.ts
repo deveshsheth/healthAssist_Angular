@@ -4,8 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Users } from 'src/app/admin/users/users';
 import { UsersService } from 'src/app/admin/users/users.service';
-import { EditprofileComponent } from 'src/app/doctor/profile/editprofile/editprofile.component';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
+import { EditpatientprofileService } from './editpatientprofile.service';
 
 @Component({
   selector: 'app-editpatientprofile',
@@ -13,13 +13,24 @@ import { UserserviceService } from 'src/app/signup-login/userservice.service';
   styleUrls: ['./editpatientprofile.component.css']
 })
 export class EditpatientprofileComponent implements OnInit {
-  edituserForm:FormGroup;
+  editPatientForm:FormGroup;
   isLog:boolean = false
   id=0;
   userData:Users;
-  constructor(private Service : EditprofileComponent,private route : ActivatedRoute,private confirmationService: ConfirmationService,private service : UsersService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService,private Userservice : UsersService) { }
+  listcities:{}
+  constructor(private Service : EditpatientprofileService,
+    private route : ActivatedRoute,
+    private confirmationService: ConfirmationService,
+    public userdataservice : UserserviceService,
+    private rut : Router,
+    private messageService : MessageService,
+    private Userservice : UsersService) { }
 
   ngOnInit() {
+    this.Service.listcities().then(res => {
+      this.listcities = res.data;
+    })
+
     if(this.userdataservice.user.email.length != 0){
      
       this.isLog = true;
@@ -27,19 +38,24 @@ export class EditpatientprofileComponent implements OnInit {
     }else {
       this.isLog = false;
     }
-    this.id = this.route.snapshot.params.userId;
-    this.Userservice.getUserByid(this.id).then(res => {
-      this.userData = res.data;
+    // this.id = this.route.snapshot.params.userId;
+    // this.Userservice.getUserByid(this.id).then(res => {
+    //   this.userData = res.data;
     
-    this.edituserForm = new FormGroup({
-      userId:new FormControl(this.userData.userId,Validators.required),
-      firstname:new FormControl(this.userData.firstname,Validators.required),
-      lastname:new FormControl(this.userData.lastname,Validators.required),
-      email:new FormControl(this.userData.email,Validators.required),
-      password:new FormControl(this.userData.password,Validators.required),
-      gender:new FormControl(this.userData.gender,Validators.required),
+    this.editPatientForm = new FormGroup({
+      firstname:new FormControl('',Validators.required),
+      lastname:new FormControl('',Validators.required),
+      email:new FormControl('',Validators.required),
+      password:new FormControl('',Validators.required),
+      gender:new FormControl('',Validators.required),
+       //patientname:new FormControl('',Validators.required),
+      phoneno: new FormControl('',Validators.required),
+      age:new FormControl('',Validators.required),
+      pincode:new FormControl('',Validators.required),
+      cityid:new FormControl('',Validators.required),
+      roleid: new FormControl(2,Validators.required)
     })
-  })
+  // })
 
   }
   logout(){
@@ -51,17 +67,19 @@ export class EditpatientprofileComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
-    this.userData = this.edituserForm.value;
-    if(this.id){
+    // this.userData = this.edituserForm.value;
+    // if(this.id){
 
-      this.service.updateUser(this.edituserForm.value).subscribe(res => {
-        console.log(res);
+    //   this.service.updateUser(this.edituserForm.value).subscribe(res => {
+    //     console.log(res);
         
-        this.rut.navigateByUrl('patientprofile')
-        this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});
+    //     this.rut.navigateByUrl('patientprofile')
+    //     this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});
         
-      })
-    }
+    //   })
+    // }
+    console.log(this.editPatientForm.value);
+    
   }
 
 }

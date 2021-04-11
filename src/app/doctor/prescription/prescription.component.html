@@ -73,7 +73,7 @@
 </div>
 
 <div class="page-wrapper">
-    
+
 
     <div class="content">
         <div class="row">
@@ -88,7 +88,7 @@
         <mdb-navbar SideClass="navbar navbar-1 navbar-light white lighten-2" [containerInside]="false">
 
             <mdb-navbar-brand><a class="navbar-brand" href="#">
-                    <h4><b>Patient Information</b></h4>
+                    <h4><b>Patient Details</b></h4>
                 </a></mdb-navbar-brand>
 
 
@@ -151,7 +151,7 @@
         <mdb-navbar SideClass="navbar navbar-1 navbar-light white lighten-2" [containerInside]="false">
 
             <mdb-navbar-brand><a class="navbar-brand" href="#">
-                    <h4><b>Appointment Information</b></h4>
+                    <h4><b>Appointment Details</b></h4>
                 </a></mdb-navbar-brand>
 
 
@@ -163,7 +163,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card-box">
-                                        
+
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="profile-info-left">
@@ -247,30 +247,26 @@
                                     <div class="card-box mb-0">
                                         <!-- <h4 class="page-title"><b>Past Appointment List</b></h4> -->
                                         <div class="experience-box">
-                                            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+                                            <table *ngIf="pastAppointmentList" datatable [dtOptions]="dtOptions" class="row-border hover">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Patient</th>
-                                                        <th>AppCreateDate</th>
+                                                        <th>Patient Name</th>
+                                                        <th>Clinic Name</th>
                                                         <th>Comment</th>
-                                                        <th>Clinic</th>
                                                         <th>Refrence</th>
-                                                        <th>AppointmentDate</th>
-                                                        <th>AppointmentTime</th>
+                                                        <th>Appointment Date</th>
+                                                        <th>Appointment Time</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- <tr *ngFor="let a of listAppointment">
-                                                        <th scope="row">{{a.appointmentid}}</th>
-                                                        <td>{{a.patientname}}</td>
-                                                        <td>{{a.appcreatedate | date:'mediumDate'}}</td>
-                                                        <td>{{a.comment}}</td>
-                                                        <td>{{a.clinicname}}</td>
-                                                        <td>{{a.reference}}</td>
-                                                        <td>{{a.appointmentdate | date:'mediumDate'}}</td>
-                                                        <td>{{a.appointmenttime}}</td>
-                                                    </tr> -->
+                                                    <tr *ngFor="let pa of pastAppointmentList">
+                                                        <td>{{pa.patientname}}</td>
+                                                        <td>{{pa.clinicname}}</td>
+                                                        <td>{{pa.comment}}</td>
+                                                        <td>{{pa.reference}}</td>
+                                                        <td>{{pa.appointmentdate | date:'mediumDate'}}</td>
+                                                        <td>{{pa.appointmenttime}}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -390,23 +386,7 @@
 
 
         <!-- Prescription Medicine -->
-        <!-- <mdb-navbar SideClass="navbar navbar-1 navbar-light white lighten-2" [containerInside]="false">
 
-            <mdb-navbar-brand><a class="navbar-brand" href="#">
-                    <h4><b>Prescription</b></h4>
-                </a></mdb-navbar-brand>
-
-
-            <links>
-
-
-                
-
-            </links>
-
-
-        </mdb-navbar> -->
-        
         <div class="profile-tabs">
             <div class="tab-content">
                 <div class="tab-pane show active" id="about-cont">
@@ -416,14 +396,13 @@
                                 <h4 class="page-title"><b>Prescription</b></h4>
                                 <div class="experience-box">
 
-                                    <form [formGroup]="prescriptionMedicineForm"
-                                        *ngIf="prescriptionMedicineForm" (ngSubmit)="submit()">
+                                    <form [formGroup]="prescriptionMedicineForm" *ngIf="prescriptionMedicineForm"
+                                        (ngSubmit)="submitPrescription()">
 
                                         <div class="row" style="float: right;">
 
 
-                                            <input class="form-control" type="date"
-                                                formControlName="prescriptiondate">
+                                            <input class="form-control" type="date" formControlName="prescriptiondate">
 
                                         </div><br> <br>
                                         <div class="row">
@@ -450,8 +429,7 @@
                                             </div>
 
                                             <div class="col-sm-12">
-                                                <button pButton type="button" icon="pi pi-plus"
-                                                    style="float: right;"
+                                                <button pButton type="button" icon="pi pi-plus" style="float: right;"
                                                     (click)="addMore()"></button>&nbsp;&nbsp;<br><br>
                                                 <br><br>
 
@@ -461,11 +439,12 @@
                                                     <div class="form-group">
                                                         <label>Medicine Name</label>
                                                         <select class="browser-default custom-select mb-4"
-                                                        [(ngModel)]="medicine.medicinename"  formControlName="medicineid" >
+                                                            [(ngModel)]="medicine.medicinename"
+                                                            formControlName="medicineid">
                                                             <option value="" selected>Choose Medicine</option>
                                                             <option *ngFor="let m of listMedicine"
                                                                 value="{{m.medicineid}}">
-                                                                {{m.medicinename}}</option>
+                                                                {{m.medicinename}} || {{m.medicinetype}}</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -473,38 +452,42 @@
                                                     <div class="form-group">
                                                         <label>Frequnecy</label>
                                                         <input class="form-control" type="text"
-                                                        [(ngModel)]="medicine.frequency" formControlName="frequency" >
+                                                            [(ngModel)]="medicine.frequency"
+                                                            formControlName="frequency">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Duration</label>
                                                         <input class="form-control" type="text"
-                                                        [(ngModel)]="medicine.duration" formControlName="duration" >
+                                                            [(ngModel)]="medicine.duration" formControlName="duration">
                                                     </div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="form-group">
                                                         <label>Instructions</label>
                                                         <input class="form-control" type="text"
-                                                        [(ngModel)]="medicine.instructions" formControlName="instructions" >
+                                                            [(ngModel)]="medicine.instructions"
+                                                            formControlName="instructions">
                                                     </div>
                                                 </div>
                                                 <div class="col">
-                                                    
-                                                        <br>
-                                                        <button pButton pRipple type="button" label="Remove" class="p-button-danger" style="float: right;" (click)="remove(i)"></button><br>
+
+                                                    <br>
+                                                    <button pButton pRipple type="button" label="Remove"
+                                                        class="p-button-danger" style="float: right;"
+                                                        (click)="remove(i)"></button><br>
 
                                                 </div>
-                                               
-                                                
-                                                
+
+
+
 
                                             </div>
 
                                         </div>
                                         <div class="m-t-20 text-right">
-                                            <button pButton type="submit" label="Submit">
+                                            <button pButton type="submit" value="submitPrescription" label="Submit">
                                             </button>
                                         </div>
                                     </form>
@@ -520,8 +503,7 @@
 
             </div>
         </div>
-        
-        
+
         <br><br>
 
         <!-- Diet User -->
@@ -622,8 +604,14 @@
 
 
         </mdb-navbar>
-        <br><br>
+        <br><br><br>
 
+        <div class="m-t-20 text-right">
+            <!-- <button pButton type="submit" value="submit" label="Submit Details">
+            </button> -->
+            <button pButton type="submit" (click)="submitDetails(prescriptionData.appointmentid)" label="Submit Details"
+                ></button>
+        </div>
 
     </div>
 </div>

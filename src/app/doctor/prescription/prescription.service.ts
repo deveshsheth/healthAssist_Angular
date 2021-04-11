@@ -58,4 +58,13 @@ export class PrescriptionService {
     return this.http.post(`${environment.Base_Url}addDietUser`,model);
   }
 
+  doneappointment(model :any):Observable<any> {
+    
+    return this.http.put(`${environment.Base_Url}done_appointment`,model)
+  }
+  
+  pastAppointmentList(patientid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}pastAppointmentList/${patientid}`).toPromise();
+  }
+
 }

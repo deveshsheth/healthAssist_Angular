@@ -29,7 +29,10 @@ export class PrescriptionComponent implements OnInit {
   listAppointment:{};
   listDiet:{}
   listDietUser:{}
+  statusid=0
   dietUserForm:FormGroup
+  Appointment:{}
+  pastAppointmentList:{}
   public medicine: any[] = [{
     //id: 1,
     medicinename: '',
@@ -37,6 +40,7 @@ export class PrescriptionComponent implements OnInit {
     duration: '',
     instructions: ''
   }];
+
   constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { }
 
   ngOnInit() {
@@ -45,6 +49,8 @@ export class PrescriptionComponent implements OnInit {
       this.listAppointment = res.data;
      
     })
+
+   
 
     this.Service.listDiet().then(res => {
       this.listDiet = res.data;
@@ -90,6 +96,10 @@ export class PrescriptionComponent implements OnInit {
         this.listDietUser = res.data;
       })
 
+      this.Service.pastAppointmentList(this.prescriptionData.patientid).then(res => {
+        this.pastAppointmentList = res.data;
+      })
+
     })
 
 
@@ -128,11 +138,12 @@ export class PrescriptionComponent implements OnInit {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: "Logout Successfully...!!" });
     this.rut.navigateByUrl('');
   }
-  submit() {
+
+  submitPrescription() {
     this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
     })
-    // console.log(this.prescriptionMedicineForm.value);
+    console.log(this.prescriptionMedicineForm.value);
     
 
   }
@@ -146,6 +157,16 @@ export class PrescriptionComponent implements OnInit {
     this.Service.addDietuser(this.dietUserForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
     })
+    
+  }
+
+  submitDetails(value){
+    console.log(value);
+    this.Appointment={"appointmentid":value,"statusid":this.statusid=6}
+    this.Service.doneappointment(this.Appointment).subscribe(res => {
+      this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
+    })
+    this.rut.navigateByUrl('appointment')
     
   }
 

@@ -17,6 +17,7 @@ export class ViewprescriptionComponent implements OnInit {
   listPatientDisease:{}
   listDietUser:{}
   listPrescriptionMedicine:{}
+  pastAppointmentList:{}
   constructor(private route : ActivatedRoute,private viewPrescriptionService : ViewprescriptionService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -29,6 +30,9 @@ export class ViewprescriptionComponent implements OnInit {
       
       this.viewPrescriptionService.listDietUser(this.patientData.patientid).then(res => {
         this.listDietUser = res.data;
+      })
+      this.viewPrescriptionService.pastAppointmentList(this.patientData.patientid).then(res => {
+        this.pastAppointmentList = res.data;
       })
 
     })
