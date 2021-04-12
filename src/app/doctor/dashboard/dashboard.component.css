@@ -1,0 +1,27 @@
+.clinic {
+    background-color: #4dbfce;
+    display: inline;
+    padding: .3em .7em .4em;
+    font-size: 75%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+
+}
+.done{
+
+    background-color: rgb(99, 202, 236);
+    display: inline;
+    padding: .3em .7em .4em;
+    font-size: 75%;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+
+}

@@ -24,6 +24,7 @@ export class PatientappointmentComponent implements OnInit {
   listuserPatint:{}
   a:string=""
   listDoctClinic:{}
+  listDoctClinicTiming:{}
   userid=0
   constructor(private route : ActivatedRoute,private datePipe: DatePipe,private service : PatientappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) {
     this.a = this.datePipe.transform(this.myDate, 'mediumDate');
@@ -80,7 +81,8 @@ export class PatientappointmentComponent implements OnInit {
     this.service.addAppointment(this.appointmentForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Booked Successfully...!!"});
     })
-
+    // console.log(this.appointmentForm.value);
+    
     
   }
 
@@ -96,10 +98,10 @@ export class PatientappointmentComponent implements OnInit {
   }
 
   getDoctClinicsByDoctId(){
-    //var doctclinicid = this.appointmentForm.value.appointmenttime 
-    console.log(this.appointmentForm.value.appointmenttime);
-    this.service.listDoctClinic(this.userid).then(res => {
-      this.listDoctClinic = res.data;
+    var clinicid = this.appointmentForm.value.clinicid 
+    console.log(this.appointmentForm.value.clinicid);
+    this.service.listDoctClinicTiming(clinicid).then(res => {
+      this.listDoctClinicTiming = res.data;
     console.log("list app time"+res.data);
     
     })

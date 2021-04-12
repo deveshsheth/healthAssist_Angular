@@ -17,6 +17,7 @@ import { DoctorappointmentService } from './doctorappointment.service';
 export class DoctorappointmentComponent implements OnInit {
   isLog: boolean = false
   listDoctClinic: {};
+  listDoctClinicTiming: {};
   userid = 0;
   currentDate = new Date();
   listuserPatint: {}
@@ -90,13 +91,11 @@ export class DoctorappointmentComponent implements OnInit {
 
   }
   getDoctClinicsByDoctId() {
-    var doctclinicid = this.doctorappointmentForm.value.appointmenttime
-    console.log(this.doctorappointmentForm.value.appointmenttime);
-    this.service.listDoctClinic(doctclinicid).then(res => {
-      this.listDoctClinic = res.data;
-      console.log("fghjkfdgshjklgdhjkl", res.data);
-
+    var clinicid = this.doctorappointmentForm.value.clinicid
+    this.service.listDoctClinicTiming(clinicid).then(res => {
+      this.listDoctClinicTiming = res.data;
     })
 
   }
+ 
 }

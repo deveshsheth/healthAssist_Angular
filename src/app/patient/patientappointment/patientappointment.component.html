@@ -144,11 +144,17 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label>Appoinment Time</label>
-              <input class="form-control" type="time" formControlName="appointmenttime">
-              <!-- <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
+              <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
+              <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
                 <option value="" selected>Appointment Time</option>
-                <option *ngFor="let dc of listDoctClinic" value="{{dc.docid}}">{{dc.monday}}</option>
-              </select> -->
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.monday}}">Monday => {{dc.monday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.tuesday}}">Tuesday => {{dc.tuesday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.wednesday}}">Wednesday => {{dc.wednesday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.thrusday}}">Thrusday => {{dc.thrusday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.friday}}">Friday => {{dc.friday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.saturday}}">Saturday => {{dc.saturday}}</option>
+                <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.sunday}}">Sunday => {{dc.sunday}}</option>
+              </select>
             </div>
           </div>
           <div class="col-sm-6">

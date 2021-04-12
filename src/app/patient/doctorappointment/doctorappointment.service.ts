@@ -23,5 +23,8 @@ export class DoctorappointmentService {
   listUserPatient(userid : any):Promise <any> {
     return this.http.get(`${environment.Base_Url}listUserPatient/${userid}`).toPromise();
   }
+  listDoctClinicTiming(clinicid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listDoctClinicTiming/${clinicid}`).toPromise();
+  }
 
 }

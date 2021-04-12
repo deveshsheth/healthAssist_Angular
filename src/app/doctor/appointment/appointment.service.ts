@@ -19,4 +19,28 @@ export class AppointmentService {
     
     return this.http.put(`${environment.Base_Url}accept_reject_appointment`,model)
   }
+
+  todayAppointment(userid : any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}todayAppointment/${userid}`).toPromise();
+  }
+  
+  waitForAcceptAppointment(userid : any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}waitForAcceptAppointment/${userid}`).toPromise();
+  }
+
+  acceptAppointment(userid : any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}acceptAppointment/${userid}`).toPromise();
+  }
+
+  rescheduleAppointment(userid : any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}rescheduleAppointment/${userid}`).toPromise();
+  }
+
+  doneAppointment(userid : any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}doneAppointment/${userid}`).toPromise();
+  }
+
+  listDoctClinic(userid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listDoctClinic/${userid}`).toPromise();
+  }
 }

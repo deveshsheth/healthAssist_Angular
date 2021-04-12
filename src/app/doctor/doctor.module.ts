@@ -23,6 +23,7 @@ import { DoctormedicineComponent } from './doctormedicine/doctormedicine.compone
 import { DoctordiseaseComponent } from './doctordisease/doctordisease.component';
 import { DoctordietComponent } from './doctordiet/doctordiet.component';
 
+
 @NgModule({
   declarations: [ AppointmentComponent, PrescriptionComponent, ProfileComponent, EditprofileComponent, DashboardComponent, DoctormedicineComponent, DoctordiseaseComponent, DoctordietComponent],
   imports: [

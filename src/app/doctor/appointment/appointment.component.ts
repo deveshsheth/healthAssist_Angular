@@ -69,6 +69,15 @@ export class AppointmentComponent implements OnInit {
     this.rut.navigateByUrl('appointment')
   }
 
+  reschedule(value){
+    console.log(value);
+    this.Appointment={"appointmentid":value,"statusid":this.statusid=5}
+    this.appointmentService.acceptrejectappointment(this.Appointment).subscribe(res => {
+      this.messageService.add({severity: 'success', summary: 'Success', detail: "Appointment Status Updated..!!"});
+    })
+    this.rut.navigateByUrl('appointment')
+  }
+
   RescheduleSubmit(){
     console.log(this.RescheduleForm.value);
     

@@ -189,7 +189,7 @@
                                 <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" (click)="accept(a.appointmentid)"><mdb-icon fas icon="check"></mdb-icon> &nbsp; Accept</a>
                                 <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" (click)="reject(a.appointmentid)"><mdb-icon fas icon="times"></mdb-icon> &nbsp; Reject</a>
                                 <a class="dropdown-item" styleClass="p-mr-2"   [routerLink]="['/prescription',a.appointmentid]"><mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon> &nbsp; Proceed</a>
-                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" data-target="#myRescheduleForm"><mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule</a>
+                                <a class="dropdown-item" styleClass="p-mr-2"  data-toggle="modal" data-target="#myRescheduleForm" (click)="reschedule(a.appointmentid)"><mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule</a>
                                 
                             </div>
                         </div>
