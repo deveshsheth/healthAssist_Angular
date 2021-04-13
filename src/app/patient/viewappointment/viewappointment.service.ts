@@ -15,5 +15,13 @@ export class ViewappointmentService {
     return this.http.get(`${environment.Base_Url}viewPatientAppointment/${userid}`).toPromise();
   }
 
+  listDoctClinicTiming(clinicid : any):Promise <any> {
+    return this.http.get(`${environment.Base_Url}listDoctClinicTiming/${clinicid}`).toPromise();
+  }
+
+  getAppointmentByid(appointmentid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getappointmentid/${appointmentid}`).toPromise();
+  }
+
   
 }

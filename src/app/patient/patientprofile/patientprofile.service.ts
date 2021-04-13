@@ -31,4 +31,12 @@ export class PatientprofileService {
     return this.http.get(`${environment.Base_Url}listUserPatient/${userid}`).toPromise();
   }
 
+  getFamilyMember(patientid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getFamilyMember/${patientid}`).toPromise();
+  }
+
+  updatePatient(model :any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updatePatient`,model);
+  }
+
 }

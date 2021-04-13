@@ -239,6 +239,7 @@
                                             <th>PhoneNo</th>
                                             <!-- <th>City</th> -->
                                             <th>Gender</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -248,6 +249,7 @@
                                             <td>{{up.phoneno}}</td>
                                             <!-- <td>{{up.cityname}}</td> -->
                                             <td>{{up.gender}}</td>
+                                            <td><a [routerLink]="['/editfamilymember',up.patientid]"><p-button  icon="pi pi-user-edit" data-toggle="modal" data-target="#myModal"></p-button></a></td>
                                         </tr>
                                     </tbody>
                                 </table>

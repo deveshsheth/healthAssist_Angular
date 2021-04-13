@@ -18,10 +18,12 @@ export class PatientprofileComponent implements OnInit {
   listcities:{}
   id=0
   getpatientUserId:Patient
+  getFamilyMemberId:Patient
   phoneno:String
   cityid:number
   pincode:number
   listuserPatient:{}
+  patientid =0
   constructor(private route:ActivatedRoute,public patientService : PatientprofileService,private rut: Router,public userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -33,7 +35,6 @@ export class PatientprofileComponent implements OnInit {
       this.getpatientUserId = res.data;
       
       this.cityid = this.getpatientUserId.cityid
-   
        
       this.patientForm = new FormGroup({
         patientname:new FormControl('',Validators.required),
@@ -44,8 +45,27 @@ export class PatientprofileComponent implements OnInit {
         cityid:new FormControl(this.cityid,Validators.required),
         pincode:new FormControl(this.getpatientUserId.pincode,Validators.required),
         userId:new FormControl(this.userdataservice.user.userId,Validators.required),
-        // roleid: new FormControl(2,Validators.required)
       })
+    })
+
+
+    this.patientid = this.route.snapshot.params.patientid
+    
+    this.patientService.getFamilyMember(this.patientid).then(res => {
+
+      this.getFamilyMemberId= res.data;
+
+      this.patientForm = new FormGroup({
+        patientname:new FormControl(this.getFamilyMemberId.patientname,Validators.required),
+        gender:new FormControl(this.getFamilyMemberId.gender,Validators.required),
+        phoneno: new FormControl(this.getFamilyMemberId.phoneno,Validators.required),
+        email:new FormControl(this.getFamilyMemberId.email,Validators.required),
+        age:new FormControl(this.getFamilyMemberId.age,Validators.required),
+        // cityid:new FormControl(this.cityid,Validators.required),
+        // pincode:new FormControl(this.getpatientUserId.pincode,Validators.required),
+        userId:new FormControl(this.userdataservice.user.userId,Validators.required),
+      })
+
     })
 
     this.patientService.listUserPatient(this.userdataservice.user.userId).then(res => {
@@ -54,11 +74,6 @@ export class PatientprofileComponent implements OnInit {
       
     })
 
-    
-
-    // this.patientService.listcities().then(res => {
-    //   this.listcities = res.data;
-    // })
 
     this.dtOptions = {
       pagingType: 'full_numbers'
@@ -81,11 +96,20 @@ export class PatientprofileComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
-    this.patientService.addFamilyMember(this.patientForm.value).subscribe(res => {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+    if(this.patientid){
+      this.patientService.updatePatient(this.patientForm.value).subscribe(res => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+      })
+      console.log("edit profile",this.patientForm.value);
       
-    })
-    console.log(this.patientForm.value);
+    }else{
+      this.patientService.addFamilyMember(this.patientForm.value).subscribe(res => {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
+          
+        })
+        console.log(this.patientForm.value);
+        
+    }
     
   }
 

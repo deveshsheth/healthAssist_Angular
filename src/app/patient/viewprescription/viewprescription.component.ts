@@ -34,12 +34,13 @@ export class ViewprescriptionComponent implements OnInit {
       this.viewPrescriptionService.pastAppointmentList(this.patientData.patientid).then(res => {
         this.pastAppointmentList = res.data;
       })
+      this.viewPrescriptionService.listAppointmentDisease(this.patientData.patientid).then(res => {
+        this.listPatientDisease = res.data;
+      })
 
     })
 
-    this.viewPrescriptionService.listAppointmentDisease(this.id).then(res => {
-      this.listPatientDisease = res.data;
-    })
+  
 
     this.viewPrescriptionService.listPrescriptionMedicine(this.id).then(res => {
       this.listPrescriptionMedicine = res.data;

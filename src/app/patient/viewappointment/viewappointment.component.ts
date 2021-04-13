@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Appointment } from 'src/app/doctor/appointment';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
 import { ViewappointmentService } from './viewappointment.service';
 
@@ -16,9 +17,12 @@ export class ViewappointmentComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   statusid=0
   Appointment:{}
+  listDoctClinicTiming:{}
   userId = 0
   RescheduleForm:FormGroup
-  constructor(private viewAppointmentService : ViewappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
+  appointmentData: Appointment;
+  appointmentid = 0
+  constructor(private route : ActivatedRoute,private viewAppointmentService : ViewappointmentService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit() {
 
@@ -27,6 +31,17 @@ export class ViewappointmentComponent implements OnInit {
       this.listAppointment = res.data;
       console.log(res.data);
     })
+
+    this.appointmentid = this.route.snapshot.params.appointmentid
+
+
+    this.viewAppointmentService.getAppointmentByid(this.appointmentid).then(res => {
+      this.appointmentData = res.data;
+
+      this.viewAppointmentService.listDoctClinicTiming(this.appointmentData.clinicid).then(res => {
+        this.listDoctClinicTiming = res.data
+      })
+  })
 
     this.RescheduleForm = new FormGroup({
       appointmentdate:new FormControl('',Validators.required),

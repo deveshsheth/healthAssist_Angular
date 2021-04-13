@@ -22,12 +22,14 @@ const routes: Routes = [
   {path:'patientappointment',component:PatientappointmentComponent,canActivate:[AuthguardGuard]},
   {path:'doctorappointment/:userId',component:DoctorappointmentComponent,canActivate:[AuthguardGuard]},
   {path:'patientprofile',component:PatientprofileComponent,canActivate:[AuthguardGuard]},
+  {path:'editfamilymember/:patientid',component:PatientprofileComponent,canActivate:[AuthguardGuard]},
   {path:'patientpharmacy',component:PharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'patientpathology',component:PathologyComponent,canActivate:[AuthguardGuard]},
   {path:'userpharmacy/:pharmacyId',component:UserpharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'userpathology/:pathologyId',component:UserpathologyComponent,canActivate:[AuthguardGuard]},
   {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]},
   {path:'viewappointment',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
+  {path:'rescheduleappointment/:appointmentid',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
   {path:'viewprescription/:appointmentid',component:ViewprescriptionComponent,canActivate:[AuthguardGuard]}
 ];
 

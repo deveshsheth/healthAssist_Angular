@@ -13,8 +13,8 @@ export class ViewprescriptionService {
     return this.http.get(`${environment.Base_Url}getPatientDetails/${appointmentid}`).toPromise();
   }
 
-  listAppointmentDisease(appointmentid :any):Promise<any> {
-    return this.http.get(`${environment.Base_Url}listAppointmentDisease/${appointmentid}`).toPromise();
+  listAppointmentDisease(patientid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}listAppointmentDisease/${patientid}`).toPromise();
   }
 
   listDietUser(patientid : any):Promise <any> {

@@ -79,10 +79,10 @@
         <div class="row">
             <div class="col">
                 <div class="dash-widget">
-                    <!-- <span class="dash-widget-bg1"><i class="fa fa-stethoscope" aria-hidden="true"></i></span> -->
+                    <span class="dash-widget-bg1"><mdb-icon fas icon="calendar-check"></mdb-icon></span>
                     
                     <div class="dash-widget-info text-right">
-                        <h3>{{todayAppointmentCount}}</h3>
+                        <h2>{{todayAppointmentCount}}</h2>
                         <span class="widget-title1">Today Appointment <i class="fa fa-check"
                                 aria-hidden="true"></i></span>
                     </div>
@@ -90,61 +90,69 @@
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <!-- <span class="dash-widget-bg2">
-                        <mdb-icon fas icon="user"></mdb-icon>
-                    </span> -->
+                    <span class="dash-widget-bg3">
+                        <mdb-icon fas icon="hourglass-half"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
-                        <h3>{{waitForAcceptCount}}</h3>
+                        <h2>{{waitForAcceptCount}}</h2>
                         <span class="widget-title3">Wait For Accept <i class="fa fa-check"
-                                aria-hidden="true"></i></span>
+                            aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <!-- <span class="dash-widget-bg3">
-                        <mdb-icon fas icon="clinic-medical"></mdb-icon>
-                    </span> -->
+                    <span class="dash-widget-bg2">
+                        <mdb-icon fas icon="check-circle"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
-                        <h3>{{acceptCount}}</h3>
-                        <span class="widget-title2">Accept <i class="fa fa-check"
-                                aria-hidden="true"></i></span>
+                        <h2>{{acceptCount}}</h2>
+                        <span class="widget-title2">Appointment Accept <i class="fa fa-check"
+                            aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
+            
+        </div>
+        <div class="row">
+
             <div class="col">
                 <div class="dash-widget">
-                    <!-- <span class="dash-widget-bg4">
-                        <mdb-icon fas icon="mortar-pestle"></mdb-icon>
-                    </span> -->
+                    <span class="dash-widget-bg4">
+                        <mdb-icon fas icon="times-circle"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
-                        <h3>{{rescheduleCount}}</h3>
-                        <span class="widget-title4">Reshcedule <i class="fa fa-check"
+                        <h2>{{rescheduleCount}}</h2>
+                        <span class="widget-title4">Appointment Reject <i class="fa fa-check"
+                            aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg1">
+                        <mdb-icon fas icon="check-circle"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h2>{{doneCount}}</h2>
+                        <span class="widget-title1">Appointment Done<i class="fa fa-check"
                                 aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <!-- <span class="dash-widget-bg1">
+                    <span class="dash-widget-bg3">
                         <mdb-icon fas icon="hospital"></mdb-icon>
-                    </span> -->
+                    </span>
                     <div class="dash-widget-info text-right">
-                        <h3>{{doneCount}}</h3>
-                        <span class="done">Done <i class="fa fa-check"
+                        <h2>{{listDoctClinic}}</h2>
+                        <span class="widget-title3">Clinics <i class="fa fa-check"
                                 aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="dash-widget">
-                    <div class="dash-widget-info text-right">
-                        <h3>{{listDoctClinic}}</h3>
-                        <span class="clinic">Clinics <i class="fa fa-check"
-                                aria-hidden="true"></i></span>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 

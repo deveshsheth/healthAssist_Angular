@@ -42,8 +42,8 @@ export class PrescriptionService {
     return this.http.post(`${environment.Base_Url}addAppointmentDisease`,model);
   }
 
-  listAppointmentDisease(appointmentid :any):Promise<any> {
-    return this.http.get(`${environment.Base_Url}listAppointmentDisease/${appointmentid}`).toPromise();
+  listAppointmentDisease(patientid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}listAppointmentDisease/${patientid}`).toPromise();
   }
 
   listDiet():Promise <any> {

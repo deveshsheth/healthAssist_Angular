@@ -103,7 +103,21 @@
 
               <div class="form-group">
                 <label>Appointment Time</label>
-                <input class="form-control" type="time" formControlName="appointmenttime">
+                <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
+                <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
+                  <option value="" selected>Appointment Time</option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.monday}}">Monday => {{dc.monday}}</option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.tuesday}}">Tuesday => {{dc.tuesday}}
+                  </option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.wednesday}}">Wednesday => {{dc.wednesday}}
+                  </option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.thrusday}}">Thrusday => {{dc.thrusday}}
+                  </option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.friday}}">Friday => {{dc.friday}}</option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.saturday}}">Saturday => {{dc.saturday}}
+                  </option>
+                  <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.sunday}}">Sunday => {{dc.sunday}}</option>
+                </select>
               </div>
 
             </div>
@@ -132,10 +146,9 @@
 <div class="container">
   <!-- <p-button icon="pi pi-file-pdf" class="p-button-warning p-mr-2" id="btnExport" value="Export" pTooltip="PDF"
     tooltipPosition="bottom"></p-button> -->
-    <a pButton icon="pi pi-plus" label="Export" style="float: right;color: #fff;"
-        id="btnExport" value="Export"></a>
-    
-    <br><br><br>
+  <a pButton icon="pi pi-plus" label="Export" style="float: right;color: #fff;" id="btnExport" value="Export"></a>
+
+  <br><br><br>
   <table id="tblCustomers" datatable [dtOptions]="dtOptions" class="row-border hover">
     <thead>
       <tr>
@@ -152,27 +165,29 @@
     <tbody>
       <tr *ngFor="let a of listAppointment">
         <td>{{a.patientname}}</td>
-        <td>{{a.doctorid}}</td>
+        <td>{{a.firstname}}&nbsp;{{a.lastname}}</td>
         <td>{{a.clinicname}}</td>
         <td>{{a.appointmentdate | date:'mediumDate'}}</td>
         <td>{{a.appointmenttime}}</td>
-        <td *ngIf="a.statusid"> 
-                <span class="{{viewAppointmentService.appointmentStatus[a.statusid]}}">{{viewAppointmentService.appointmentStatus[a.statusid]}}</span>
-            </td>
-        <td class="text-right">
-          <div class="dropdown dropdown-action">
-            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                class="fa fa-ellipsis-v"></i></a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" [routerLink]="['/viewprescription',a.appointmentid]" styleClass="p-mr-2">
-                <mdb-icon fas icon="eye"></mdb-icon> &nbsp; View Prescription
-              </a>
-              <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal" data-target="#myRescheduleForm">
-                <mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule
-              </a>
-
-            </div>
-          </div>
+        <td *ngIf="a.statusid">
+          <span
+            class="{{viewAppointmentService.appointmentStatus[a.statusid]}}">{{viewAppointmentService.appointmentStatus[a.statusid]}}</span>
+        </td>
+        <td *ngIf="a.statusid==4">
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please Wait...
+        </td>
+        <td *ngIf="a.statusid==1">
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Please Wait...
+        </td>
+        <td class="text-right" *ngIf="a.statusid!=4 && a.statusid!=1">
+            <!-- <a class="dropdown-item" [routerLink]="['/viewprescription',a.appointmentid]" styleClass="p-mr-2"
+              *ngIf="a.statusid==6">
+              <p-button label="Prescription" icon="pi pi-eye"></p-button>
+            </a> -->
+            <button pButton pRipple class="size" class="dropdown-item" [routerLink]="['/viewprescription',a.appointmentid]" class="p-button-outlined" styleClass="p-button-sm"
+            *ngIf="a.statusid==6" label="Prescription" icon="pi pi-eye"></button>
         </td>
       </tr>
     </tbody>

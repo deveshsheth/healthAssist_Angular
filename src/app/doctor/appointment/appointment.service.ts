@@ -43,4 +43,17 @@ export class AppointmentService {
   listDoctClinic(userid : any):Promise <any> {
     return this.http.get(`${environment.Base_Url}listDoctClinic/${userid}`).toPromise();
   }
+
+  getAppointmentByid(appointmentid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getappointmentid/${appointmentid}`).toPromise();
+  }
+
+  updateRescheduleAppointment(model :any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updateRescheduleAppointment`,model);
+  }
+
+  rescheduleReason(data : any):Observable<any> {
+    return this.http.get(`${environment.Base_Url}rescheduleReason/`+data.email+"/"+data.appointmentid);
+  }
+
 }

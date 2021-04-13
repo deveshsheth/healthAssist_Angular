@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,6 +34,9 @@ export class PrescriptionComponent implements OnInit {
   dietUserForm:FormGroup
   Appointment:{}
   pastAppointmentList:{}
+  today: number = Date.now();
+  myDate = new Date();
+  a:string=""
   public medicine: any[] = [{
     //id: 1,
     medicinename: '',
@@ -41,7 +45,9 @@ export class PrescriptionComponent implements OnInit {
     instructions: ''
   }];
 
-  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { }
+  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { 
+    this.a = this.datePipe.transform(this.myDate);
+  }
 
   ngOnInit() {
 
@@ -100,6 +106,11 @@ export class PrescriptionComponent implements OnInit {
         this.pastAppointmentList = res.data;
       })
 
+      
+    this.Service.listAppointmentDisease(this.prescriptionData.patientid).then(res => {
+      this.listAppointmentDisease = res.data;
+    })
+
     })
 
 
@@ -112,9 +123,6 @@ export class PrescriptionComponent implements OnInit {
       this.listDisease = res.data;
     })
 
-    this.Service.listAppointmentDisease(this.id).then(res => {
-      this.listAppointmentDisease = res.data;
-    })
 
     
     
@@ -143,7 +151,7 @@ export class PrescriptionComponent implements OnInit {
     this.Service.addPrescriptioneMedicine(this.prescriptionMedicineForm.value).subscribe(res => {
       this.messageService.add({severity: 'success', summary: 'Success', detail: res.msg});
     })
-    console.log(this.prescriptionMedicineForm.value);
+     console.log(this.prescriptionMedicineForm.value);
     
 
   }

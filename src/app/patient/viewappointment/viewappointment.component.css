@@ -494,7 +494,7 @@ body{
 }
 .Done{
 
-  background-color: rgb(131, 207, 233);
+  background-color: rgb(48, 189, 236);
   display: inline;
   padding: .2em .6em .3em;
   font-size: 75%;
@@ -522,3 +522,8 @@ body{
   border-radius: .25em;
 
 }  
+
+.size{
+  height: 10px;
+  width: 30px;
+}
