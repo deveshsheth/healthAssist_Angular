@@ -1,23 +1,28 @@
 <div class="header">
     <div class="header-left">
-    
-    <a href="index-2.html" class="logo">
-        <img src="assets/img/logo.png" width="35" height="35" alt=""><span>Health Assist</span>
-    </a>
+
+        <a href="index-2.html" class="logo">
+            <img src="assets/img/logo.png" width="35" height="35" alt=""><span>Health Assist</span>
+        </a>
     </div>
     <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
     <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
-    
+
     <ul class="nav user-menu float-right">
-        
+
         <li class="nav-item dropdown has-arrow">
-            <a>
+            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                 <span class="user-img">
                     <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
                     <span class="status online"></span>
                 </span>&nbsp;
                 <span>{{userdataservice.user.firstname}}</span>
-            </a> 
+            </a>&nbsp;
+            <div class="dropdown-menu">
+                <!-- <a class="dropdown-item" [routerLink]="['/profile']">My Profile</a>
+                <a class="dropdown-item" [routerLink]="['/editprofile']">Edit Profile</a> -->
+                <a class="dropdown-item" href="./" (click)="logout()">Logout</a>
+            </div>
         </li>
     </ul>
 </div>
@@ -27,7 +32,7 @@
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
-                    <li class="menu-title">Main</li>
+                    <br>
                     <li class="active">
                         <a [routerLink]="['/dashboard']">
                             <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
@@ -62,26 +67,39 @@
                         </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                        <a [routerLink]="['/clinic']">
+                            <mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
+                        <a [routerLink]="['/users']">
+                            <mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
+                        <a [routerLink]="['/medicine']">
+                            <mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
+                        <a [routerLink]="['/disease']">
+                            <mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
+                        <a [routerLink]="['/city']">
+                            <mdb-icon fas icon="city"></mdb-icon> <span>City</span>
+                        </a>
                     </li>
                     <li>
-                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
+                        <a [routerLink]="['/state']">
+                            <mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
+                        <a [routerLink]="['/adminappointment']"><mdb-icon far icon="calendar-check"></mdb-icon> <span>Appointment</span></a>
                     </li>
+                    
 
 
 
@@ -113,7 +131,9 @@
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <span class="dash-widget-bg2"><mdb-icon fas icon="user"></mdb-icon></span>
+                    <span class="dash-widget-bg2">
+                        <mdb-icon fas icon="user"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
                         <h3>{{patientCount}}</h3>
                         <span class="widget-title2">Patients <i class="fa fa-check" aria-hidden="true"></i></span>
@@ -122,7 +142,9 @@
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <span class="dash-widget-bg3"><mdb-icon fas icon="clinic-medical"></mdb-icon></span>
+                    <span class="dash-widget-bg3">
+                        <mdb-icon fas icon="clinic-medical"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
                         <h3>{{pharmacyCount}}</h3>
                         <span class="widget-title3">Pharmacy <i class="fa fa-check" aria-hidden="true"></i></span>
@@ -131,25 +153,96 @@
             </div>
             <div class="col">
                 <div class="dash-widget">
-                    <span class="dash-widget-bg4"><mdb-icon fas icon="mortar-pestle"></mdb-icon></span>
+                    <span class="dash-widget-bg4">
+                        <mdb-icon fas icon="mortar-pestle"></mdb-icon>
+                    </span>
                     <div class="dash-widget-info text-right">
                         <h3>{{pathologyCount}}</h3>
                         <span class="widget-title4">Pathology <i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
+            
+        </div>
+
+        <div class="row">
             <div class="col">
                 <div class="dash-widget">
-                    <span class="dash-widget-bg1"><mdb-icon fas icon="hospital"></mdb-icon></span>
+                    <span class="dash-widget-bg1"><mdb-icon far icon="file-alt"></mdb-icon></span>
                     <div class="dash-widget-info text-right">
-                        <h3>{{clinicCount}}</h3>
-                        <span class="widget-title1">Clinic <i class="fa fa-check" aria-hidden="true"></i></span>
+                        <h3>{{kycDoctor}}</h3>
+                        <span class="widget-title1">KYC Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
                     </div>
                 </div>
-              </div>
-          </div>
+            </div>
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg2">
+                        <mdb-icon fas icon="check-circle"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h3>{{activeDoctor}}</h3>
+                        <span class="widget-title2">Active Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg3">
+                        <mdb-icon fas icon="hourglass-half"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h3>{{pendingDoctor}}</h3>
+                        <span class="widget-title3">Pending Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg4">
+                        <mdb-icon far icon="pause-circle"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h3>{{pauseDoctor}}</h3>
+                        <span class="widget-title4">Pause Doctors <i class="fa fa-check" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg3">
+                        <mdb-icon fas icon="check-circle"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h3>{{doneAppointmentForAllDoctor}}</h3>
+                        <span class="widget-title3">Appointment Successful <i class="fa fa-check" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dash-widget">
+                    <span class="dash-widget-bg1">
+                        <mdb-icon fas icon="hospital"></mdb-icon>
+                    </span>
+                    <div class="dash-widget-info text-right">
+                        <h3>{{clinicCount}}</h3>
+                        <span class="widget-title1">Total Clinics<i class="fa fa-check"
+                                aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+            
+        </div>
+   
 
     </div>
-    
-</div>
 
+</div>

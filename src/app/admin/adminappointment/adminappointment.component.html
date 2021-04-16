@@ -66,28 +66,42 @@
                             <mdb-icon fas icon="utensils"></mdb-icon> <span>Diet</span>
                         </a>
                     </li>
+                    <li>
+                        <a [routerLink]="['/clinic']">
+                            <mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/users']">
+                            <mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/medicine']">
+                            <mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/disease']">
+                            <mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/city']">
+                            <mdb-icon fas icon="city"></mdb-icon> <span>City</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/state']">
+                            <mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span>
+                        </a>
+                    </li>
                     <li class="active">
-                        <a [routerLink]="['/clinic']"><mdb-icon fas icon="hospital"></mdb-icon> <span>Clinic</span></a>
+                        <a [routerLink]="['/adminappointment']">
+                            <mdb-icon far icon="calendar-check"></mdb-icon> <span>Appointment</span>
+                        </a>
                     </li>
-                    <li>
-                        <a [routerLink]="['/users']"><mdb-icon fas icon="user-alt"></mdb-icon> <span>Users</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/medicine']"><mdb-icon fas icon="pills"></mdb-icon> <span>Medicine</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/disease']"><mdb-icon fas icon="splotch"></mdb-icon> <span>Disease</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/city']"><mdb-icon fas icon="city"></mdb-icon> <span>City</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/adminappointment']"><mdb-icon far icon="calendar-check"></mdb-icon> <span>Appointment</span></a>
-                    </li>
-                   
+
 
 
 
@@ -103,61 +117,50 @@
     </div>
 </div>
 
-<div class="page-wrapper" style="min-height: 448px;">
+<div class="page-wrapper" style="min-height: 754px;">
     <div class="content">
-        <div class="row">
-            <div class="col-sm-4 col-3">
-                <p class="page-title" style="font-weight: bold;font-size: 20px;">Clinic</p>
-            </div>
-            <div class="col-sm-8 col-9 text-right m-b-20">
-                <a [routerLink]="['../addclinic']" class="btn btn-primary btn-rounded float-right"><i
-                        class="fa fa-plus"></i> Add Clinic</a>
-            </div>
-        </div>
-        <p-progressBar  [value]="value1" mode="indeterminate" *ngIf="value1!=100" [style]="{'height': '5px'}" ></p-progressBar><br>
-        <a pButton icon="pi pi-plus" label="Export" style="float: left;color: #fff;"
-        id="btnExport" value="Export"></a><br><br><br>
-        <table id="tblCustomers" *ngIf="listClinic" datatable [dtOptions]="dtOptions" class="row-border hover">
+        <a pButton icon="pi pi-plus" label="Export" style="float: left;color: #fff;" id="btnExport"
+            value="Export"></a><br><br><br>
+        <table id="tblCustomers" *ngIf="listAllAppointment" datatable [dtOptions]="dtOptions" class="row-border hover">
             <thead>
                 <tr>
-                    <!-- <th>ID</th> -->
-                    <th>Name</th>
-                    <th>Timings</th>
-                    <th>Address</th>
-                    <th>Phone No</th>
-                    <th>Rating</th>
-                    <!-- <th>About</th> -->
-                    <th>City</th>
-                    <th>Pincode</th>
-                    <th>Action</th>
+
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Clinic</th>
+                    <th>AppDate</th>
+                    <th>AppTime</th>
+                    <th>Status</th>
+                    <th>Reason</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let c of listClinic">
-                    <!-- <th scope="row">{{c.clinicid}}</th> -->
-                    <td>{{c.clinicname}}</td>
-                    <td>{{c.timing}}</td>
-                    <td>{{c.address}}</td>
-                    <td>{{c.phoneno}}</td>
-                    <td>{{c.rating}}</td>
-                    <!-- <td>{{c.about}}</td> -->
-                    <td>{{c.cityname}}</td>
-                    <td>{{c.pincode}}</td>
-                    <td class="text-right">
-                        <div class="dropdown dropdown-action">
-                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" [routerLink]="['../editclinic',c.clinicid]"><mdb-icon fas icon="pencil-alt"></mdb-icon> &nbsp; Edit</a>
-                                <a class="dropdown-item"  data-toggle="modal" data-target="#delete_patient" (click)="delete(c.clinicid)"><mdb-icon fas icon="trash-alt"></mdb-icon> &nbsp; Delete</a>
-                            </div>
-                        </div>
+                <tr *ngFor="let a of listAllAppointment">
+                    <td>{{a.patientname}}</td>
+                    <td>{{a.firstname}}&nbsp;{{a.lastname}}</td>
+                    <td>{{a.clinicname}}</td>
+                    <td>{{a.appointmentdate | date:'mediumDate'}}</td>
+                    <td>{{a.appointmenttime}}</td>
+                    <td *ngIf="a.statusid">
+                        <span
+                            class="{{service.appointmentStatus[a.statusid]}}">{{service.appointmentStatus[a.statusid]}}</span>
                     </td>
+                    <td *ngIf="a.statusid==4">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Waiting...
+                    </td>
+
+                    <td *ngIf="a.statusid==6">
+                        &nbsp;&nbsp;&nbsp;&nbsp;Successful...
+                    </td>
+
+                    <td *ngIf="a.statusid==2">
+                        &nbsp;{{a.statusreason}}
+                    </td>
+
+
                 </tr>
             </tbody>
         </table>
+
     </div>
 </div>
-<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
-
-
-

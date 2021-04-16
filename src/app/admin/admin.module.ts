@@ -45,11 +45,12 @@ import { DiseaseComponent } from './disease/disease.component';
 import { AddpatientComponent } from './patient/addpatient/addpatient.component';
 import { CityComponent } from './city/city.component';
 import { StateComponent } from './state/state.component';
+import { AdminappointmentComponent } from './adminappointment/adminappointment.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, DietComponent, AdddoctorComponent, EditdoctorComponent, AddpharmacyComponent, EditpharmacyComponent, ProfileComponent, PathologyComponent, AddpathologyComponent, EditpathologyComponent, ClinicComponent, AddclinicComponent, EditclinicComponent, AdddietComponent, EditdietComponent, UsersComponent, AddusersComponent, EditusersComponent, MedicineComponent, DiseaseComponent, AddpatientComponent, CityComponent, StateComponent],
+  declarations: [DashboardComponent, DoctorComponent, PatientComponent, PharmacyComponent, DietComponent, AdddoctorComponent, EditdoctorComponent, AddpharmacyComponent, EditpharmacyComponent, ProfileComponent, PathologyComponent, AddpathologyComponent, EditpathologyComponent, ClinicComponent, AddclinicComponent, EditclinicComponent, AdddietComponent, EditdietComponent, UsersComponent, AddusersComponent, EditusersComponent, MedicineComponent, DiseaseComponent, AddpatientComponent, CityComponent, StateComponent, AdminappointmentComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

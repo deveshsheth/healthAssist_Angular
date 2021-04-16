@@ -50,4 +50,28 @@ export class DoctorService {
   updatedoctorclinic(model : any):Observable<any> {
     return this.http.put(`${environment.Base_Url}updateDoctClinic`,model);
   }
+
+
+  kycDoctor():Promise<any> {
+    return this.http.get(`${environment.Base_Url}kycDoctor`).toPromise();
+  }
+  activeDoctor():Promise<any> {
+    return this.http.get(`${environment.Base_Url}activeDoctor`).toPromise();
+  }
+  pendingDoctor():Promise<any> {
+    return this.http.get(`${environment.Base_Url}pendingDoctor`).toPromise();
+  }
+  pauseDoctor():Promise<any> {
+    return this.http.get(`${environment.Base_Url}pauseDoctor`).toPromise();
+  }
+
+  countDoctorClinic():Promise<any> {
+    return this.http.get(`${environment.Base_Url}countDoctorClinic`).toPromise();
+  }
+
+  doneAppointmentForAllDoctor():Promise<any> {
+    return this.http.get(`${environment.Base_Url}doneAppointmentForAllDoctor`).toPromise();
+  }
+
+
 }

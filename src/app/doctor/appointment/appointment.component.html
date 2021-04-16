@@ -156,6 +156,45 @@
                 </form>
 
 
+                <form [formGroup]="RejectForm" (ngSubmit)="rejectSubmit()">
+                    <div id="myReject" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+
+                                    <h4 class="modal-title"><b>Reject Form</b></h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="row">
+                                    
+                                        
+                                        <br><br>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Reason For Reject</label>
+                                                <input type="text" class="form-control"  formControlName="statusreason">
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                        data-dismiss="modal" data-target="#myReject">Close</button>
+                                    <button type="submit" value="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#myReject" (click)="reject(appointmentData.appointmentid)">Save</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+
+
             </div>
 
 
@@ -200,7 +239,7 @@
                                     <mdb-icon fas icon="check"></mdb-icon> &nbsp; Accept
                                 </a>
                                 <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal"
-                                    (click)="reject(a.appointmentid)">
+                                data-target="#myReject" [routerLink]="['/rejectform',a.appointmentid]">
                                     <mdb-icon fas icon="times"></mdb-icon> &nbsp; Reject
                                 </a>
                                 <a class="dropdown-item" styleClass="p-mr-2"

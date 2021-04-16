@@ -18,6 +18,7 @@ export class AppointmentComponent implements OnInit {
   statusid=0
   Appointment:{}
   RescheduleForm:FormGroup
+  RejectForm:FormGroup
   appointmentid =0
   appointmentData:Appointment
   constructor(private route : ActivatedRoute,private appointmentService : AppointmentService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
@@ -33,7 +34,14 @@ export class AppointmentComponent implements OnInit {
       email:new FormControl(this.appointmentData.email,Validators.required),
       statusreason:new FormControl('',Validators.required)
     })
+    this.RejectForm = new FormGroup({
+      appointmentid:new FormControl(this.appointmentData.appointmentid,Validators.required),
+      email:new FormControl(this.appointmentData.email,Validators.required),
+      statusreason:new FormControl('',Validators.required)
+    })
   })
+
+  
 
     this.appointmentService.listAppointment(this.userdataservice.user.userId).then(res => {
       this.listAppointment = res.data;
@@ -89,6 +97,29 @@ export class AppointmentComponent implements OnInit {
       })
 
       this.appointmentService.rescheduleReason(this.RescheduleForm.value).subscribe(res => {
+      
+        if(res.status == 200){
+          this.messageService.add({severity:'success', summary: 'Success', detail: res.msg});
+          this.rut.navigateByUrl("appointment");
+        }else{
+          this.messageService.add({severity:'error', summary: 'Error', detail: res.msg});
+        }
+      })
+      this.rut.navigateByUrl('appointment')
+      
+    }
+    
+  }
+
+  rejectSubmit(){
+    
+    if(this.appointmentid){
+
+      this.appointmentService.updateRejectAppointment(this.RejectForm.value).subscribe(res => {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: "You Have Reject Appointment"});
+      })
+
+      this.appointmentService.rejectReason(this.RejectForm.value).subscribe(res => {
       
         if(res.status == 200){
           this.messageService.add({severity:'success', summary: 'Success', detail: res.msg});

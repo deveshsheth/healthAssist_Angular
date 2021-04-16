@@ -52,8 +52,16 @@ export class AppointmentService {
     return this.http.put(`${environment.Base_Url}updateRescheduleAppointment`,model);
   }
 
+  updateRejectAppointment(model :any):Observable<any> {
+    return this.http.put(`${environment.Base_Url}updateRejectAppointment`,model);
+  }
+
   rescheduleReason(data : any):Observable<any> {
     return this.http.get(`${environment.Base_Url}rescheduleReason/`+data.email+"/"+data.appointmentid);
+  }
+
+  rejectReason(data : any):Observable<any> {
+    return this.http.get(`${environment.Base_Url}rejectReason/`+data.email+"/"+data.appointmentid);
   }
 
 }

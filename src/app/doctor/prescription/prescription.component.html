@@ -102,7 +102,7 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                        <a href="#"><img class="avatar" src="./assets/images/Home/Patient_Prescription.JPG" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="profile-basic">
@@ -247,7 +247,8 @@
                                     <div class="card-box mb-0">
                                         <!-- <h4 class="page-title"><b>Past Appointment List</b></h4> -->
                                         <div class="experience-box">
-                                            <table *ngIf="pastAppointmentList" datatable [dtOptions]="dtOptions" class="row-border hover">
+                                            <table *ngIf="pastAppointmentList" datatable [dtOptions]="dtOptions"
+                                                class="row-border hover">
                                                 <thead>
                                                     <tr>
                                                         <th>Patient Name</th>
@@ -401,22 +402,31 @@
 
                                         <div class="row" style="float: right;">
 
+                                
+
+                                            <!-- <div *ngIf="prescriptionMedicineForm.controls['prescriptiondate'].invalid && (prescriptionMedicineForm.controls['prescriptiondate'].dirty || prescriptionMedicineForm.controls['prescriptiondate'].touched)"
+                                                class="alert alert-danger">
+                                                <div
+                                                    *ngIf="prescriptionMedicineForm.controls['prescriptiondate'].errors.required">
+                                                    Date is required.
+                                                </div>
+                                            </div> -->
 
                                             <input class="form-control" type="date" formControlName="prescriptiondate">
 
-                                        </div><br> <br>
+                                        </div><br><br><br>
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <input class="form-control" type="text"
-                                                        formControlName="description">
+                                                        formControlName="description" required />
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>General Advice</label>
-                                                    <input class="form-control" type="text"
+                                                    <input type="text" class="form-control"
                                                         formControlName="generaladvice">
                                                 </div>
                                             </div>
@@ -487,9 +497,10 @@
 
                                         </div>
                                         <div class="m-t-20 text-right">
-                                            <button pButton type="submit" value="submitPrescription" label="Submit">
-                                            </button>
+                                            <button pButton type="submit" label="Submit"></button>
                                         </div>
+                                        
+
                                     </form>
                                 </div>
 
@@ -609,8 +620,8 @@
         <div class="m-t-20 text-right">
             <!-- <button pButton type="submit" value="submit" label="Submit Details">
             </button> -->
-            <button pButton type="submit" (click)="submitDetails(prescriptionData.appointmentid)" label="Submit Details"
-                ></button>
+            <button pButton type="submit" (click)="submitDetails(prescriptionData.appointmentid)"
+                label="Submit Details"></button>
         </div>
 
     </div>

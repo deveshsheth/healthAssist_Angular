@@ -19,4 +19,11 @@ export class EditpatientprofileService {
   listcities():Promise <any> {
     return this.http.get(`${environment.Base_Url}listCities`).toPromise();
   }
+  getUserPatientByid(userId :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getuserPatient/${userId}`).toPromise();
+  }
+  
+  getEditPatientByid(patientid :any):Promise<any> {
+    return this.http.get(`${environment.Base_Url}getEditUserPatient/${patientid}`).toPromise();
+  }
 }

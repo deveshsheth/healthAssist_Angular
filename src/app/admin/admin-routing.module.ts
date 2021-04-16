@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthguardGuard } from '../signup-login/authguard.guard';
+import { AdminappointmentComponent } from './adminappointment/adminappointment.component';
 import { CityComponent } from './city/city.component';
 import { AddclinicComponent } from './clinic/addclinic/addclinic.component';
 import { ClinicComponent } from './clinic/clinic.component';
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path:'editdoctor/:userId',component:EditdoctorComponent,canActivate:[AuthguardGuard]},
   {path:'profile/:userId',component:ProfileComponent,canActivate:[AuthguardGuard]},
   {path:'editdoctclinic/:doctclinicid',component:ProfileComponent,canActivate:[AuthguardGuard]},
+  
   //pharmacy
   {path:'pharmacy',component:PharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'addpharmacy',component:AddpharmacyComponent,canActivate:[AuthguardGuard]},
@@ -86,7 +88,9 @@ const routes: Routes = [
 
   //state
   {path:'state',component:StateComponent,canActivate:[AuthguardGuard]},
-  {path:'editstate/:stateid',component:StateComponent,canActivate:[AuthguardGuard]}
+  {path:'editstate/:stateid',component:StateComponent,canActivate:[AuthguardGuard]},
+
+  {path:'adminappointment',component:AdminappointmentComponent,canActivate:[AuthguardGuard]}
   
 ];
 

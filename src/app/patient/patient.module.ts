@@ -30,6 +30,8 @@ import { EditpatientprofileComponent } from './editpatientprofile/editpatientpro
 import { ViewappointmentComponent } from './viewappointment/viewappointment.component';
 import { ViewprescriptionComponent } from './viewprescription/viewprescription.component';
 
+
+
 @NgModule({
   declarations: [DoctorsComponent, SingledoctorComponent, DoctorappointmentComponent, PatientappointmentComponent, PatientprofileComponent, PharmacyComponent, PathologyComponent, UserpharmacyComponent, UserpathologyComponent, EditpatientprofileComponent, ViewappointmentComponent, ViewprescriptionComponent],
   imports: [
@@ -46,7 +48,8 @@ import { ViewprescriptionComponent } from './viewprescription/viewprescription.c
     ProgressSpinnerModule,
     ProgressBarModule,
     TagModule,
-    RatingModule
+    RatingModule,
+
   ],
   providers: [MessageService,ConfirmationService,DatePipe],
 })

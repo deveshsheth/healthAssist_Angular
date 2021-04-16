@@ -22,6 +22,13 @@ export class DashboardComponent implements OnInit {
   pharmacyCount:number = 0
   patientCount:number = 0
   clinicCount:number = 0
+  kycDoctor:number = 0
+  activeDoctor:number = 0
+  pendingDoctor:number = 0
+  pauseDoctor:number = 0
+  countDoctorClinic:number = 0
+  listDoctClinic:{}
+  doneAppointmentForAllDoctor:number=0
   constructor(private clinicService : ClinicService,private patientService : PatientService,private pharmacyService : PharmacyService,private pathologyService : PathologyService,private doctorService : DoctorService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit(){
@@ -45,6 +52,32 @@ export class DashboardComponent implements OnInit {
     this.clinicService.listClinic().then(res =>{
       this.clinicCount = res.data.length;
     })
+
+
+    this.doctorService.kycDoctor().then(res => {
+      this.kycDoctor = res.data.length;
+    })
+
+    
+    this.doctorService.activeDoctor().then(res => {
+      this.activeDoctor = res.data.length;
+    })
+
+    
+    this.doctorService.pendingDoctor().then(res => {
+      this.pendingDoctor = res.data.length;
+    })
+
+    
+    this.doctorService.pauseDoctor().then(res => {
+      this.pauseDoctor = res.data.length;
+    })
+
+    this.doctorService.doneAppointmentForAllDoctor().then(res => {
+      this.doneAppointmentForAllDoctor = res.data.length;
+    })
+
+
 
     if(this.userdataservice.user.email.length != 0){
      

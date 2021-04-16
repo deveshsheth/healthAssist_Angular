@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:'patientpathology',component:PathologyComponent,canActivate:[AuthguardGuard]},
   {path:'userpharmacy/:pharmacyId',component:UserpharmacyComponent,canActivate:[AuthguardGuard]},
   {path:'userpathology/:pathologyId',component:UserpathologyComponent,canActivate:[AuthguardGuard]},
-  {path:'editpatientprofile',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]},
+  {path:'editpatientprofile/:patientid',component:EditpatientprofileComponent,canActivate:[AuthguardGuard]},
   {path:'viewappointment',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
   {path:'rescheduleappointment/:appointmentid',component:ViewappointmentComponent,canActivate:[AuthguardGuard]},
   {path:'viewprescription/:appointmentid',component:ViewprescriptionComponent,canActivate:[AuthguardGuard]}

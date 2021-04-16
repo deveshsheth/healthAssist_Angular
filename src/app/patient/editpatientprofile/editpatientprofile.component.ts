@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { Users } from 'src/app/admin/users/users';
 import { UsersService } from 'src/app/admin/users/users.service';
 import { UserserviceService } from 'src/app/signup-login/userservice.service';
+import { Patient } from '../patientprofile/patient';
 import { EditpatientprofileService } from './editpatientprofile.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class EditpatientprofileComponent implements OnInit {
   editPatientForm:FormGroup;
   isLog:boolean = false
   id=0;
-  userData:Users;
+  userData:Patient;
   listcities:{}
   constructor(private Service : EditpatientprofileService,
     private route : ActivatedRoute,
@@ -38,24 +39,28 @@ export class EditpatientprofileComponent implements OnInit {
     }else {
       this.isLog = false;
     }
-    // this.id = this.route.snapshot.params.userId;
-    // this.Userservice.getUserByid(this.id).then(res => {
-    //   this.userData = res.data;
+    this.id = this.route.snapshot.params.patientid;
+    this.Service.getEditPatientByid(this.id).then(res => {
+      this.userData = res.data;
+      
+      console.log("First Name : ",this.userData.firstname);
+      
     
     this.editPatientForm = new FormGroup({
-      firstname:new FormControl('',Validators.required),
-      lastname:new FormControl('',Validators.required),
-      email:new FormControl('',Validators.required),
-      password:new FormControl('',Validators.required),
-      gender:new FormControl('',Validators.required),
+      patientid:new FormControl(this.userData.patientid,Validators.required),
+      firstname:new FormControl(this.userData.firstname,Validators.required),
+      lastname:new FormControl(this.userData.lastname,Validators.required),
+      email:new FormControl(this.userData.email,Validators.required),
+      password:new FormControl(this.userData.password,Validators.required),
+      gender:new FormControl(this.userData.gender,Validators.required),
        //patientname:new FormControl('',Validators.required),
-      phoneno: new FormControl('',Validators.required),
-      age:new FormControl('',Validators.required),
-      pincode:new FormControl('',Validators.required),
-      cityid:new FormControl('',Validators.required),
-      roleid: new FormControl(2,Validators.required)
+      phoneno: new FormControl(this.userData.phoneno,Validators.required),
+      age:new FormControl(this.userData.age,Validators.required),
+      pincode:new FormControl(this.userData.pincode,Validators.required),
+      cityid:new FormControl(this.userData.cityid,Validators.required),
+      //roleid: new FormControl(2,Validators.required)
     })
-  // })
+  })
 
   }
   logout(){

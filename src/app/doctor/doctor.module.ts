@@ -22,7 +22,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DoctormedicineComponent } from './doctormedicine/doctormedicine.component';
 import { DoctordiseaseComponent } from './doctordisease/doctordisease.component';
 import { DoctordietComponent } from './doctordiet/doctordiet.component';
-
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   declarations: [ AppointmentComponent, PrescriptionComponent, ProfileComponent, EditprofileComponent, DashboardComponent, DoctormedicineComponent, DoctordiseaseComponent, DoctordietComponent],
@@ -39,7 +40,9 @@ import { DoctordietComponent } from './doctordiet/doctordiet.component';
     ConfirmDialogModule,
     ProgressSpinnerModule,
     ProgressBarModule,
-    TagModule
+    TagModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [MessageService,ConfirmationService],
 })

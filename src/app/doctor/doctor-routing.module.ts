@@ -17,6 +17,7 @@ const routes: Routes = [
   
   {path:'appointment',component:AppointmentComponent,canActivate:[AuthguardGuard]},
   {path:'rescheduleform/:appointmentid',component:AppointmentComponent,canActivate:[AuthguardGuard]},
+  {path:'rejectform/:appointmentid',component:AppointmentComponent,canActivate:[AuthguardGuard]},
 
   {path:'prescription/:appointmentid',component:PrescriptionComponent,canActivate:[AuthguardGuard]},
   {path:'editprofile',component:EditprofileComponent,canActivate:[AuthguardGuard]},

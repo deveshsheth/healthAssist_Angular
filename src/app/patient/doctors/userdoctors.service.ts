@@ -17,5 +17,9 @@ export class UserdoctorsService {
    listDoctClinic(userid : any):Promise <any> {
     return this.http.get(`${environment.Base_Url}listDoctClinic/${userid}`).toPromise();
   }
+
+  searchDoctor():Promise <any> {
+    return this.http.get(`${environment.Base_Url}searchDoctor`).toPromise();
+  }
   
 }

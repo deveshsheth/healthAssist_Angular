@@ -1,25 +1,30 @@
 <div class="header">
     <div class="header-left">
+
         <a href="index-2.html" class="logo">
-            <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Health Assist</span>
+            <img src="assets/img/logo.png" width="35" height="35" alt=""><span>Health Assist</span>
         </a>
     </div>
     <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
     <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+
     <ul class="nav user-menu float-right">
-        
+
         <li class="nav-item dropdown has-arrow">
-            <a href="#">
+            <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                 <span class="user-img">
                     <img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
                     <span class="status online"></span>
-                </span>
+                </span>&nbsp;
                 <span>{{userdataservice.user.firstname}}</span>
-            </a>
-           
+            </a>&nbsp;
+            <div class="dropdown-menu">
+                <!-- <a class="dropdown-item" [routerLink]="['/profile']">My Profile</a>
+                <a class="dropdown-item" [routerLink]="['/editprofile']">Edit Profile</a> -->
+                <a class="dropdown-item" href="./" (click)="logout()">Logout</a>
+            </div>
         </li>
     </ul>
-    
 </div>
 
 <div class="sidebar" id="sidebar">
@@ -27,7 +32,7 @@
         <div class="sidebar-inner slimscroll" style="overflow: hidden; width: 100%; height: 1306px;">
             <div id="sidebar-menu" class="sidebar-menu">
                 <ul>
-                    <li class="menu-title">Main</li>
+                    <br>
                     <li>
                         <a [routerLink]="['/dashboard']">
                             <mdb-icon fas icon="tachometer-alt"></mdb-icon> <span>Dashboard</span>
@@ -80,8 +85,9 @@
                         <a [routerLink]="['/state']"><mdb-icon fas icon="map-marked-alt"></mdb-icon> <span>State</span></a>
                     </li>
                     <li>
-                        <a href="./" (click)="logout()"><mdb-icon fas icon="power-off"></mdb-icon> <span>Logout</span></a>
+                        <a [routerLink]="['/adminappointment']"><mdb-icon far icon="calendar-check"></mdb-icon> <span>Appointment</span></a>
                     </li>
+                   
 
 
 

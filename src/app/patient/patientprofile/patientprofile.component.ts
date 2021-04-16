@@ -15,6 +15,7 @@ export class PatientprofileComponent implements OnInit {
   isLog: boolean = false
   dtOptions: DataTables.Settings = {};
   patientForm:FormGroup
+  editFamiltMemberForm:FormGroup
   listcities:{}
   id=0
   getpatientUserId:Patient
@@ -50,19 +51,19 @@ export class PatientprofileComponent implements OnInit {
 
 
     this.patientid = this.route.snapshot.params.patientid
+    console.log(this.patientid);
     
     this.patientService.getFamilyMember(this.patientid).then(res => {
 
       this.getFamilyMemberId= res.data;
 
       this.patientForm = new FormGroup({
+        patientid:new FormControl(this.getFamilyMemberId.patientid,Validators.required),
         patientname:new FormControl(this.getFamilyMemberId.patientname,Validators.required),
         gender:new FormControl(this.getFamilyMemberId.gender,Validators.required),
         phoneno: new FormControl(this.getFamilyMemberId.phoneno,Validators.required),
         email:new FormControl(this.getFamilyMemberId.email,Validators.required),
         age:new FormControl(this.getFamilyMemberId.age,Validators.required),
-        // cityid:new FormControl(this.cityid,Validators.required),
-        // pincode:new FormControl(this.getpatientUserId.pincode,Validators.required),
         userId:new FormControl(this.userdataservice.user.userId,Validators.required),
       })
 
@@ -97,7 +98,7 @@ export class PatientprofileComponent implements OnInit {
   }
   submit(){
     if(this.patientid){
-      this.patientService.updatePatient(this.patientForm.value).subscribe(res => {
+      this.patientService.updateFamilyMember(this.patientForm.value).subscribe(res => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res.msg });
       })
       console.log("edit profile",this.patientForm.value);

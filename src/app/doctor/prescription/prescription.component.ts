@@ -34,9 +34,7 @@ export class PrescriptionComponent implements OnInit {
   dietUserForm:FormGroup
   Appointment:{}
   pastAppointmentList:{}
-  today: number = Date.now();
-  myDate = new Date();
-  a:string=""
+  myDate = Date.now();
   public medicine: any[] = [{
     //id: 1,
     medicinename: '',
@@ -45,8 +43,7 @@ export class PrescriptionComponent implements OnInit {
     instructions: ''
   }];
 
-  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { 
-    this.a = this.datePipe.transform(this.myDate);
+  constructor(private formBuilder: FormBuilder,private route: ActivatedRoute, public userdataservice: UserserviceService, private Service: PrescriptionService, private rut: Router, private messageService: MessageService) { 
   }
 
   ngOnInit() {
