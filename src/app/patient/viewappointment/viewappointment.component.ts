@@ -38,9 +38,9 @@ export class ViewappointmentComponent implements OnInit {
     this.viewAppointmentService.getAppointmentByid(this.appointmentid).then(res => {
       this.appointmentData = res.data;
 
-      this.viewAppointmentService.listDoctClinicTiming(this.appointmentData.clinicid).then(res => {
-        this.listDoctClinicTiming = res.data
-      })
+      // this.viewAppointmentService.listDoctClinicTiming(this.appointmentData.clinicid).then(res => {
+      //   this.listDoctClinicTiming = res.data
+      // })
   })
 
     this.RescheduleForm = new FormGroup({

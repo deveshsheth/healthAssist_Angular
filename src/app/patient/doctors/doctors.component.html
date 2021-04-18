@@ -14,8 +14,8 @@
       <ul class="navbar-nav mr-auto">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <li *ngIf="isLog" class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
+          <a class="nav-link dropdown-toggle" id="dropdown03" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Doctors<mdb-icon fas icon="caret-down"></mdb-icon></a>
           <ul class="dropdown-menu" aria-labelledby="dropdown03">
             <li><a class="dropdown-item" [routerLink]="['/patientdoctors']">Doctors</a></li>
 
@@ -25,7 +25,7 @@
         <li *ngIf="isLog" class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpharmacy']">Pharmacy</a>
         </li>
-        <li  *ngIf="isLog" class="nav-item">
+        <li *ngIf="isLog" class="nav-item">
           <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/patientpathology']">Pathology</a>
         </li>
       </ul>
@@ -110,66 +110,73 @@
     </p>
   </div>
 
-  <form [formGroup]="searchForm" (ngSubmit)="submit()"></form>
   <div class="search">
-    <input type="text" class="searchTerm" placeholder="Search Doctor..." formControlName="firstname">
+    <input type="text" class="searchTerm" placeholder="Search Doctor..." id="myInput" (keyup)="myFunc()">
     <button type="submit" class="searchButton">
       <i class="fa fa-search"></i>
-   </button>
- </div><br>
+    </button>
+  </div><br>
 </div>
 
 
 
 <br><br>
+
 <div class="container">
+
   <div class="row">
-      <div class=" col-lg-3" *ngFor="let ud of userdoctor">
-         
+    <div class="col-lg-3" *ngFor="let ud of userdoctor">
+      <div id="tab">
+        <div class="a">
           <div class="card" style="width:100%">
 
-        
-              <img src="./assets/images/Home/doctor.jpg" alt="Avatar" style="width:100%">
 
-            
-              <div class="card-body">
+            <img src="./assets/images/Home/doctor.jpg" alt="Avatar" style="width:100%">
 
-              
-                  <p style="font-size: 25px;font-weight: 400;">{{ud.firstname}}&nbsp;{{ud.lastname}}</p>
-                  <p style="font-size: medium;">{{ud.specialization}}</p>
-                  <!-- <p>{{ud.qualification}}</p> -->
-                  
-                  <a  [routerLink]="['../singledoctor',ud.userId]"><button type="button" mdbBtn color="primary" style="float: right;"  mdbWavesEffect>Read More</button></a>
 
-              </div>
+            <div class="card-body">
+
+
+              <p style="font-size: 25px;font-weight: 400;">{{ud.firstname}}&nbsp;{{ud.lastname}}</p>
+              <p style="font-size: medium;">{{ud.specialization}}</p>
+              <!-- <p>{{ud.qualification}}</p> -->
+
+              <a [routerLink]="['../singledoctor',ud.userId]"><button type="button" mdbBtn color="primary"
+                  style="float: right;" mdbWavesEffect>Read More</button></a>
+
+            </div>
 
           </div>
-        
+        </div>
       </div>
+
+    </div>
   </div>
 </div>
 
 <section class="section cta-page" id="hero" class="d-flex flex-column justify-content-center">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7">
-				<div class="cta-content">
-					<div class="divider mb-4"></div><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7">
+        <div class="cta-content">
+          <div class="divider mb-4"></div><br>
           <hr style="width:8%; border-top:8px solid #107eed; border-bottom:none;margin-left: -3px;">
-					<h2 class="mb-5 text-lg" style="margin-top: 20px;font-weight: 600;">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
-					<a [routerLink]="['/patientappointment']"><button ml-2 mdbBtn type="button" color="primary" rounded="true" mdbWavesEffect>Make Appointment<i class="icofont-simple-right ml-3"></i>></button></a>
-				
+          <h2 class="mb-5 text-lg" style="margin-top: 20px;font-weight: 600;">We are pleased to offer you the <span
+              class="title-color">chance to have the healthy</span></h2>
+          <a [routerLink]="['/patientappointment']"><button ml-2 mdbBtn type="button" color="primary" rounded="true"
+              mdbWavesEffect>Make Appointment<i class="icofont-simple-right ml-3"></i>></button></a>
+
         </div>
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
 
-<footer class="page-footer font-small bg-primary pt-4" >
+<footer class="page-footer font-small bg-primary pt-4">
 
-    
+
   <div class="container text-center text-md-left">
 
 
@@ -178,34 +185,39 @@
 
       <div class="col-md-4 mx-auto">
 
-     
-        
-        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40" height="40" alt="" > &nbsp; Health Assist</h5>
-    
-          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
-        <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating doctors, pathologies and pharmacy
-details.</p>
+
+
+        <h5 class="text-uppercase font-weight-bold"><img src="./assets/images/Home/HealthAssistLogo.png" width="40"
+            height="40" alt=""> &nbsp; Health Assist</h5>
+
+        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; border-top:2px solid #fff;">
+        <p>HealthAssist will help to search different categories of doctors on one click.It provides good rating
+          doctors, pathologies and pharmacy
+          details.</p>
 
       </div>
-     
+
       <div class="col-md-2 mx-auto">
 
 
-    
+
 
       </div>
- 
+
       <div class="col-md-2 mx-auto">
 
-       
+
 
       </div>
-    
+
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4" style="padding-top: 15px;">
 
 
         <h6 class="text-uppercase font-weight-bold">Contact us</h6>
-        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-top:2px solid #fff;">
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; border-top:2px solid #fff;">
         <p style="font-size: medium;">
           <mdb-icon fas icon="map-marker-alt"></mdb-icon>&nbsp;&nbsp;&nbsp; Ahmedabad, Gujarat, India
         </p>
@@ -231,5 +243,3 @@ details.</p>
 
 
 </footer>
-
-

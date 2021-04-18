@@ -229,7 +229,52 @@
                         <span
                             class="{{appointmentService.appointmentStatus[a.statusid]}}">{{appointmentService.appointmentStatus[a.statusid]}}</span>
                     </td>
-                    <td class="text-right">
+                    <td *ngIf="a.statusid==6">
+                        &nbsp;&nbsp;&nbsp;Successful...
+                    </td>
+                    <td class="text-right" *ngIf="a.statusid==4">
+                        <div class="dropdown dropdown-action">
+                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal"
+                                    (click)="accept(a.appointmentid)">
+                                    <mdb-icon fas icon="check"></mdb-icon> &nbsp; Accept
+                                </a>
+                                <a class="dropdown-item" styleClass="p-mr-2" data-toggle="modal"
+                                data-target="#myReject" [routerLink]="['/rejectform',a.appointmentid]">
+                                    <mdb-icon fas icon="times"></mdb-icon> &nbsp; Reject
+                                </a>
+                                
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                                 [routerLink]="['/rescheduleform',a.appointmentid]">
+                                    <mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule
+                                </a>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-right" *ngIf="a.statusid==1">
+                        <div class="dropdown dropdown-action">
+                            <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" styleClass="p-mr-2"
+                                    [routerLink]="['/prescription',a.appointmentid]">
+                                    <mdb-icon fas icon="arrow-alt-circle-right"></mdb-icon> &nbsp; Proceed
+                                </a>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td *ngIf="a.statusid==2">
+                        &nbsp;&nbsp;&nbsp;Rejected...
+                        <!-- <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                        [routerLink]="['/rescheduleform',a.appointmentid]">
+                           <mdb-icon fas icon="sync"></mdb-icon> &nbsp; Reschedule
+                       </a> -->
+                    </td>
+                    <!-- <td class="text-right" >
                         <div class="dropdown dropdown-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown"
                                 aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -253,7 +298,7 @@
 
                             </div>
                         </div>
-                    </td>
+                    </td> -->
                 </tr>
             </tbody>
         </table>

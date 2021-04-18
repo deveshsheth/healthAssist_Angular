@@ -12,6 +12,7 @@ import { PharmacyService } from './pharmacy.service';
 export class PharmacyComponent implements OnInit {
   isLog: boolean = false
   pharmacyList:{}
+  currentRate=0
   
   
   constructor(private service : PharmacyService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }

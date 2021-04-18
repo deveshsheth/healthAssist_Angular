@@ -12,10 +12,10 @@ import { UserserviceService } from '../signup-login/userservice.service';
 export class HeaderComponent implements OnInit {
 
   isLog: boolean = false
-  constructor(private authservice: AuthguardGuard, private loginservice: LoginService, private rut: Router, private userdataservice: UserserviceService) { }
+  constructor(private rut: Router, private userdataservice: UserserviceService) { }
 
   ngOnInit(): void {
-    console.log(this.userdataservice.user.email);
+    //console.log(this.userdataservice.user.email);
     if(this.userdataservice.user != null && this.userdataservice.user.email.length != 0){
      
       this.isLog = true;

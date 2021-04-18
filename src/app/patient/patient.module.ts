@@ -29,6 +29,9 @@ import { UserpathologyComponent } from './userpathology/userpathology.component'
 import { EditpatientprofileComponent } from './editpatientprofile/editpatientprofile.component';
 import { ViewappointmentComponent } from './viewappointment/viewappointment.component';
 import { ViewprescriptionComponent } from './viewprescription/viewprescription.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 
 
@@ -49,6 +52,7 @@ import { ViewprescriptionComponent } from './viewprescription/viewprescription.c
     ProgressBarModule,
     TagModule,
     RatingModule,
+   
 
   ],
   providers: [MessageService,ConfirmationService,DatePipe],

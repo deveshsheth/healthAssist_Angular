@@ -15,6 +15,7 @@ export class EditprofileComponent implements OnInit {
   isLog:boolean = false
   editProfileForm:FormGroup
   DoctorProfileData : Doctor
+  hide:true
   constructor(public profileService : ProfileService ,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -63,5 +64,6 @@ export class EditprofileComponent implements OnInit {
       this.rut.navigateByUrl('profile')
     }
   }
+  
 
 }

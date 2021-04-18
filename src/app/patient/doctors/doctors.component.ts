@@ -17,6 +17,7 @@ export class DoctorsComponent implements OnInit {
   searchDoctor:{}
   doctorData:Doctor
   searchForm:FormGroup
+  searchedKeyword: string;
   constructor(private userdoctorService : UserdoctorsService,private rut: Router,private userdataservice: UserserviceService,private messageService : MessageService) { }
 
   ngOnInit(){
@@ -55,5 +56,21 @@ export class DoctorsComponent implements OnInit {
 
     
   }
+  myFunc=()=> {
+    var input, filter, tab, tr, p, i, td, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    tab = document.getElementById("tab");
+    tr = tab.getElementsByClassName("a");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i];
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "None";
+        }
+    }
+}
 
 }

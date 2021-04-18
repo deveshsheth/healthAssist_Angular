@@ -83,7 +83,7 @@
 <div class="tab-content">
   <div class="tab-pane show active" id="about-cont">
 
-    <form [formGroup]="RescheduleForm" (ngSubmit)="RescheduleSubmit()">
+    <!-- <form [formGroup]="RescheduleForm" (ngSubmit)="RescheduleSubmit()">
       <div id="myRescheduleForm" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -100,7 +100,7 @@
 
               <div class="form-group">
                 <label>Appointment Time</label>
-                <!-- <input class="form-control" type="time" formControlName="appointmenttime"> -->
+                 <input class="form-control" type="time" formControlName="appointmenttime"> 
                 <select class="browser-default custom-select mb-4" formControlName="appointmenttime">
                   <option value="" selected>Appointment Time</option>
                   <option *ngFor="let dc of listDoctClinicTiming" value="{{dc.monday}}">Monday => {{dc.monday}}</option>
@@ -128,7 +128,7 @@
 
         </div>
       </div>
-    </form>
+    </form> -->
 
 
   </div>

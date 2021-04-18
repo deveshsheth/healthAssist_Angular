@@ -29,10 +29,12 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { TagModule } from 'primeng/tag';
 import { PatientModule } from './patient/patient.module';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DatePipe } from '@angular/common';
 import { PharmacyModule } from './pharmacy/pharmacy.module';
-
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {PasswordModule} from 'primeng/password';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,8 +69,8 @@ import { PharmacyModule } from './pharmacy/pharmacy.module';
     ConfirmDialogModule,
     TagModule,
     PatientModule,
-    PharmacyModule
-
+    PharmacyModule,
+    PasswordModule
     
   ],
   providers: [MessageService,DatePipe],
