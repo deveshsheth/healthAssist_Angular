@@ -149,9 +149,15 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Waiting...
                     </td>
 
+                    <td *ngIf="a.statusid==1">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Waiting...
+                    </td>
+
                     <td *ngIf="a.statusid==6">
                         &nbsp;&nbsp;&nbsp;&nbsp;Successful...
                     </td>
+
+                   
 
                     <td *ngIf="a.statusid==2">
                         &nbsp;{{a.statusreason}}

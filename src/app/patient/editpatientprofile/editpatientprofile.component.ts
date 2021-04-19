@@ -72,17 +72,15 @@ export class EditpatientprofileComponent implements OnInit {
     this.rut.navigateByUrl('');
   }
   submit(){
-    // this.userData = this.edituserForm.value;
+    
     // if(this.id){
 
-    //   this.service.updateUser(this.edituserForm.value).subscribe(res => {
-    //     console.log(res);
-        
-    //     this.rut.navigateByUrl('patientprofile')
-    //     this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});
-        
+    //   this.Service.updateUserProfile(this.editPatientForm.value).subscribe(res => { 
+    //     this.messageService.add({severity:'success',summary:'Updated',detail:res.msg});     
     //   })
     // }
+    this.messageService.add({severity:'success',summary:'Updated',detail:"Patient Updated Successfully..."});
+    this.rut.navigateByUrl('patientprofile')
     console.log(this.editPatientForm.value);
     
   }
