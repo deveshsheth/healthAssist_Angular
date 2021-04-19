@@ -21,6 +21,7 @@ export class AppointmentComponent implements OnInit {
   RejectForm:FormGroup
   appointmentid =0
   appointmentData:Appointment
+  value1 : number=0
   constructor(private route : ActivatedRoute,private appointmentService : AppointmentService,public userdataservice : UserserviceService,private rut : Router,private messageService : MessageService) { }
 
   ngOnInit() {
@@ -42,11 +43,18 @@ export class AppointmentComponent implements OnInit {
   })
 
   
+  let interval = setInterval(() => {
+    this.value1 = this.value1 + Math.floor(Math.random() * 10) + 1;
+    if (this.value1 >= 100) {
+      this.value1 = 100;
+      this.appointmentService.listAppointment(this.userdataservice.user.userId).then(res => {
+        this.listAppointment = res.data;
+      })
+      clearInterval(interval);
+    }
+  }, 300);
 
-    this.appointmentService.listAppointment(this.userdataservice.user.userId).then(res => {
-      this.listAppointment = res.data;
-
-    })
+    
 
    
 
